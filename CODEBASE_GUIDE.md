@@ -169,7 +169,7 @@ Styled with a gradient thumb (`#10B981` to `#F59E0B`) and a translucent dark tra
 ## 6. Build, Deployment & CI/CD Pipeline
 
 The project is configured for static web hosting on GitHub Pages at:
-👉 **`https://akashraks-cloud.github.io/junoDigital`**
+👉 **`https://swavedooja.github.io/junoDigital`**
 
 ### Scripts Overview (`package.json`)
 *   `npm run dev`: Starts the local Vite dev server.
