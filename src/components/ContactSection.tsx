@@ -256,8 +256,11 @@ const ContactSection: React.FC = () => {
                       label="I want to..."
                       required
                     >
-                      <MenuItem value="Talk to Juno">Talk to Juno</MenuItem>
-                      <MenuItem value="Get a Growth Assessment">Get a Growth Assessment</MenuItem>
+                      <MenuItem value="Talk to Juno">Talk to Juno (General Consultation)</MenuItem>
+                      <MenuItem value="Get Online Plan">01 — Get Online (One-Time Setup from ₹2,000)</MenuItem>
+                      <MenuItem value="Get Growing Plan">02 — Get Growing (Monthly Plan ₹11,999/mo)</MenuItem>
+                      <MenuItem value="Get Ahead Plan">03 — Get Ahead (Growth + P&L Plan ₹24,999/mo)</MenuItem>
+                      <MenuItem value="Get a Growth Assessment">Get a Free Growth Assessment</MenuItem>
                       <MenuItem value="General Inquiry">General Inquiry</MenuItem>
                     </Select>
                   </FormControl>

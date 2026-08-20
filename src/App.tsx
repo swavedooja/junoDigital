@@ -9,6 +9,7 @@ import ProblemSection from './components/ProblemSection';
 import ServicesSection from './components/ServicesSection';
 import OperatingModelSection from './components/OperatingModelSection';
 import WhyJunoSection from './components/WhyJunoSection';
+import PackagesSection from './components/PackagesSection';
 import CaseStudiesSection from './components/CaseStudiesSection';
 import WhoWeWorkWithSection from './components/WhoWeWorkWithSection';
 import AboutSection from './components/AboutSection';
@@ -32,6 +33,7 @@ function App() {
         <ServicesSection />
         <OperatingModelSection />
         <WhyJunoSection />
+        <PackagesSection />
         <CaseStudiesSection />
         <WhoWeWorkWithSection />
         <AboutSection />
