@@ -1,7 +1,7 @@
-import { ThemeProvider, CssBaseline } from '@mui/material';
+import { CssBaseline } from '@mui/material';
 import createCache from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
-import theme from './theme';
+import { ColorModeProvider } from './ThemeContext';
 import Navigation from './components/Navigation';
 import HeroSection from './components/HeroSection';
 import DifferenceSection from './components/DifferenceSection';
@@ -23,7 +23,7 @@ const emotionCache = createCache({
 function App() {
   return (
     <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={theme}>
+      <ColorModeProvider>
         <CssBaseline />
         <Navigation />
         <HeroSection />
@@ -37,7 +37,7 @@ function App() {
         <AboutSection />
         <ContactSection />
         <Footer />
-      </ThemeProvider>
+      </ColorModeProvider>
     </CacheProvider>
   );
 }

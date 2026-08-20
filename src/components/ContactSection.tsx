@@ -17,12 +17,12 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-const SectionContainer = styled(Box)(() => ({
+const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: '120px 0',
   background: `
     radial-gradient(circle at 60% 40%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(17, 24, 39, 0.8) 100%)
+    ${theme.custom.gradient.sectionA}
   `,
   overflow: 'hidden',
 }));
@@ -34,17 +34,17 @@ const GradientText = styled(Typography)<{ component?: React.ElementType }>(({ th
   backgroundClip: 'text',
 }));
 
-const ContactCard = styled(Card)(() => ({
-  background: 'rgba(17, 24, 39, 0.8)',
+const ContactCard = styled(Card)(({ theme }) => ({
+  background: theme.custom.surface.glass,
   backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(255, 255, 255, 0.1)',
+  border: `1px solid ${theme.custom.border.default}`,
   borderRadius: '24px',
   maxWidth: '600px',
   margin: '0 auto',
   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   '&:hover': {
     border: '1px solid rgba(16, 185, 129, 0.3)',
-    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+    boxShadow: `0 20px 40px ${theme.custom.shadow.card}`,
   }
 }));
 
@@ -223,13 +223,13 @@ const ContactSection: React.FC = () => {
                   <FormControl 
                     fullWidth 
                     variant="outlined"
-                    sx={{
+                    sx={(theme) => ({
                       '& .MuiOutlinedInput-root': {
-                        background: 'rgba(31, 41, 55, 0.8)',
+                        background: theme.custom.surface.input,
                         backdropFilter: 'blur(10px)',
                         borderRadius: '12px',
                         '& fieldset': {
-                          border: '1px solid rgba(255, 255, 255, 0.1)',
+                          border: `1px solid ${theme.custom.border.default}`,
                         },
                         '&:hover fieldset': {
                           border: '1px solid rgba(16, 185, 129, 0.5)',
@@ -244,7 +244,7 @@ const ContactSection: React.FC = () => {
                           color: 'primary.main',
                         }
                       }
-                    }}
+                    })}
                   >
                     <InputLabel id="inquiry-select-label">I want to...</InputLabel>
                     <Select

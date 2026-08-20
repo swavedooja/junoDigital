@@ -7,12 +7,12 @@ import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import TuneIcon from '@mui/icons-material/Tune';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 
-const SectionContainer = styled(Box)(() => ({
+const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: '120px 0',
   background: `
     radial-gradient(circle at 10% 80%, rgba(245, 158, 11, 0.08) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(17, 24, 39, 0.8) 0%, rgba(0, 0, 0, 0.95) 100%)
+    ${theme.custom.gradient.sectionB}
   `,
   overflow: 'hidden',
 }));
@@ -28,7 +28,7 @@ const TimelineWrapper = styled(Box)(({ theme }) => ({
     left: '5%',
     right: '5%',
     height: 4,
-    background: 'rgba(255, 255, 255, 0.05)',
+    background: theme.custom.border.subtle,
     zIndex: 1,
     [theme.breakpoints.down('md')]: {
       display: 'none',
@@ -58,8 +58,8 @@ const StepCircle = styled(Box, {
   width: 80,
   height: 80,
   borderRadius: '50%',
-  background: active ? `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})` : 'rgba(17, 24, 39, 0.9)',
-  border: active ? 'none' : '2px solid rgba(255, 255, 255, 0.1)',
+  background: active ? `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})` : theme.custom.surface.glass,
+  border: active ? 'none' : `2px solid ${theme.custom.border.default}`,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -78,9 +78,9 @@ const StepCircle = styled(Box, {
 const StepCard = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'active',
 })<{ active?: boolean }>(({ theme, active }) => ({
-  background: active ? 'rgba(17, 24, 39, 0.8)' : 'rgba(255, 255, 255, 0.01)',
+  background: active ? theme.custom.surface.glass : theme.custom.surface.glassLight,
   backdropFilter: 'blur(20px)',
-  border: active ? `1px solid rgba(16, 185, 129, 0.3)` : '1px solid rgba(255, 255, 255, 0.03)',
+  border: active ? `1px solid rgba(16, 185, 129, 0.3)` : `1px solid ${theme.custom.border.subtle}`,
   borderRadius: '24px',
   padding: theme.spacing(4),
   textAlign: 'center',
@@ -100,7 +100,7 @@ const StepNumber = styled(Typography)(({ theme }) => ({
   fontSize: '4rem',
   fontWeight: 800,
   opacity: 0.03,
-  color: theme.palette.common.white,
+  color: theme.palette.text.primary,
   userSelect: 'none',
 }));
 
@@ -202,8 +202,8 @@ const OperatingModelSection: React.FC = () => {
                     sx={{
                       p: 2.5,
                       borderRadius: '20px',
-                      background: activeStep === index ? 'rgba(16, 185, 129, 0.05)' : 'rgba(255, 255, 255, 0.01)',
-                      border: activeStep === index ? '1px solid rgba(16, 185, 129, 0.3)' : '1px solid rgba(255, 255, 255, 0.03)',
+                      background: (theme) => activeStep === index ? 'rgba(16, 185, 129, 0.05)' : theme.custom.surface.glassLight,
+                      border: (theme) => activeStep === index ? '1px solid rgba(16, 185, 129, 0.3)' : `1px solid ${theme.custom.border.subtle}`,
                     }}
                     onClick={() => setActiveStep(index)}
                   >

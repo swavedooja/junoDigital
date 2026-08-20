@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Container, Typography, Button, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-const HeroContainer = styled(Box)(() => ({
+const HeroContainer = styled(Box)(({ theme }) => ({
   minHeight: '100vh',
   position: 'relative',
   display: 'flex',
@@ -10,7 +10,7 @@ const HeroContainer = styled(Box)(() => ({
   background: `
     radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(17, 24, 39, 0.8) 100%)
+    ${theme.palette.mode === 'dark' ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(17, 24, 39, 0.8) 100%)' : 'linear-gradient(135deg, #FAFAFA 0%, #F0F1F3 100%)'}
   `,
   overflow: 'hidden',
   '&::before': {
@@ -23,7 +23,7 @@ const HeroContainer = styled(Box)(() => ({
     backgroundImage: `url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5?crop=entropy&cs=srgb&fm=jpg&q=85")`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    opacity: 0.1,
+    opacity: theme.custom.overlay.imageOpacity,
     zIndex: -1,
   }
 }));
@@ -63,9 +63,9 @@ const GlassButton = styled(Button)(({ theme }) => ({
 }));
 
 const OutlinedGlassButton = styled(Button)(({ theme }) => ({
-  background: 'rgba(255, 255, 255, 0.03)',
+  background: theme.custom.surface.glassLight,
   backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(255, 255, 255, 0.1)',
+  border: `1px solid ${theme.custom.border.default}`,
   color: theme.palette.text.primary,
   fontWeight: 600,
   fontSize: '1.1rem',
@@ -74,7 +74,7 @@ const OutlinedGlassButton = styled(Button)(({ theme }) => ({
   textTransform: 'none',
   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   '&:hover': {
-    background: 'rgba(255, 255, 255, 0.08)',
+    background: theme.custom.surface.glassLight,
     border: `1px solid ${theme.palette.primary.main}`,
     transform: 'translateY(-3px) scale(1.02)',
   }

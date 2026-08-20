@@ -4,19 +4,19 @@ import { styled } from '@mui/material/styles';
 import WarningAmberRoundedIcon from '@mui/icons-material/WarningAmberRounded';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 
-const SectionContainer = styled(Box)(() => ({
+const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: '120px 0',
   background: `
     radial-gradient(circle at 90% 70%, rgba(245, 158, 11, 0.06) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(17, 24, 39, 0.9) 0%, rgba(0, 0, 0, 0.95) 100%)
+    ${theme.custom.gradient.sectionB}
   `,
   overflow: 'hidden',
 }));
 
 const ProblemCard = styled(Box)(({ theme }) => ({
-  background: 'rgba(255, 255, 255, 0.02)',
-  border: '1px solid rgba(255, 255, 255, 0.05)',
+  background: theme.custom.surface.glassLight,
+  border: `1px solid ${theme.custom.border.subtle}`,
   borderRadius: '20px',
   padding: theme.spacing(3),
   height: '100%',
@@ -40,7 +40,7 @@ const SolutionBanner = styled(Box)(({ theme }) => ({
   textAlign: 'center',
   position: 'relative',
   overflow: 'hidden',
-  boxShadow: '0 15px 35px rgba(0, 0, 0, 0.2)',
+  boxShadow: `0 15px 35px ${theme.custom.shadow.card}`,
 }));
 
 const IconBox = styled(Box)(({ theme }) => ({
@@ -92,7 +92,7 @@ const ProblemSection: React.FC = () => {
               <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
                 <ProblemCard>
                   <IconBox>
-                    <WarningAmberRoundedIcon />
+                     <WarningAmberRoundedIcon />
                   </IconBox>
                   <Typography variant="body1" sx={{ fontWeight: 500, textAlign: 'left' }}>
                     {problem}
@@ -102,16 +102,16 @@ const ProblemSection: React.FC = () => {
             ))}
             <Grid size={{ xs: 12, sm: 6, md: 4 }}>
               <Box
-                sx={{
-                  background: 'rgba(255, 255, 255, 0.01)',
-                  border: '1px dashed rgba(255, 255, 255, 0.1)',
+                sx={(theme) => ({
+                  background: theme.custom.surface.glassLight,
+                  border: `1px dashed ${theme.custom.border.default}`,
                   borderRadius: '20px',
                   p: 3,
                   height: '100%',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                }}
+                })}
               >
                 <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
                   And most owners simply don't have the time to do all of it.

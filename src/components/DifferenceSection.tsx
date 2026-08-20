@@ -5,12 +5,12 @@ import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import RestaurantMenuOutlinedIcon from '@mui/icons-material/RestaurantMenuOutlined';
 import TrendingUpOutlinedIcon from '@mui/icons-material/TrendingUpOutlined';
 
-const SectionContainer = styled(Box)(() => ({
+const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: '120px 0',
   background: `
     radial-gradient(circle at 10% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(17, 24, 39, 0.9) 100%)
+    ${theme.custom.gradient.sectionA}
   `,
   overflow: 'hidden',
 }));
@@ -44,13 +44,13 @@ const InfoItem = styled(Stack)(({ theme }) => ({
   spacing: 3,
   alignItems: 'flex-start',
   padding: theme.spacing(2),
-  background: 'rgba(255, 255, 255, 0.02)',
+  background: theme.custom.surface.glassLight,
   borderRadius: '16px',
-  border: '1px solid rgba(255, 255, 255, 0.05)',
+  border: `1px solid ${theme.custom.border.subtle}`,
   transition: 'all 0.3s ease',
   '&:hover': {
-    background: 'rgba(255, 255, 255, 0.04)',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
+    background: theme.custom.surface.glassLight,
+    border: `1px solid ${theme.custom.border.default}`,
   }
 }));
 

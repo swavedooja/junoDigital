@@ -12,22 +12,30 @@ import {
   ListItemButton,
   ListItemText,
   useMediaQuery,
-  useTheme
+  useTheme,
+  Tooltip
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import Logo from '../darkThemeLogo.png';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import Logo from '../junoLogo.jpg';
+import { useColorMode } from '../ThemeContext';
 
-const GlassAppBar = styled(AppBar)(() => ({
-  background: 'rgba(0, 0, 0, 0.8)',
+// ─── Styled Components ───────────────────────────────────────────────
+
+const GlassAppBar = styled(AppBar)(({ theme }) => ({
+  background: theme.palette.mode === 'dark'
+    ? 'rgba(0, 0, 0, 0.8)'
+    : 'rgba(255, 255, 255, 0.85)',
   backdropFilter: 'blur(20px)',
-  borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+  borderBottom: `1px solid ${theme.custom.border.default}`,
+  boxShadow: theme.palette.mode === 'dark'
+    ? '0 8px 32px rgba(0, 0, 0, 0.3)'
+    : '0 4px 20px rgba(0, 0, 0, 0.06)',
   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
 }));
-
-
 
 const NavButton = styled(Button)<{ component?: React.ElementType }>(({ theme }) => ({
   color: theme.palette.text.primary,
@@ -56,11 +64,35 @@ const CTAButton = styled(Button)<{ component?: React.ElementType }>(({ theme }) 
   }
 }));
 
+const ThemeToggleButton = styled(IconButton)(({ theme }) => ({
+  width: 42,
+  height: 42,
+  borderRadius: '12px',
+  background: theme.palette.mode === 'dark'
+    ? 'rgba(255, 255, 255, 0.06)'
+    : 'rgba(0, 0, 0, 0.04)',
+  border: `1px solid ${theme.custom.border.default}`,
+  color: theme.palette.mode === 'dark'
+    ? theme.palette.secondary.main
+    : theme.palette.secondary.dark,
+  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+  '&:hover': {
+    background: theme.palette.mode === 'dark'
+      ? 'rgba(245, 158, 11, 0.12)'
+      : 'rgba(217, 119, 6, 0.1)',
+    transform: 'rotate(15deg) scale(1.05)',
+    borderColor: theme.palette.secondary.main,
+  },
+}));
+
+// ─── Component ───────────────────────────────────────────────────────
+
 const Navigation: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const { mode, toggleColorMode } = useColorMode();
 
   const navItems = [
     { label: 'Services', href: '#services' },
@@ -86,18 +118,29 @@ const Navigation: React.FC = () => {
   const drawer = (
     <Stack
       sx={{
-        width: 250,
+        width: 260,
         height: '100%',
-        background: 'rgba(0, 0, 0, 0.95)',
+        background: theme.palette.mode === 'dark'
+          ? 'rgba(0, 0, 0, 0.95)'
+          : 'rgba(255, 255, 255, 0.98)',
         backdropFilter: 'blur(20px)',
         p: 2,
       }}
     >
       <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 3 }}>
-        <img src={Logo} alt="Juno Logo" style={{ height: '80px', width: '104px' }} />
-        <IconButton onClick={handleDrawerToggle} sx={{ color: 'white' }}>
-          <CloseIcon />
-        </IconButton>
+        <img
+          src={Logo}
+          alt="Juno Logo"
+          style={{ height: '48px', width: '48px', borderRadius: '10px' }}
+        />
+        <Stack direction="row" spacing={1} alignItems="center">
+          <ThemeToggleButton onClick={toggleColorMode} size="small">
+            {mode === 'dark' ? <LightModeIcon fontSize="small" /> : <DarkModeIcon fontSize="small" />}
+          </ThemeToggleButton>
+          <IconButton onClick={handleDrawerToggle} sx={{ color: theme.palette.text.primary }}>
+            <CloseIcon />
+          </IconButton>
+        </Stack>
       </Stack>
       <List>
         {navItems.map((item) => (
@@ -140,13 +183,17 @@ const Navigation: React.FC = () => {
         elevation={0}
         sx={{
           background: scrolled 
-            ? 'rgba(0, 0, 0, 0.95)' 
-            : 'rgba(0, 0, 0, 0.8)',
+            ? (theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.95)' : 'rgba(255, 255, 255, 0.95)')
+            : undefined,
         }}
       >
         <Container maxWidth="lg">
           <Toolbar sx={{ justifyContent: 'space-between', py: 1 }}>
-            <img src={Logo} alt="Juno Logo" style={{ height: '80px', width: '104px' }} />
+            <img
+              src={Logo}
+              alt="Juno Logo"
+              style={{ height: '52px', width: '52px', borderRadius: '12px' }}
+            />
 
             {!isMobile ? (
               <>
@@ -162,19 +209,32 @@ const Navigation: React.FC = () => {
                   ))}
                 </Stack>
 
-                <CTAButton component="a" href="#contact">
-                  Talk to Juno
-                </CTAButton>
+                <Stack direction="row" spacing={1.5} alignItems="center">
+                  <Tooltip title={mode === 'dark' ? 'Switch to Light mode' : 'Switch to Dark mode'}>
+                    <ThemeToggleButton onClick={toggleColorMode}>
+                      {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
+                    </ThemeToggleButton>
+                  </Tooltip>
+
+                  <CTAButton component="a" href="#contact">
+                    Talk to Juno
+                  </CTAButton>
+                </Stack>
               </>
             ) : (
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-              >
-                <MenuIcon />
-              </IconButton>
+              <Stack direction="row" spacing={1} alignItems="center">
+                <ThemeToggleButton onClick={toggleColorMode} size="small">
+                  {mode === 'dark' ? <LightModeIcon fontSize="small" /> : <DarkModeIcon fontSize="small" />}
+                </ThemeToggleButton>
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  edge="start"
+                  onClick={handleDrawerToggle}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Stack>
             )}
           </Toolbar>
         </Container>

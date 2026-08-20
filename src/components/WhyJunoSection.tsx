@@ -5,27 +5,27 @@ import RestaurantIcon from '@mui/icons-material/Restaurant';
 import DeviceHubIcon from '@mui/icons-material/DeviceHub';
 import HandymanIcon from '@mui/icons-material/Handyman';
 
-const SectionContainer = styled(Box)(() => ({
+const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: '120px 0',
   background: `
     radial-gradient(circle at 80% 30%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(17, 24, 39, 0.9) 100%)
+    ${theme.custom.gradient.sectionA}
   `,
   overflow: 'hidden',
 }));
 
 const WhyCard = styled(Card)(({ theme }) => ({
   height: '100%',
-  background: 'rgba(17, 24, 39, 0.6)',
+  background: theme.custom.surface.card,
   backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(255, 255, 255, 0.08)',
+  border: `1px solid ${theme.custom.border.default}`,
   borderRadius: '24px',
   transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
   '&:hover': {
     transform: 'translateY(-10px)',
     border: `1px solid rgba(16, 185, 129, 0.4)`,
-    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)',
+    boxShadow: `0 20px 40px ${theme.custom.shadow.cardHover}`,
     '& .pillar-icon': {
       transform: 'scale(1.1)',
       color: theme.palette.secondary.main,

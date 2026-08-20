@@ -3,11 +3,9 @@ import { Box, Container, Typography, Stack, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 const FooterContainer = styled(Box)(({ theme }) => ({
-  background: `
-    linear-gradient(135deg, rgba(17, 24, 39, 0.9) 0%, rgba(0, 0, 0, 0.95) 100%)
-  `,
+  background: theme.palette.mode === 'dark' ? 'linear-gradient(135deg, rgba(17, 24, 39, 0.9) 0%, rgba(0, 0, 0, 0.95) 100%)' : 'linear-gradient(135deg, #F3F4F6 0%, #FAFAFA 100%)',
   backdropFilter: 'blur(20px)',
-  borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+  borderTop: `1px solid ${theme.custom.border.default}`,
   padding: theme.spacing(6, 0),
   marginTop: theme.spacing(10),
 }));
@@ -78,7 +76,7 @@ const Footer: React.FC = () => {
             </Stack>
           </Stack>
 
-          <Box sx={{ borderTop: '1px solid rgba(255, 255, 255, 0.05)', pt: 3 }}>
+          <Box sx={{ borderTop: (theme) => `1px solid ${theme.custom.border.subtle}`, pt: 3 }}>
             <Stack
               direction={{ xs: 'column', md: 'row' }}
               justifyContent="space-between"

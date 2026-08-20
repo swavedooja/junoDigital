@@ -8,19 +8,19 @@ import KitchenIcon from '@mui/icons-material/Kitchen';
 import LayersIcon from '@mui/icons-material/Layers';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
-const SectionContainer = styled(Box)(() => ({
+const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: '120px 0',
   background: `
     radial-gradient(circle at 30% 60%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(17, 24, 39, 0.9) 0%, rgba(0, 0, 0, 0.95) 100%)
+    ${theme.custom.gradient.sectionB}
   `,
   overflow: 'hidden',
 }));
 
 const CategoryCard = styled(Card)(({ theme }) => ({
-  background: 'rgba(255, 255, 255, 0.02)',
-  border: '1px solid rgba(255, 255, 255, 0.05)',
+  background: theme.custom.surface.glassLight,
+  border: `1px solid ${theme.custom.border.subtle}`,
   borderRadius: '20px',
   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   height: '100%',
@@ -41,7 +41,7 @@ const IconBox = styled(Box)(({ theme }) => ({
   width: 56,
   height: 56,
   borderRadius: '14px',
-  background: 'rgba(255, 255, 255, 0.03)',
+  background: theme.custom.surface.glassLight,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',

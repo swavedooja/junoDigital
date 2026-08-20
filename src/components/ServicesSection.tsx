@@ -8,12 +8,12 @@ import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined';
 import InsightsOutlinedIcon from '@mui/icons-material/InsightsOutlined';
 
-const SectionContainer = styled(Box)(() => ({
+const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: '120px 0',
   background: `
     radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 60%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(17, 24, 39, 0.8) 100%)
+    ${theme.custom.gradient.sectionA}
   `,
   overflow: 'hidden',
 }));
@@ -29,16 +29,16 @@ const ServiceCard = styled(Card, {
   shouldForwardProp: (prop) => prop !== 'active',
 })<{ active?: boolean }>(({ theme, active }) => ({
   height: '100%',
-  background: active ? 'rgba(16, 185, 129, 0.06)' : 'rgba(17, 24, 39, 0.5)',
+  background: active ? 'rgba(16, 185, 129, 0.06)' : theme.custom.surface.cardAlt,
   backdropFilter: 'blur(20px)',
-  border: active ? `2px solid ${theme.palette.primary.main}` : '1px solid rgba(255, 255, 255, 0.1)',
+  border: active ? `2px solid ${theme.palette.primary.main}` : `1px solid ${theme.custom.border.default}`,
   borderRadius: '24px',
   transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
   cursor: 'pointer',
   '&:hover': {
     transform: 'translateY(-8px) scale(1.01)',
     border: `2px solid ${theme.palette.primary.main}`,
-    boxShadow: '0 25px 50px rgba(0, 0, 0, 0.4)',
+    boxShadow: `0 25px 50px ${theme.custom.shadow.cardHover}`,
     background: 'rgba(16, 185, 129, 0.06)',
     '& .service-icon': {
       transform: 'scale(1.1) rotate(5deg)',
@@ -61,8 +61,8 @@ const IconWrapper = styled(Box)(({ theme }) => ({
 }));
 
 const HighlightBox = styled(Box)(({ theme }) => ({
-  background: 'rgba(255, 255, 255, 0.03)',
-  border: '1px solid rgba(255, 255, 255, 0.08)',
+  background: theme.custom.surface.glassLight,
+  border: `1px solid ${theme.custom.border.default}`,
   borderRadius: '16px',
   padding: theme.spacing(2),
   marginTop: theme.spacing(3),

@@ -21,22 +21,22 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import PercentIcon from '@mui/icons-material/Percent';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 
-const SectionContainer = styled(Box)(() => ({
+const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: '120px 0',
   background: `
     radial-gradient(circle at 70% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(17, 24, 39, 0.8) 0%, rgba(0, 0, 0, 0.95) 100%)
+    ${theme.custom.gradient.sectionB}
   `,
   overflow: 'hidden',
 }));
 
-const CaseCard = styled(Card)(() => ({
-  background: 'linear-gradient(135deg, rgba(17, 24, 39, 0.9) 0%, rgba(0, 0, 0, 0.95) 100%)',
+const CaseCard = styled(Card)(({ theme }) => ({
+  background: theme.palette.mode === 'dark' ? 'linear-gradient(135deg, rgba(17, 24, 39, 0.9) 0%, rgba(0, 0, 0, 0.95) 100%)' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(243, 244, 246, 0.9) 100%)',
   border: '1px solid rgba(16, 185, 129, 0.3)',
   borderRadius: '28px',
   overflow: 'hidden',
-  boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)',
+  boxShadow: `0 20px 40px ${theme.custom.shadow.cardHover}`,
   position: 'relative',
   transition: 'all 0.3s ease',
   '&:hover': {
@@ -45,8 +45,8 @@ const CaseCard = styled(Card)(() => ({
 }));
 
 const MetricBox = styled(Box)(({ theme }) => ({
-  background: 'rgba(255, 255, 255, 0.02)',
-  border: '1px solid rgba(255, 255, 255, 0.05)',
+  background: theme.custom.surface.glassLight,
+  border: `1px solid ${theme.custom.border.subtle}`,
   borderRadius: '20px',
   padding: theme.spacing(3),
   textAlign: 'center',
@@ -68,10 +68,10 @@ const QuoteIcon = styled(FormatQuoteIcon)(({ theme }) => ({
   opacity: 0.2,
 }));
 
-const TestimonialCard = styled(Card)(() => ({
-  background: 'rgba(0, 0, 0, 0.6)',
+const TestimonialCard = styled(Card)(({ theme }) => ({
+  background: theme.custom.surface.glass,
   backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(255, 255, 255, 0.1)',
+  border: `1px solid ${theme.custom.border.default}`,
   borderRadius: '24px',
   height: '100%',
   position: 'relative',
@@ -79,14 +79,14 @@ const TestimonialCard = styled(Card)(() => ({
   '&:hover': {
     transform: 'translateY(-8px)',
     border: '1px solid rgba(16, 185, 129, 0.3)',
-    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)',
+    boxShadow: `0 20px 40px ${theme.custom.shadow.cardHover}`,
   }
 }));
 
 const NavigationButton = styled(IconButton)(({ theme }) => ({
-  background: 'rgba(17, 24, 39, 0.8)',
+  background: theme.custom.surface.glass,
   backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(255, 255, 255, 0.1)',
+  border: `1px solid ${theme.custom.border.default}`,
   color: theme.palette.primary.main,
   width: 56,
   height: 56,
@@ -197,7 +197,7 @@ const CaseStudiesSection: React.FC = () => {
                 </Stack>
               </Grid>
               
-              <Grid size={{ xs: 12, md: 6 }} sx={{ background: 'rgba(255,255,255,0.01)', borderLeft: { md: '1px solid rgba(255,255,255,0.05)' }, p: { xs: 4, md: 6 } }}>
+              <Grid size={{ xs: 12, md: 6 }} sx={{ background: theme.custom.surface.glassLight, borderLeft: { md: `1px solid ${theme.custom.border.subtle}` }, p: { xs: 4, md: 6 } }}>
                 <Stack spacing={3} justifyContent="center" height="100%">
                   <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>
                     Key Growth Numbers
