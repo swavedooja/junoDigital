@@ -38,6 +38,7 @@ junoDigital-main/
 │   │   ├── HeroSection.tsx     # Landing layout with culinary photo background and restaurant values
 │   │   ├── Navigation.tsx      # Desktop header with sticky glassmorphism & mobile drawer
 │   │   ├── OperatingModelSection.tsx # Roadmap flow (Understand -> Build -> Launch -> Optimise -> Grow)
+│   │   ├── PackagesSection.tsx # Restaurant Growth Packages (01 Get Online, 02 Get Growing, 03 Get Ahead) & AT A GLANCE comparison table
 │   │   ├── ProblemSection.tsx  # Highlights common restaurant challenges (listings, menu updates, photography, etc.)
 │   │   ├── ServicesSection.tsx # 5 structured services (Get Online, Look Better, Sell Better, Get Discovered, Grow Smarter)
 │   │   ├── WhoWeWorkWithSection.tsx # Client categories grid (Restaurants, QSRs, Cafés, Cloud Kitchens, etc.)
