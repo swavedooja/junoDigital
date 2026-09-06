@@ -32,7 +32,7 @@ const FeatureCard = styled(Card)(({ theme }) => ({
   cursor: 'pointer',
   '&:hover': {
     transform: 'translateY(-12px) scale(1.02)',
-    border: '1px solid rgba(16, 185, 129, 0.4)',
+    border: `1px solid ${theme.palette.primary.main}`,
     boxShadow: '0 25px 50px rgba(0, 0, 0, 0.4)',
     '& .feature-icon': {
       transform: 'scale(1.1) rotate(5deg)',

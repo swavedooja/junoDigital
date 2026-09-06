@@ -8,9 +8,10 @@ const HeroContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   background: `
-    radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
-    ${theme.palette.mode === 'dark' ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(17, 24, 39, 0.8) 100%)' : 'linear-gradient(135deg, #FAFAFA 0%, #F0F1F3 100%)'}
+    radial-gradient(circle at 15% 75%, rgba(255, 184, 0, 0.18) 0%, transparent 55%),
+    radial-gradient(circle at 85% 25%, rgba(245, 158, 11, 0.18) 0%, transparent 50%),
+    radial-gradient(circle at 50% 15%, rgba(251, 191, 36, 0.08) 0%, transparent 40%),
+    ${theme.palette.mode === 'dark' ? 'linear-gradient(135deg, rgba(0, 0, 0, 0.92) 0%, rgba(17, 24, 39, 0.88) 100%)' : 'linear-gradient(135deg, #FAFAFA 0%, #F0F1F3 100%)'}
   `,
   overflow: 'hidden',
   '&::before': {
@@ -31,7 +32,7 @@ const HeroContainer = styled(Box)(({ theme }) => ({
 const FloatingElement = styled(Box)(({ theme }) => ({
   position: 'absolute',
   borderRadius: '50%',
-  background: `linear-gradient(135deg, ${theme.palette.primary.main}20, ${theme.palette.secondary.main}20)`,
+  background: `linear-gradient(135deg, ${theme.palette.primary.main}30, ${theme.palette.secondary.main}20)`,
   backdropFilter: 'blur(10px)',
   animation: 'float 6s ease-in-out infinite',
   '@keyframes float': {
@@ -41,7 +42,7 @@ const FloatingElement = styled(Box)(({ theme }) => ({
 }));
 
 const GradientText = styled(Typography)<{ component?: React.ElementType }>(({ theme }) => ({
-  background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+  background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.light})`,
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
@@ -55,17 +56,19 @@ const GlassButton = styled(Button)(({ theme }) => ({
   fontWeight: 700,
   fontSize: '1.1rem',
   padding: '16px 40px',
+  borderRadius: '50px',
+  boxShadow: `0 15px 35px ${theme.palette.primary.main}40`,
   '&:hover': {
     background: `linear-gradient(135deg, ${theme.palette.primary.light}, ${theme.palette.primary.main})`,
     transform: 'translateY(-3px) scale(1.02)',
-    boxShadow: `0 15px 35px ${theme.palette.primary.main}40`,
+    boxShadow: `0 20px 45px ${theme.palette.primary.main}60`,
   }
 }));
 
 const OutlinedGlassButton = styled(Button)(({ theme }) => ({
-  background: theme.custom.surface.glassLight,
+  background: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.04)' : theme.custom.surface.glassLight,
   backdropFilter: 'blur(20px)',
-  border: `1px solid ${theme.custom.border.default}`,
+  border: `1px solid ${theme.custom.border.strong}`,
   color: theme.palette.text.primary,
   fontWeight: 600,
   fontSize: '1.1rem',
@@ -74,7 +77,7 @@ const OutlinedGlassButton = styled(Button)(({ theme }) => ({
   textTransform: 'none',
   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   '&:hover': {
-    background: theme.custom.surface.glassLight,
+    background: theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.08)' : theme.custom.surface.glassLight,
     border: `1px solid ${theme.palette.primary.main}`,
     transform: 'translateY(-3px) scale(1.02)',
   }
@@ -122,14 +125,17 @@ const HeroSection: React.FC = () => {
           <Typography
             variant="body2"
             sx={{
-              background: 'rgba(16, 185, 129, 0.1)',
+              background: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.08)' : 'rgba(217, 119, 6, 0.08)',
               backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(16, 185, 129, 0.3)',
+              border: (theme) => theme.palette.mode === 'dark' ? '1px solid rgba(255, 184, 0, 0.3)' : '1px solid rgba(217, 119, 6, 0.25)',
               borderRadius: '70px',
               px: 3,
-              py: 2,
+              py: 1.5,
               color: 'primary.main',
-              fontWeight: 500,
+              fontWeight: 600,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 1,
               animation: 'fadeInUp 1s ease-out 0.2s both',
               '@keyframes fadeInUp': {
                 from: { opacity: 0, transform: 'translateY(30px)' },
@@ -137,7 +143,7 @@ const HeroSection: React.FC = () => {
               },
             }}
           >
-            ✨ Helping Restaurants Grow
+            📊 Helping Restaurants Grow
           </Typography>
 
           <Typography

@@ -43,7 +43,7 @@ const ContactCard = styled(Card)(({ theme }) => ({
   margin: '0 auto',
   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   '&:hover': {
-    border: '1px solid rgba(16, 185, 129, 0.3)',
+    border: `1px solid ${theme.palette.primary.main}`,
     boxShadow: `0 20px 40px ${theme.custom.shadow.card}`,
   }
 }));
@@ -51,17 +51,18 @@ const ContactCard = styled(Card)(({ theme }) => ({
 const SubmitButton = styled(Button)(({ theme }) => ({
   background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.light})`,
   color: theme.palette.primary.contrastText,
-  fontWeight: 600,
+  fontWeight: 700,
   fontSize: '1.1rem',
   padding: '16px 40px',
   borderRadius: '50px',
   width: '100%',
   position: 'relative',
   overflow: 'hidden',
+  boxShadow: `0 15px 35px ${theme.palette.primary.main}40`,
   '&:hover': {
     background: `linear-gradient(135deg, ${theme.palette.primary.light}, ${theme.palette.primary.main})`,
     transform: 'translateY(-2px)',
-    boxShadow: `0 15px 35px ${theme.palette.primary.main}40`,
+    boxShadow: `0 20px 45px ${theme.palette.primary.main}60`,
   },
   '&::before': {
     content: '""',
@@ -232,10 +233,10 @@ const ContactSection: React.FC = () => {
                           border: `1px solid ${theme.custom.border.default}`,
                         },
                         '&:hover fieldset': {
-                          border: '1px solid rgba(16, 185, 129, 0.5)',
+                          border: (theme) => theme.palette.mode === 'dark' ? '1px solid rgba(255, 184, 0, 0.5)' : '1px solid rgba(217, 119, 6, 0.4)',
                         },
                         '&.Mui-focused fieldset': {
-                          border: '2px solid #10B981',
+                          border: (theme) => `2px solid ${theme.palette.primary.main}`,
                         },
                       },
                       '& .MuiInputLabel-root': {

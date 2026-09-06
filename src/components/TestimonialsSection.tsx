@@ -20,14 +20,14 @@ const SectionContainer = styled(Box)(() => ({
   position: 'relative',
   padding: '120px 0',
   background: `
-    radial-gradient(circle at 30% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 30% 70%, rgba(255, 184, 0, 0.08) 0%, transparent 50%),
     linear-gradient(180deg, rgba(17, 24, 39, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%)
   `,
   overflow: 'hidden',
 }));
 
 // @ts-ignore
-const TestimonialCard = styled(Card)(() => ({
+const TestimonialCard = styled(Card)(({ theme }) => ({
   background: 'rgba(0, 0, 0, 0.6)',
   backdropFilter: 'blur(20px)',
   border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -37,7 +37,7 @@ const TestimonialCard = styled(Card)(() => ({
   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   '&:hover': {
     transform: 'translateY(-8px)',
-    border: '1px solid rgba(16, 185, 129, 0.3)',
+    border: `1px solid ${theme.palette.primary.main}`,
     boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)',
   }
 }));
@@ -59,8 +59,8 @@ const NavigationButton = styled(IconButton)(({ theme }) => ({
   width: 56,
   height: 56,
   '&:hover': {
-    background: 'rgba(16, 185, 129, 0.1)',
-    border: '1px solid rgba(16, 185, 129, 0.3)',
+    background: 'rgba(255, 184, 0, 0.1)',
+    border: `1px solid ${theme.palette.primary.main}`,
     transform: 'scale(1.1)',
   }
 }));

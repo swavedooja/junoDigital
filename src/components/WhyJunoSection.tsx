@@ -9,7 +9,7 @@ const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: '120px 0',
   background: `
-    radial-gradient(circle at 80% 30%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 30%, rgba(255, 184, 0, 0.06) 0%, transparent 50%),
     ${theme.custom.gradient.sectionA}
   `,
   overflow: 'hidden',
@@ -24,7 +24,7 @@ const WhyCard = styled(Card)(({ theme }) => ({
   transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
   '&:hover': {
     transform: 'translateY(-10px)',
-    border: `1px solid rgba(16, 185, 129, 0.4)`,
+    border: `1px solid ${theme.palette.primary.main}`,
     boxShadow: `0 20px 40px ${theme.custom.shadow.cardHover}`,
     '& .pillar-icon': {
       transform: 'scale(1.1)',
@@ -37,7 +37,7 @@ const IconBox = styled(Box)(({ theme }) => ({
   width: 64,
   height: 64,
   borderRadius: '16px',
-  background: `linear-gradient(135deg, ${theme.palette.primary.main}15, ${theme.palette.secondary.main}15)`,
+  background: `linear-gradient(135deg, ${theme.palette.primary.main}18, ${theme.palette.secondary.main}18)`,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',

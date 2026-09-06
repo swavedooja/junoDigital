@@ -31,9 +31,9 @@ const ProblemCard = styled(Box)(({ theme }) => ({
 }));
 
 const SolutionBanner = styled(Box)(({ theme }) => ({
-  background: 'rgba(16, 185, 129, 0.08)',
+  background: theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.08)' : 'rgba(217, 119, 6, 0.06)',
   backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(16, 185, 129, 0.2)',
+  border: theme.palette.mode === 'dark' ? '1px solid rgba(255, 184, 0, 0.25)' : '1px solid rgba(217, 119, 6, 0.2)',
   borderRadius: '28px',
   padding: theme.spacing(6, 4),
   marginTop: theme.spacing(8),
@@ -127,7 +127,7 @@ const ProblemSection: React.FC = () => {
                   width: 64,
                   height: 64,
                   borderRadius: '50%',
-                  background: 'rgba(16, 185, 129, 0.2)',
+                  background: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.15)' : 'rgba(217, 119, 6, 0.12)',
                   color: 'primary.main',
                   display: 'flex',
                   alignItems: 'center',

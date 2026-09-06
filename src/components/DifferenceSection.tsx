@@ -9,23 +9,25 @@ const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: '120px 0',
   background: `
-    radial-gradient(circle at 10% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 10% 30%, rgba(255, 184, 0, 0.08) 0%, transparent 50%),
     ${theme.custom.gradient.sectionA}
   `,
   overflow: 'hidden',
 }));
 
 const GradientText = styled(Typography)<{ component?: React.ElementType }>(({ theme }) => ({
-  background: `linear-gradient(135deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.light})`,
+  background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.light})`,
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
 }));
 
 const HighlightCard = styled(Box)(({ theme }) => ({
-  background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%)',
+  background: theme.palette.mode === 'dark' 
+    ? 'linear-gradient(135deg, rgba(255, 184, 0, 0.08) 0%, rgba(245, 158, 11, 0.04) 100%)'
+    : 'linear-gradient(135deg, rgba(217, 119, 6, 0.06) 0%, rgba(245, 158, 11, 0.03) 100%)',
   backdropFilter: 'blur(20px)',
-  border: '1px solid rgba(16, 185, 129, 0.3)',
+  border: theme.palette.mode === 'dark' ? '1px solid rgba(255, 184, 0, 0.25)' : '1px solid rgba(217, 119, 6, 0.2)',
   borderRadius: '24px',
   padding: theme.spacing(4),
   marginTop: theme.spacing(4),

@@ -25,7 +25,7 @@ const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: '120px 0',
   background: `
-    radial-gradient(circle at 70% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(255, 184, 0, 0.06) 0%, transparent 50%),
     ${theme.custom.gradient.sectionB}
   `,
   overflow: 'hidden',
@@ -33,14 +33,14 @@ const SectionContainer = styled(Box)(({ theme }) => ({
 
 const CaseCard = styled(Card)(({ theme }) => ({
   background: theme.palette.mode === 'dark' ? 'linear-gradient(135deg, rgba(17, 24, 39, 0.9) 0%, rgba(0, 0, 0, 0.95) 100%)' : 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(243, 244, 246, 0.9) 100%)',
-  border: '1px solid rgba(16, 185, 129, 0.3)',
+  border: theme.palette.mode === 'dark' ? '1px solid rgba(255, 184, 0, 0.3)' : '1px solid rgba(217, 119, 6, 0.25)',
   borderRadius: '28px',
   overflow: 'hidden',
   boxShadow: `0 20px 40px ${theme.custom.shadow.cardHover}`,
   position: 'relative',
   transition: 'all 0.3s ease',
   '&:hover': {
-    boxShadow: '0 30px 60px rgba(16, 185, 129, 0.1)',
+    boxShadow: `0 30px 60px ${theme.palette.primary.main}20`,
   }
 }));
 
@@ -53,8 +53,8 @@ const MetricBox = styled(Box)(({ theme }) => ({
   flex: 1,
   transition: 'all 0.3s ease',
   '&:hover': {
-    background: 'rgba(16, 185, 129, 0.04)',
-    borderColor: 'rgba(16, 185, 129, 0.2)',
+    background: theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.05)' : 'rgba(217, 119, 6, 0.04)',
+    borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.25)' : 'rgba(217, 119, 6, 0.2)',
     transform: 'translateY(-4px)',
   }
 }));
@@ -78,7 +78,7 @@ const TestimonialCard = styled(Card)(({ theme }) => ({
   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   '&:hover': {
     transform: 'translateY(-8px)',
-    border: '1px solid rgba(16, 185, 129, 0.3)',
+    border: `1px solid ${theme.palette.primary.main}`,
     boxShadow: `0 20px 40px ${theme.custom.shadow.cardHover}`,
   }
 }));
@@ -91,8 +91,8 @@ const NavigationButton = styled(IconButton)(({ theme }) => ({
   width: 56,
   height: 56,
   '&:hover': {
-    background: 'rgba(16, 185, 129, 0.1)',
-    border: '1px solid rgba(16, 185, 129, 0.3)',
+    background: theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.1)' : 'rgba(217, 119, 6, 0.08)',
+    border: `1px solid ${theme.palette.primary.main}`,
     transform: 'scale(1.1)',
   }
 }));

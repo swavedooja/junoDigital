@@ -45,15 +45,15 @@ const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: '120px 0',
   background: `
-    radial-gradient(circle at 75% 15%, rgba(245, 158, 11, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 20% 85%, rgba(16, 185, 129, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 75% 15%, rgba(255, 184, 0, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 20% 85%, rgba(245, 158, 11, 0.08) 0%, transparent 45%),
     ${theme.custom.gradient.sectionA}
   `,
   overflow: 'hidden',
 }));
 
 const GradientText = styled(Typography)<{ component?: React.ElementType }>(({ theme }) => ({
-  background: `linear-gradient(135deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.light})`,
+  background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.light})`,
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
@@ -61,12 +61,12 @@ const GradientText = styled(Typography)<{ component?: React.ElementType }>(({ th
 
 const PackageCard = styled(Card, {
   shouldForwardProp: (prop) => prop !== 'featured' && prop !== 'badgeColor',
-})<{ featured?: boolean; badgeColor?: 'green' | 'amber' }>(({ theme, featured, badgeColor }) => ({
+})<{ featured?: boolean; badgeColor?: 'green' | 'amber' }>(({ theme, featured }) => ({
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
   background: featured
-    ? (theme.palette.mode === 'dark' ? 'rgba(16, 185, 129, 0.05)' : 'rgba(13, 150, 104, 0.03)')
+    ? (theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.05)' : 'rgba(217, 119, 6, 0.03)')
     : theme.custom.surface.card,
   backdropFilter: 'blur(20px)',
   border: featured
@@ -78,7 +78,7 @@ const PackageCard = styled(Card, {
   boxShadow: featured ? theme.custom.shadow.elevated : theme.custom.shadow.card,
   '&:hover': {
     transform: 'translateY(-8px)',
-    borderColor: badgeColor === 'amber' ? theme.palette.secondary.main : theme.palette.primary.main,
+    borderColor: theme.palette.primary.main,
     boxShadow: theme.custom.shadow.cardHover,
   },
 }));
@@ -101,8 +101,8 @@ const ServiceItemRow = styled(Box)(({ theme }) => ({
   border: `1px solid ${theme.custom.border.subtle}`,
   transition: 'all 0.2s ease',
   '&:hover': {
-    background: theme.palette.mode === 'dark' ? 'rgba(16, 185, 129, 0.06)' : 'rgba(13, 150, 104, 0.05)',
-    borderColor: theme.palette.mode === 'dark' ? 'rgba(16, 185, 129, 0.3)' : 'rgba(13, 150, 104, 0.2)',
+    background: theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.06)' : 'rgba(217, 119, 6, 0.05)',
+    borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.3)' : 'rgba(217, 119, 6, 0.2)',
   },
 }));
 
@@ -135,7 +135,7 @@ const SimpleChoiceCard = styled(Box, {
   padding: theme.spacing(3),
   borderRadius: '20px',
   background: active
-    ? (theme.palette.mode === 'dark' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(13, 150, 104, 0.08)')
+    ? (theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.1)' : 'rgba(217, 119, 6, 0.08)')
     : theme.custom.surface.glassLight,
   border: active
     ? `2px solid ${theme.palette.primary.main}`
@@ -250,9 +250,9 @@ const PackagesSection: React.FC = () => {
                 fontSize: '0.85rem',
                 py: 2,
                 px: 1,
-                background: 'rgba(16, 185, 129, 0.1)',
+                background: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.1)' : 'rgba(217, 119, 6, 0.08)',
                 color: 'primary.main',
-                border: '1px solid rgba(16, 185, 129, 0.3)',
+                border: (theme) => theme.palette.mode === 'dark' ? '1px solid rgba(255, 184, 0, 0.3)' : '1px solid rgba(217, 119, 6, 0.25)',
               }}
             />
             
@@ -417,9 +417,9 @@ const PackagesSection: React.FC = () => {
                               sx={{
                                 fontWeight: 700,
                                 fontSize: '0.75rem',
-                                background: 'rgba(16, 185, 129, 0.1)',
+                                background: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.1)' : 'rgba(217, 119, 6, 0.08)',
                                 color: 'primary.main',
-                                border: '1px solid rgba(16, 185, 129, 0.2)',
+                                border: (theme) => theme.palette.mode === 'dark' ? '1px solid rgba(255, 184, 0, 0.25)' : '1px solid rgba(217, 119, 6, 0.2)',
                               }}
                             />
                           </ServiceItemRow>
@@ -487,7 +487,7 @@ const PackagesSection: React.FC = () => {
                     For restaurants already online that want to increase visibility, boost menu conversion and drive consistent monthly order growth.
                   </Typography>
 
-                  <PriceBox sx={{ borderColor: 'rgba(16, 185, 129, 0.3)', background: 'rgba(16, 185, 129, 0.05)' }}>
+                  <PriceBox sx={{ borderColor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.35)' : 'rgba(217, 119, 6, 0.3)', background: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.06)' : 'rgba(217, 119, 6, 0.04)' }}>
                     <Typography variant="caption" color="primary.main" sx={{ textTransform: 'uppercase', letterSpacing: 1, fontWeight: 700 }}>
                       Monthly Retainer
                     </Typography>
@@ -542,7 +542,7 @@ const PackagesSection: React.FC = () => {
                   </Stack>
 
                   <Box sx={{ mt: 'auto', pt: 2 }}>
-                    <Box sx={{ p: 2, borderRadius: '14px', background: 'rgba(16, 185, 129, 0.08)', mb: 3, border: '1px solid rgba(16, 185, 129, 0.2)' }}>
+                    <Box sx={{ p: 2, borderRadius: '14px', background: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.08)' : 'rgba(217, 119, 6, 0.06)', mb: 3, border: (theme) => theme.palette.mode === 'dark' ? '1px solid rgba(255, 184, 0, 0.25)' : '1px solid rgba(217, 119, 6, 0.2)' }}>
                       <Typography variant="caption" color="primary.main" sx={{ fontWeight: 700, display: 'block', mb: 0.5 }}>
                         WHAT WE'RE WORKING TOWARDS
                       </Typography>
@@ -557,7 +557,7 @@ const PackagesSection: React.FC = () => {
                       color="primary"
                       href="#contact"
                       endIcon={<ArrowForwardIcon />}
-                      sx={{ py: 1.6, borderRadius: '50px', fontWeight: 700 }}
+                      sx={{ py: 1.6, borderRadius: '50px', fontWeight: 700, color: (theme) => theme.palette.mode === 'dark' ? '#000000' : '#FFFFFF' }}
                     >
                       Choose Get Growing
                     </Button>
@@ -695,7 +695,7 @@ const PackagesSection: React.FC = () => {
                           GET ONLINE
                         </Typography>
                       </StyledHeaderCell>
-                      <StyledHeaderCell align="center" sx={{ width: '21%', background: theme.palette.mode === 'dark' ? 'rgba(16, 185, 129, 0.08)' : 'rgba(13, 150, 104, 0.06)' }}>
+                      <StyledHeaderCell align="center" sx={{ width: '21%', background: theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.08)' : 'rgba(217, 119, 6, 0.06)' }}>
                         <Typography variant="subtitle1" sx={{ fontWeight: 800, color: 'primary.main' }}>
                           GET GROWING
                         </Typography>
@@ -733,7 +733,7 @@ const PackagesSection: React.FC = () => {
                           <StyledTableCell
                             align="center"
                             sx={{
-                              background: theme.palette.mode === 'dark' ? 'rgba(16, 185, 129, 0.03)' : 'rgba(13, 150, 104, 0.02)',
+                              background: theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.03)' : 'rgba(217, 119, 6, 0.02)',
                             }}
                           >
                             {renderCellValue(row.getGrowing)}

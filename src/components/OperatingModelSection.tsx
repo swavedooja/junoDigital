@@ -58,7 +58,7 @@ const StepCircle = styled(Box, {
   width: 80,
   height: 80,
   borderRadius: '50%',
-  background: active ? `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})` : theme.custom.surface.glass,
+  background: active ? `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.light})` : theme.custom.surface.glass,
   border: active ? 'none' : `2px solid ${theme.custom.border.default}`,
   display: 'flex',
   alignItems: 'center',
@@ -67,7 +67,7 @@ const StepCircle = styled(Box, {
   cursor: 'pointer',
   zIndex: 3,
   position: 'relative',
-  boxShadow: active ? `0 10px 25px rgba(16, 185, 129, 0.4)` : 'none',
+  boxShadow: active ? `0 10px 25px ${theme.palette.primary.main}45` : 'none',
   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   '&:hover': {
     transform: 'scale(1.1)',
@@ -80,7 +80,9 @@ const StepCard = styled(Box, {
 })<{ active?: boolean }>(({ theme, active }) => ({
   background: active ? theme.custom.surface.glass : theme.custom.surface.glassLight,
   backdropFilter: 'blur(20px)',
-  border: active ? `1px solid rgba(16, 185, 129, 0.3)` : `1px solid ${theme.custom.border.subtle}`,
+  border: active
+    ? (theme.palette.mode === 'dark' ? '1px solid rgba(255, 184, 0, 0.35)' : '1px solid rgba(217, 119, 6, 0.3)')
+    : `1px solid ${theme.custom.border.subtle}`,
   borderRadius: '24px',
   padding: theme.spacing(4),
   textAlign: 'center',
@@ -202,8 +204,12 @@ const OperatingModelSection: React.FC = () => {
                     sx={{
                       p: 2.5,
                       borderRadius: '20px',
-                      background: (theme) => activeStep === index ? 'rgba(16, 185, 129, 0.05)' : theme.custom.surface.glassLight,
-                      border: (theme) => activeStep === index ? '1px solid rgba(16, 185, 129, 0.3)' : `1px solid ${theme.custom.border.subtle}`,
+                      background: (theme) => activeStep === index 
+                        ? (theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.08)' : 'rgba(217, 119, 6, 0.06)')
+                        : theme.custom.surface.glassLight,
+                      border: (theme) => activeStep === index 
+                        ? (theme.palette.mode === 'dark' ? '1px solid rgba(255, 184, 0, 0.3)' : '1px solid rgba(217, 119, 6, 0.25)')
+                        : `1px solid ${theme.custom.border.subtle}`,
                     }}
                     onClick={() => setActiveStep(index)}
                   >

@@ -12,7 +12,7 @@ const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: '120px 0',
   background: `
-    radial-gradient(circle at 30% 60%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 30% 60%, rgba(255, 184, 0, 0.06) 0%, transparent 50%),
     ${theme.custom.gradient.sectionB}
   `,
   overflow: 'hidden',
@@ -27,8 +27,8 @@ const CategoryCard = styled(Card)(({ theme }) => ({
   textAlign: 'center',
   cursor: 'pointer',
   '&:hover': {
-    background: 'rgba(16, 185, 129, 0.04)',
-    borderColor: 'rgba(16, 185, 129, 0.3)',
+    background: theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.05)' : 'rgba(217, 119, 6, 0.04)',
+    borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.3)' : 'rgba(217, 119, 6, 0.25)',
     transform: 'translateY(-6px)',
     '& .cat-icon': {
       color: theme.palette.secondary.main,

@@ -6,14 +6,14 @@ const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: '120px 0',
   background: `
-    radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 20% 50%, rgba(255, 184, 0, 0.08) 0%, transparent 50%),
     ${theme.custom.gradient.sectionB}
   `,
   overflow: 'hidden',
 }));
 
 const GradientText = styled(Typography)<{ component?: React.ElementType }>(({ theme }) => ({
-  background: `linear-gradient(135deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.light})`,
+  background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.light})`,
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
@@ -23,6 +23,7 @@ const ImageContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   borderRadius: '24px',
   overflow: 'hidden',
+  border: `1px solid ${theme.custom.border.default}`,
   '&::before': {
     content: '""',
     position: 'absolute',
@@ -30,7 +31,7 @@ const ImageContainer = styled(Box)(({ theme }) => ({
     left: 0,
     right: 0,
     bottom: 0,
-    background: `linear-gradient(135deg, ${theme.palette.primary.main}20, ${theme.palette.secondary.main}20)`,
+    background: `linear-gradient(135deg, ${theme.palette.primary.main}18, ${theme.palette.secondary.main}18)`,
     zIndex: 1,
   },
   '& img': {

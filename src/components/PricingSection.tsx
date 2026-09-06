@@ -35,14 +35,14 @@ const GradientText = styled(Typography)<{ component?: React.ElementType }>(({ th
 
 const PricingCard = styled(Card, {
   shouldForwardProp: (prop) => prop !== 'featured',
-})<{ featured?: boolean }>(({ featured }) => ({
+})<{ featured?: boolean }>(({ theme, featured }) => ({
   height: '100%',
   background: featured 
-    ? 'rgba(16, 185, 129, 0.1)' 
+    ? (theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.08)' : 'rgba(217, 119, 6, 0.05)')
     : 'rgba(17, 24, 39, 0.6)',
   backdropFilter: 'blur(20px)',
   border: featured 
-    ? '2px solid rgba(16, 185, 129, 0.5)' 
+    ? `2px solid ${theme.palette.primary.main}`
     : '1px solid rgba(255, 255, 255, 0.1)',
   borderRadius: '24px',
   position: 'relative',
@@ -50,7 +50,7 @@ const PricingCard = styled(Card, {
   transform: featured ? 'scale(1.05)' : 'scale(1)',
   '&:hover': {
     transform: featured ? 'scale(1.08) translateY(-8px)' : 'scale(1.03) translateY(-8px)',
-    border: '2px solid rgba(16, 185, 129, 0.5)',
+    border: `2px solid ${theme.palette.primary.main}`,
     boxShadow: '0 25px 50px rgba(0, 0, 0, 0.4)',
   }
 }));
@@ -70,7 +70,7 @@ const CTAButton = styled(Button, {
 })<{ featured?: boolean, component?: React.ElementType }>(({ theme, featured }) => ({
   background: featured 
     ? `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.light})`
-    : 'rgba(16, 185, 129, 0.1)',
+    : (theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.1)' : 'rgba(217, 119, 6, 0.08)'),
   color: featured ? theme.palette.primary.contrastText : theme.palette.primary.main,
   border: featured ? 'none' : `1px solid ${theme.palette.primary.main}`,
   fontWeight: 600,

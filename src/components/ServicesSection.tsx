@@ -12,14 +12,14 @@ const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: '120px 0',
   background: `
-    radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(255, 184, 0, 0.06) 0%, transparent 60%),
     ${theme.custom.gradient.sectionA}
   `,
   overflow: 'hidden',
 }));
 
 const GradientText = styled(Typography)<{ component?: React.ElementType }>(({ theme }) => ({
-  background: `linear-gradient(135deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.light})`,
+  background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.light})`,
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
@@ -29,7 +29,9 @@ const ServiceCard = styled(Card, {
   shouldForwardProp: (prop) => prop !== 'active',
 })<{ active?: boolean }>(({ theme, active }) => ({
   height: '100%',
-  background: active ? 'rgba(16, 185, 129, 0.06)' : theme.custom.surface.cardAlt,
+  background: active
+    ? (theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.06)' : 'rgba(217, 119, 6, 0.04)')
+    : theme.custom.surface.cardAlt,
   backdropFilter: 'blur(20px)',
   border: active ? `2px solid ${theme.palette.primary.main}` : `1px solid ${theme.custom.border.default}`,
   borderRadius: '24px',
@@ -39,7 +41,7 @@ const ServiceCard = styled(Card, {
     transform: 'translateY(-8px) scale(1.01)',
     border: `2px solid ${theme.palette.primary.main}`,
     boxShadow: `0 25px 50px ${theme.custom.shadow.cardHover}`,
-    background: 'rgba(16, 185, 129, 0.06)',
+    background: theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.06)' : 'rgba(217, 119, 6, 0.04)',
     '& .service-icon': {
       transform: 'scale(1.1) rotate(5deg)',
       color: theme.palette.secondary.main,
@@ -51,7 +53,7 @@ const IconWrapper = styled(Box)(({ theme }) => ({
   width: 72,
   height: 72,
   borderRadius: '20px',
-  background: `linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(245, 158, 11, 0.1))`,
+  background: `linear-gradient(135deg, ${theme.palette.primary.main}18, ${theme.palette.secondary.main}18)`,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',

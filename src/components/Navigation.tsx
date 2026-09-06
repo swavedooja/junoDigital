@@ -45,7 +45,7 @@ const NavButton = styled(Button)<{ component?: React.ElementType }>(({ theme }) 
   borderRadius: '12px',
   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   '&:hover': {
-    background: 'rgba(16, 185, 129, 0.1)',
+    background: theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.1)' : 'rgba(217, 119, 6, 0.08)',
     color: theme.palette.primary.main,
     transform: 'translateY(-2px)',
   }
@@ -54,13 +54,14 @@ const NavButton = styled(Button)<{ component?: React.ElementType }>(({ theme }) 
 const CTAButton = styled(Button)<{ component?: React.ElementType }>(({ theme }) => ({
   background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.light})`,
   color: theme.palette.primary.contrastText,
-  fontWeight: 600,
+  fontWeight: 700,
   padding: '10px 24px',
   borderRadius: '50px',
+  boxShadow: `0 4px 15px ${theme.palette.primary.main}30`,
   '&:hover': {
     background: `linear-gradient(135deg, ${theme.palette.primary.light}, ${theme.palette.primary.main})`,
     transform: 'translateY(-2px)',
-    boxShadow: `0 8px 25px ${theme.palette.primary.main}40`,
+    boxShadow: `0 8px 25px ${theme.palette.primary.main}50`,
   }
 }));
 
@@ -154,7 +155,7 @@ const Navigation: React.FC = () => {
                 borderRadius: '12px',
                 mb: 1,
                 '&:hover': {
-                  background: 'rgba(16, 185, 129, 0.1)',
+                  background: theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.1)' : 'rgba(217, 119, 6, 0.08)',
                   color: 'primary.main',
                 }
               }}
@@ -170,7 +171,7 @@ const Navigation: React.FC = () => {
             href="#contact"
             onClick={handleDrawerToggle}
           >
-            Talk to Juno
+            Talk to Us &rarr;
           </CTAButton>
         </ListItem>
       </List>
@@ -218,7 +219,7 @@ const Navigation: React.FC = () => {
                   </Tooltip>
 
                   <CTAButton component="a" href="#contact">
-                    Talk to Juno
+                    Talk to Us &rarr;
                   </CTAButton>
                 </Stack>
               </>

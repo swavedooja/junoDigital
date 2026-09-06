@@ -46,8 +46,8 @@ const getTheme = (mode: 'dark' | 'light'): Theme => {
   const isDark = mode === 'dark';
 
   // Primary & Secondary palette values (pre-computed for use in overrides)
-  const primaryMain = isDark ? '#10B981' : '#0D9668';
-  const primaryLight = isDark ? '#34D399' : '#10B981';
+  const primaryMain = isDark ? '#FFB800' : '#D97706';
+  const primaryLight = isDark ? '#FFC933' : '#F59E0B';
 
   // ── Custom Design Tokens ───────────────────────────────────────────
   const custom: CustomTokens = {
@@ -77,7 +77,7 @@ const getTheme = (mode: 'dark' | 'light'): Theme => {
       elevated:  isDark ? '0 25px 50px rgba(0, 0, 0, 0.4)'  : '0 10px 40px rgba(0, 0, 0, 0.1)',
     },
     overlay: {
-      imageOpacity: isDark ? 0.1 : 0.06,
+      imageOpacity: isDark ? 0.12 : 0.06,
     },
   };
 
@@ -88,7 +88,7 @@ const getTheme = (mode: 'dark' | 'light'): Theme => {
       primary: {
         main: primaryMain,
         light: primaryLight,
-        dark: isDark ? '#059669' : '#047857',
+        dark: isDark ? '#D97706' : '#B45309',
         contrastText: isDark ? '#000000' : '#FFFFFF',
       },
       secondary: {
@@ -181,8 +181,8 @@ const getTheme = (mode: 'dark' | 'light'): Theme => {
             '&:hover': {
               transform: 'translateY(-2px)',
               boxShadow: isDark
-                ? '0 10px 25px rgba(16, 185, 129, 0.3)'
-                : '0 10px 25px rgba(13, 150, 104, 0.2)',
+                ? '0 10px 25px rgba(255, 184, 0, 0.35)'
+                : '0 10px 25px rgba(217, 119, 6, 0.25)',
             },
           },
         },
@@ -198,7 +198,7 @@ const getTheme = (mode: 'dark' | 'light'): Theme => {
             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             '&:hover': {
               transform: 'translateY(-8px)',
-              border: '1px solid rgba(16, 185, 129, 0.3)',
+              border: '1px solid rgba(255, 184, 0, 0.35)',
               boxShadow: custom.shadow.cardHover,
             },
           },
@@ -215,7 +215,7 @@ const getTheme = (mode: 'dark' | 'light'): Theme => {
                 border: `1px solid ${custom.border.default}`,
               },
               '&:hover fieldset': {
-                border: `1px solid rgba(16, 185, 129, 0.5)`,
+                border: `1px solid rgba(255, 184, 0, 0.5)`,
               },
               '&.Mui-focused fieldset': {
                 border: `2px solid ${primaryMain}`,
