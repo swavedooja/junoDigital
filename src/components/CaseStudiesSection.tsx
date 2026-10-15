@@ -1,22 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   Box, 
   Container, 
   Typography, 
   Card, 
-  CardContent, 
-  Avatar, 
   Stack, 
   Grid,
-  IconButton,
   Button,
-  useMediaQuery,
   useTheme
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import PercentIcon from '@mui/icons-material/Percent';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
@@ -59,84 +52,8 @@ const MetricBox = styled(Box)(({ theme }) => ({
   }
 }));
 
-const QuoteIcon = styled(FormatQuoteIcon)(({ theme }) => ({
-  position: 'absolute',
-  top: 20,
-  right: 20,
-  fontSize: 60,
-  color: theme.palette.primary.main,
-  opacity: 0.2,
-}));
-
-const TestimonialCard = styled(Card)(({ theme }) => ({
-  background: theme.custom.surface.glass,
-  backdropFilter: 'blur(20px)',
-  border: `1px solid ${theme.custom.border.default}`,
-  borderRadius: '24px',
-  height: '100%',
-  position: 'relative',
-  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-  '&:hover': {
-    transform: 'translateY(-8px)',
-    border: `1px solid ${theme.palette.primary.main}`,
-    boxShadow: `0 20px 40px ${theme.custom.shadow.cardHover}`,
-  }
-}));
-
-const NavigationButton = styled(IconButton)(({ theme }) => ({
-  background: theme.custom.surface.glass,
-  backdropFilter: 'blur(20px)',
-  border: `1px solid ${theme.custom.border.default}`,
-  color: theme.palette.primary.main,
-  width: 56,
-  height: 56,
-  '&:hover': {
-    background: theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.1)' : 'rgba(217, 119, 6, 0.08)',
-    border: `1px solid ${theme.palette.primary.main}`,
-    transform: 'scale(1.1)',
-  }
-}));
-
-const testimonials = [
-  {
-    name: 'Mohammed Bhol',
-    role: 'Owner',
-    company: 'House of Biryan',
-    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCrFZrsLx8KCJ1f5vgrYUFVuaddySK06J8RsNq1w1zRRVwqUkUpaRp-A70HMViGYFUVWBdgyanplLIev3z2Qv0xx3CulFWmRVso7TG6oJSqFl6DUlH1HSIfGMmo6ht8aZRDXzb0zzBM0tZZpFeKXPcoPXuDgM73Y-2TGNvMQOz3pIF4r8UdHfDsV1wSrP34qkOYSS8dMw4Jr_Sfn2RUgUOXzXPmQsW9r4X0iCBgbOvHHsb6dMXZj8S7lGBQC3qaYI_3bblzouBjtdI',
-    testimonial: "Juno's strategies made our digital storefronts easier to navigate, optimizing metrics and positioning for growth on aggregator platforms, making them invaluable partners."
-  },
-  {
-    name: 'Bipin Pande',
-    role: 'Owner',
-    company: "Jaffer Bhai's Delhi Darbar",
-    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBObMSAGJpEILfvTcH_cqGye4GAeEIpLIYaz5dbiUG7EvQv69yzPCe1plaeZzho86g25gceru48XApyLrw6vh3Llpz5t8EZGeU1j557nhGHTMGyzc7_6apeGrGXZX9eyXwsJ1ZdWpLQZAsRkxZzv7XpZu9E15UqLLBG1Ihdk1QCn3Z-1xA7c8ICxEoSoaiPCbSFVZDidnAlRknedTVbmO_13V0xy5e9akRyuFirq04qsisnPcq-29fv8KZwgnXjFFczF2t74GwIYrI',
-    testimonial: "Juno's unmatched marketing expertise has helped us scale online, adapt to evolving platforms, and thrive in the competitive digital space, ensuring sustained success."
-  },
-  {
-    name: 'Ambati Rayudu',
-    role: 'Owner',
-    company: 'Hunger Inc',
-    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDR-UDy1SFScbX9IALtjbbYAxwWm2M3Bok1BgXrahK9PJlHE-cNji7_BoRz15zpoTFJHZ2hHcpzQdOxqgESWpclAVE3OdXcv3r54xEBuDUUNCj4sLx1qIKhucEzRCTa_xgT01TSMCnM-pjhCaGKQFXqm_-1iK2aMJerDoIwuO6Fl3Nt5cvLWpkzU_Bl7nd91RnChbQywTxaLe50zYrSAi2j4XobM0HOikoxE4ecCxAimrWg5UOZK6edlDYRhiiAq_0N09NBDrfNPvY',
-    testimonial: "Juno transformed our digital journey, enhancing user acquisition, loyalty, and analytics. Their insights make our online growth seamless and highly impactful."
-  }
-];
-
 const CaseStudiesSection: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
-  const handlePrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-  };
-
-  const visibleTestimonials = isMobile 
-    ? [testimonials[currentIndex]]
-    : testimonials;
 
   return (
     <SectionContainer id="case-studies">
@@ -250,95 +167,61 @@ const CaseStudiesSection: React.FC = () => {
             </Grid>
           </CaseCard>
 
-          {/* Testimonials/Success Stories Sub-section */}
-          <Stack spacing={6} alignItems="center" sx={{ width: '100%', pt: 6 }}>
-            <Typography variant="h3" sx={{ fontWeight: 700 }}>
-              What restaurant co-founders say about us
-            </Typography>
-
-            <Box sx={{ position: 'relative', width: '100%' }}>
-              <Stack
-                direction={{ xs: 'column', md: 'row' }}
-                spacing={4}
-                sx={{
-                  transition: 'transform 0.5s ease-in-out',
-                  ...(isMobile && {
-                    transform: `translateX(-${currentIndex * 100}%)`,
-                  })
-                }}
-              >
-                {visibleTestimonials.map((testimonial, index) => (
-                  <TestimonialCard
-                    key={`${testimonial.name}-${index}`}
+          {/* Testimonials / Client Stories Sub-section */}
+          <Stack spacing={4} alignItems="center" sx={{ width: '100%', pt: 4 }}>
+            <Box
+              sx={{
+                width: '100%',
+                p: { xs: 4, md: 6 },
+                borderRadius: '24px',
+                background: (theme) => theme.custom.surface.glass,
+                backdropFilter: 'blur(20px)',
+                border: (theme) => `1px dashed ${theme.palette.primary.main}60`,
+                textAlign: 'center',
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+            >
+              <Stack spacing={2} alignItems="center" sx={{ maxWidth: 650, mx: 'auto' }}>
+                <Box
+                  sx={{
+                    px: 2.5,
+                    py: 0.75,
+                    borderRadius: '50px',
+                    background: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.1)' : 'rgba(217, 119, 6, 0.08)',
+                    border: (theme) => `1px solid ${theme.palette.primary.main}40`,
+                    color: 'primary.main',
+                    fontSize: '0.85rem',
+                    fontWeight: 600,
+                    letterSpacing: 1,
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  Client Stories & Reviews
+                </Box>
+                <Typography variant="h3" sx={{ fontWeight: 700 }}>
+                  Partner Stories Coming Soon
+                </Typography>
+                <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.7 }}>
+                  We are currently documenting verified case studies and testimonials from restaurant owners across Nagpur, Pune, and Maharashtra. Check back soon or reach out directly to learn about our recent partner engagements.
+                </Typography>
+                <Box sx={{ pt: 1 }}>
+                  <Button
+                    variant="outlined"
+                    color="primary"
+                    href="#contact"
                     sx={{
-                      flex: 1,
-                      minWidth: { xs: '100%', md: 'auto' },
+                      borderRadius: '50px',
+                      px: 3.5,
+                      py: 1.2,
+                      fontWeight: 600,
+                      textTransform: 'none',
                     }}
                   >
-                    <CardContent sx={{ p: 4, position: 'relative' }}>
-                      <QuoteIcon />
-                      
-                      <Stack spacing={3}>
-                        <Stack direction="row" spacing={2} alignItems="center">
-                          <Avatar
-                            src={testimonial.avatar}
-                            alt={testimonial.name}
-                            sx={{
-                              width: 60,
-                              height: 60,
-                              border: '2px solid',
-                              borderColor: 'primary.main',
-                            }}
-                          />
-                          <Stack>
-                            <Typography variant="h6" fontWeight={600}>
-                              {testimonial.name}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                              {testimonial.role}
-                            </Typography>
-                            <Typography
-                              variant="body2"
-                              color="primary.main"
-                              sx={{ fontWeight: 500 }}
-                            >
-                              {testimonial.company}
-                            </Typography>
-                          </Stack>
-                        </Stack>
-
-                        <Typography
-                          variant="body1"
-                          color="text.primary"
-                          sx={{
-                            fontSize: '1.05rem',
-                            lineHeight: 1.7,
-                            fontStyle: 'italic',
-                          }}
-                        >
-                          "{testimonial.testimonial}"
-                        </Typography>
-                      </Stack>
-                    </CardContent>
-                  </TestimonialCard>
-                ))}
+                    Speak with our team &rarr;
+                  </Button>
+                </Box>
               </Stack>
-
-              {isMobile && (
-                <Stack
-                  direction="row"
-                  spacing={2}
-                  justifyContent="center"
-                  sx={{ mt: 4 }}
-                >
-                  <NavigationButton onClick={handlePrevious}>
-                    <ArrowBackIosIcon />
-                  </NavigationButton>
-                  <NavigationButton onClick={handleNext}>
-                    <ArrowForwardIosIcon />
-                  </NavigationButton>
-                </Stack>
-              )}
             </Box>
           </Stack>
 

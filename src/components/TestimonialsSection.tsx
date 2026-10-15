@@ -65,29 +65,7 @@ const NavigationButton = styled(IconButton)(({ theme }) => ({
   }
 }));
 
-const testimonials = [
-  {
-    name: 'Mohammed Bhol',
-    role: 'Owner',
-    company: 'House of Biryan',
-    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCrFZrsLx8KCJ1f5vgrYUFVuaddySK06J8RsNq1w1zRRVwqUkUpaRp-A70HMViGYFUVWBdgyanplLIev3z2Qv0xx3CulFWmRVso7TG6oJSqFl6DUlH1HSIfGMmo6ht8aZRDXzb0zzBM0tZZpFeKXPcoPXuDgM73Y-2TGNvMQOz3pIF4r8UdHfDsV1wSrP34qkOYSS8dMw4Jr_Sfn2RUgUOXzXPmQsW9r4X0iCBgbOvHHsb6dMXZj8S7lGBQC3qaYI_3bblzouBjtdI',
-    testimonial: "Juno's strategies made our digital storefronts easier to navigate, optimizing metrics and positioning for growth on aggregator platforms, making them invaluable partners."
-  },
-  {
-    name: 'Bipin Pande',
-    role: 'Owner',
-    company: "Jaffer Bhai's Delhi Darbar",
-    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBObMSAGJpEILfvTcH_cqGye4GAeEIpLIYaz5dbiUG7EvQv69yzPCe1plaeZzho86g25gceru48XApyLrw6vh3Llpz5t8EZGeU1j557nhGHTMGyzc7_6apeGrGXZX9eyXwsJ1ZdWpLQZAsRkxZzv7XpZu9E15UqLLBG1Ihdk1QCn3Z-1xA7c8ICxEoSoaiPCbSFVZDidnAlRknedTVbmO_13V0xy5e9akRyuFirq04qsisnPcq-29fv8KZwgnXjFFczF2t74GwIYrI',
-    testimonial: "Juno's unmatched marketing expertise has helped us scale online, adapt to evolving platforms, and thrive in the competitive digital space, ensuring sustained success."
-  },
-  {
-    name: 'Ambati Rayudu',
-    role: 'Owner',
-    company: 'Hunger Inc',
-    avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDR-UDy1SFScbX9IALtjbbYAxwWm2M3Bok1BgXrahK9PJlHE-cNji7_BoRz15zpoTFJHZ2hHcpzQdOxqgESWpclAVE3OdXcv3r54xEBuDUUNCj4sLx1qIKhucEzRCTa_xgT01TSMCnM-pjhCaGKQFXqm_-1iK2aMJerDoIwuO6Fl3Nt5cvLWpkzU_Bl7nd91RnChbQywTxaLe50zYrSAi2j4XobM0HOikoxE4ecCxAimrWg5UOZK6edlDYRhiiAq_0N09NBDrfNPvY',
-    testimonial: "Juno transformed our digital journey, enhancing user acquisition, loyalty, and analytics. Their insights make our online growth seamless and highly impactful."
-  }
-];
+const testimonials: any[] = [];
 
 const TestimonialsSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

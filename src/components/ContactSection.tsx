@@ -319,7 +319,7 @@ const ContactSection: React.FC = () => {
                 Email Us
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                hello@junodigital.com
+                hello@junodigital.in
               </Typography>
             </Stack>
             <Stack alignItems="center" spacing={1}>
