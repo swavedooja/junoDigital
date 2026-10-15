@@ -318,8 +318,20 @@ const ContactSection: React.FC = () => {
               <Typography variant="h6" color="primary.main" fontWeight={600}>
                 Email Us
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                hello@junodigital.in
+              <Typography 
+                component="a" 
+                href="mailto:ashitreyan@junodigital.in" 
+                variant="body2" 
+                color="text.secondary"
+                sx={{
+                  textDecoration: 'none',
+                  transition: 'color 0.2s ease',
+                  '&:hover': {
+                    color: 'primary.main',
+                  }
+                }}
+              >
+                ashitreyan@junodigital.in
               </Typography>
             </Stack>
             <Stack alignItems="center" spacing={1}>
