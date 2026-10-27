@@ -186,9 +186,9 @@ const StatCard = styled(Box)(({ theme }) => ({
   },
 }));
 
-// ─── Client Logo Data ─────────────────────────────────────────────────
+// ─── Client Logo Data: Divided into Distinct Sets for Row 1 & Row 2 ───
 
-const clientLogos = [
+const clientLogosRow1 = [
   { src: logoAbdullah,        alt: 'Abdullah' },
   { src: logoBabbuHotel,      alt: 'Babbu Hotel' },
   { src: logoDahiyaMomos,     alt: 'Dahiya Momos' },
@@ -196,6 +196,9 @@ const clientLogos = [
   { src: logoFouShack,        alt: 'Fou Shack' },
   { src: logoHyderabadBiryani,alt: 'Hyderabad Biryani' },
   { src: logoMrSalad,         alt: 'Mr Salad' },
+];
+
+const clientLogosRow2 = [
   { src: logoMrSandwich,      alt: 'Mr Sandwich' },
   { src: logoMullaji,         alt: 'Mullaji' },
   { src: logoNirvana,         alt: 'Nirvana' },
@@ -205,9 +208,9 @@ const clientLogos = [
   { src: logoSuryakantSaoji,  alt: 'Suryakant Saoji' },
 ];
 
-// Both rows use ALL logos — tripled so loop is seamless for both speeds
-const logosRow1 = [...clientLogos, ...clientLogos, ...clientLogos];
-const logosRow2 = [...clientLogos, ...clientLogos, ...clientLogos];
+// Each row repeated 4 times so the two 50% translation halves loop seamlessly on any viewport
+const logosRow1 = [...clientLogosRow1, ...clientLogosRow1, ...clientLogosRow1, ...clientLogosRow1];
+const logosRow2 = [...clientLogosRow2, ...clientLogosRow2, ...clientLogosRow2, ...clientLogosRow2];
 
 // ─── Merchant Testimonials Data ───────────────────────────────────────
 
