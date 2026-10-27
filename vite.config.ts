@@ -13,26 +13,6 @@ export default defineConfig({
   ],
   base: '/',
   build: {
-    // Raise warning threshold to reduce noise (we're splitting properly)
-    chunkSizeWarningLimit: 600,
-    rollupOptions: {
-      output: {
-        // Manual chunk splitting: vendor libs separate from app code
-        manualChunks: (id) => {
-          // MUI icons are large — split into their own chunk
-          if (id.includes('@mui/icons-material')) {
-            return 'mui-icons';
-          }
-          // MUI core + emotion
-          if (id.includes('@mui/material') || id.includes('@emotion')) {
-            return 'mui-core';
-          }
-          // React runtime
-          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
-            return 'react-vendor';
-          }
-        },
-      },
-    },
+    chunkSizeWarningLimit: 1000,
   },
 })
