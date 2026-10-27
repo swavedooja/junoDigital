@@ -61,37 +61,37 @@ const LogoPill = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  height: 72,
-  padding: '10px 24px',
-  margin: '0 10px',
-  borderRadius: '16px',
+  width: 110,
+  height: 90,
+  margin: '0 12px',
+  borderRadius: '18px',
   background: theme.palette.mode === 'dark'
-    ? 'rgba(255, 255, 255, 0.04)'
-    : 'rgba(0, 0, 0, 0.03)',
-  border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)'}`,
-  backdropFilter: 'blur(10px)',
-  transition: 'all 0.3s ease',
+    ? 'rgba(255, 255, 255, 0.05)'
+    : 'rgba(255, 255, 255, 0.85)',
+  border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)'}`,
+  boxShadow: theme.palette.mode === 'dark'
+    ? '0 4px 16px rgba(0, 0, 0, 0.3)'
+    : '0 4px 16px rgba(0, 0, 0, 0.04)',
+  backdropFilter: 'blur(12px)',
+  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   cursor: 'pointer',
   flexShrink: 0,
   '& img': {
-    height: 48,
-    maxWidth: 130,
+    width: 68,
+    height: 68,
     objectFit: 'contain',
-    filter: 'grayscale(100%) opacity(0.65)',
-    transition: 'filter 0.35s ease, transform 0.35s ease',
+    display: 'block',
+    transition: 'transform 0.3s ease',
   },
   '&:hover': {
     background: theme.palette.mode === 'dark'
-      ? 'rgba(255, 184, 0, 0.07)'
-      : 'rgba(217, 119, 6, 0.06)',
-    borderColor: theme.palette.mode === 'dark'
-      ? 'rgba(255, 184, 0, 0.3)'
-      : 'rgba(217, 119, 6, 0.25)',
-    transform: 'translateY(-3px)',
-    boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+      ? 'rgba(255, 184, 0, 0.1)'
+      : '#FFFFFF',
+    borderColor: theme.palette.primary.main,
+    transform: 'translateY(-4px)',
+    boxShadow: `0 10px 25px ${theme.palette.primary.main}30`,
     '& img': {
-      filter: 'grayscale(0%) opacity(1)',
-      transform: 'scale(1.06)',
+      transform: 'scale(1.1)',
     },
   },
 }));
