@@ -123,30 +123,6 @@ const HeroSection: React.FC = () => {
           sx={{ py: 15 }}
         >
           <Typography
-            variant="body2"
-            sx={{
-              background: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.08)' : 'rgba(217, 119, 6, 0.08)',
-              backdropFilter: 'blur(10px)',
-              border: (theme) => theme.palette.mode === 'dark' ? '1px solid rgba(255, 184, 0, 0.3)' : '1px solid rgba(217, 119, 6, 0.25)',
-              borderRadius: '70px',
-              px: 3,
-              py: 1.5,
-              color: 'primary.main',
-              fontWeight: 600,
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 1,
-              animation: 'fadeInUp 1s ease-out 0.2s both',
-              '@keyframes fadeInUp': {
-                from: { opacity: 0, transform: 'translateY(30px)' },
-                to: { opacity: 1, transform: 'translateY(0)' },
-              },
-            }}
-          >
-            📊 Helping Restaurants Grow
-          </Typography>
-
-          <Typography
             variant="h1"
             sx={{
               maxWidth: '900px',

@@ -34,11 +34,11 @@ const FooterLink = styled(Button)<{ component?: React.ElementType }>(({ theme })
 const Footer: React.FC = () => {
   const navLinks = [
     { label: 'Home', href: '#' },
+    { label: 'Customer Testimonials', href: '#customer-testimonials' },
     { label: 'Services', href: '#services' },
     { label: 'How We Work', href: '#operating-model' },
     { label: 'Why Juno', href: '#why-juno' },
     { label: 'Packages', href: '#packages' },
-    { label: 'Case Studies', href: '#case-studies' },
     { label: 'About Us', href: '#about' },
     { label: 'Contact', href: '#contact' },
   ];

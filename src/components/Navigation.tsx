@@ -96,11 +96,11 @@ const Navigation: React.FC = () => {
   const { mode, toggleColorMode } = useColorMode();
 
   const navItems = [
+    { label: 'Customer Testimonials', href: '#customer-testimonials' },
     { label: 'Services', href: '#services' },
     { label: 'How We Work', href: '#operating-model' },
     { label: 'Why Juno', href: '#why-juno' },
     { label: 'Packages', href: '#packages' },
-    { label: 'Case Studies', href: '#case-studies' },
     { label: 'About Us', href: '#about' },
     { label: 'Contact', href: '#contact' },
   ];

@@ -56,7 +56,7 @@ const CaseStudiesSection: React.FC = () => {
   const theme = useTheme();
 
   return (
-    <SectionContainer id="case-studies">
+    <SectionContainer id="customer-testimonials">
       <Container maxWidth="lg">
         <Stack spacing={10} alignItems="center">
           

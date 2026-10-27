@@ -28,13 +28,13 @@ function App() {
         <CssBaseline />
         <Navigation />
         <HeroSection />
+        <CaseStudiesSection />
         <DifferenceSection />
         <ProblemSection />
         <ServicesSection />
         <OperatingModelSection />
         <WhyJunoSection />
         <PackagesSection />
-        <CaseStudiesSection />
         <WhoWeWorkWithSection />
         <AboutSection />
         <ContactSection />
