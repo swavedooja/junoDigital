@@ -14,6 +14,22 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import PercentIcon from '@mui/icons-material/Percent';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 
+// ─── Client Logo Imports ──────────────────────────────────────────────
+import logoAbdullah from '../assets/client-logos/Abdullah.png';
+import logoBabbuHotel from '../assets/client-logos/Babbu_Hotel.png';
+import logoDahiyaMomos from '../assets/client-logos/Dahiya_Momos.png';
+import logoDarshanTowers from '../assets/client-logos/Darshan_Towers.png';
+import logoFouShack from '../assets/client-logos/Fou_Shack.png';
+import logoHyderabadBiryani from '../assets/client-logos/Hyderabad_Biryani.png';
+import logoMrSalad from '../assets/client-logos/Mr_salad.png';
+import logoMrSandwich from '../assets/client-logos/Mr_sandwich.png';
+import logoMullaji from '../assets/client-logos/Mullaji.png';
+import logoNirvana from '../assets/client-logos/Nirvana.png';
+import logoPintuSaoji from '../assets/client-logos/Pintu_Saoji.png';
+import logoShabanaBakery from '../assets/client-logos/Shabana_Bakery.png';
+import logoShrutiRestaurant from '../assets/client-logos/Shruti_Restaurant.png';
+import logoSuryakantSaoji from '../assets/client-logos/Suryakant_Saoji.png';
+
 const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: '120px 0',
@@ -51,6 +67,92 @@ const MetricBox = styled(Box)(({ theme }) => ({
     transform: 'translateY(-4px)',
   }
 }));
+
+// ─── Marquee Styled Components ────────────────────────────────────────
+
+const MarqueeTrack = styled(Box)(() => ({
+  display: 'flex',
+  width: 'max-content',
+  '&.scroll-left': {
+    animation: 'marqueeLeft 45s linear infinite',
+  },
+  '&.scroll-right': {
+    animation: 'marqueeRight 45s linear infinite',
+  },
+  '&:hover': {
+    animationPlayState: 'paused',
+  },
+  '@keyframes marqueeLeft': {
+    from: { transform: 'translateX(0)' },
+    to: { transform: 'translateX(-50%)' },
+  },
+  '@keyframes marqueeRight': {
+    from: { transform: 'translateX(-50%)' },
+    to: { transform: 'translateX(0)' },
+  },
+}));
+
+const LogoPill = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: 72,
+  padding: '10px 24px',
+  margin: '0 10px',
+  borderRadius: '16px',
+  background: theme.palette.mode === 'dark'
+    ? 'rgba(255, 255, 255, 0.04)'
+    : 'rgba(0, 0, 0, 0.03)',
+  border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)'}`,
+  backdropFilter: 'blur(10px)',
+  transition: 'all 0.3s ease',
+  cursor: 'pointer',
+  flexShrink: 0,
+  '& img': {
+    height: 48,
+    maxWidth: 130,
+    objectFit: 'contain',
+    filter: 'grayscale(100%) opacity(0.65)',
+    transition: 'filter 0.35s ease, transform 0.35s ease',
+  },
+  '&:hover': {
+    background: theme.palette.mode === 'dark'
+      ? 'rgba(255, 184, 0, 0.07)'
+      : 'rgba(217, 119, 6, 0.06)',
+    borderColor: theme.palette.mode === 'dark'
+      ? 'rgba(255, 184, 0, 0.3)'
+      : 'rgba(217, 119, 6, 0.25)',
+    transform: 'translateY(-3px)',
+    boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+    '& img': {
+      filter: 'grayscale(0%) opacity(1)',
+      transform: 'scale(1.06)',
+    },
+  },
+}));
+
+// ─── Client Logo Data ─────────────────────────────────────────────────
+
+const clientLogos = [
+  { src: logoAbdullah,        alt: 'Abdullah' },
+  { src: logoBabbuHotel,      alt: 'Babbu Hotel' },
+  { src: logoDahiyaMomos,     alt: 'Dahiya Momos' },
+  { src: logoDarshanTowers,   alt: 'Darshan Towers' },
+  { src: logoFouShack,        alt: 'Fou Shack' },
+  { src: logoHyderabadBiryani,alt: 'Hyderabad Biryani' },
+  { src: logoMrSalad,         alt: 'Mr Salad' },
+  { src: logoMrSandwich,      alt: 'Mr Sandwich' },
+  { src: logoMullaji,         alt: 'Mullaji' },
+  { src: logoNirvana,         alt: 'Nirvana' },
+  { src: logoPintuSaoji,      alt: 'Pintu Saoji' },
+  { src: logoShabanaBakery,   alt: 'Shabana Bakery' },
+  { src: logoShrutiRestaurant,alt: 'Shruti Restaurant' },
+  { src: logoSuryakantSaoji,  alt: 'Suryakant Saoji' },
+];
+
+// Split into two rows so each row has different logos
+const logosRow1 = clientLogos.slice(0, 7);
+const logosRow2 = clientLogos.slice(7);
 
 const CaseStudiesSection: React.FC = () => {
   const theme = useTheme();
@@ -221,6 +323,108 @@ const CaseStudiesSection: React.FC = () => {
                     Speak with our team &rarr;
                   </Button>
                 </Box>
+              </Stack>
+            </Box>
+          </Stack>
+
+          {/* ── Our Trusted Visionary Brands ── */}
+          <Stack spacing={5} alignItems="center" sx={{ width: '100%', pt: 6 }}>
+
+            {/* Heading */}
+            <Stack spacing={1.5} alignItems="center" textAlign="center">
+              <Typography
+                variant="h3"
+                sx={{
+                  fontWeight: 700,
+                  animation: 'fadeInUp 1s ease-out',
+                  '@keyframes fadeInUp': {
+                    from: { opacity: 0, transform: 'translateY(24px)' },
+                    to:   { opacity: 1, transform: 'translateY(0)' },
+                  },
+                }}
+              >
+                Our Trusted{' '}
+                <Box component="span" sx={{ color: 'primary.main' }}>
+                  Visionary
+                </Box>{' '}
+                Brands
+              </Typography>
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                sx={{ maxWidth: 520, lineHeight: 1.7, fontWeight: 400 }}
+              >
+                Restaurants across Maharashtra that trust Juno Digital to power their growth.
+              </Typography>
+            </Stack>
+
+            {/* Marquee Wrapper — full-bleed with edge fades */}
+            <Box
+              sx={{
+                width: '100vw',
+                position: 'relative',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                overflow: 'hidden',
+                '&::before, &::after': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  bottom: 0,
+                  width: { xs: '60px', md: '120px' },
+                  zIndex: 2,
+                  pointerEvents: 'none',
+                },
+                '&::before': {
+                  left: 0,
+                  background: (theme) => theme.palette.mode === 'dark'
+                    ? 'linear-gradient(to right, rgba(0,0,0,0.95), transparent)'
+                    : 'linear-gradient(to right, rgba(249,250,251,0.98), transparent)',
+                },
+                '&::after': {
+                  right: 0,
+                  background: (theme) => theme.palette.mode === 'dark'
+                    ? 'linear-gradient(to left, rgba(0,0,0,0.95), transparent)'
+                    : 'linear-gradient(to left, rgba(249,250,251,0.98), transparent)',
+                },
+              }}
+            >
+              <Stack spacing={2} sx={{ py: 2 }}>
+
+                {/* Row 1 — scrolls LEFT */}
+                <Box sx={{ overflow: 'hidden' }}>
+                  <MarqueeTrack className="scroll-left">
+                    {logosRow1.map((logo) => (
+                      <LogoPill key={`r1a-${logo.alt}`}>
+                        <img src={logo.src} alt={logo.alt} />
+                      </LogoPill>
+                    ))}
+                    {/* Duplicate for seamless loop */}
+                    {logosRow1.map((logo) => (
+                      <LogoPill key={`r1b-${logo.alt}`}>
+                        <img src={logo.src} alt={logo.alt} />
+                      </LogoPill>
+                    ))}
+                  </MarqueeTrack>
+                </Box>
+
+                {/* Row 2 — scrolls RIGHT */}
+                <Box sx={{ overflow: 'hidden' }}>
+                  <MarqueeTrack className="scroll-right">
+                    {logosRow2.map((logo) => (
+                      <LogoPill key={`r2a-${logo.alt}`}>
+                        <img src={logo.src} alt={logo.alt} />
+                      </LogoPill>
+                    ))}
+                    {/* Duplicate for seamless loop */}
+                    {logosRow2.map((logo) => (
+                      <LogoPill key={`r2b-${logo.alt}`}>
+                        <img src={logo.src} alt={logo.alt} />
+                      </LogoPill>
+                    ))}
+                  </MarqueeTrack>
+                </Box>
+
               </Stack>
             </Box>
           </Stack>
