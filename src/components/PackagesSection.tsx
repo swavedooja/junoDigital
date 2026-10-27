@@ -751,39 +751,383 @@ const PackagesSection: React.FC = () => {
             </ComparisonTablePaper>
           </Box>
 
-          {/* Important Note Banner */}
+          {/* Important Engagement Information — Reimagined */}
           <Box
             sx={{
               width: '100%',
-              p: 4,
-              borderRadius: '24px',
-              background: theme.custom.surface.glass,
-              border: `1px solid ${theme.custom.border.default}`,
-              boxShadow: theme.custom.shadow.card,
+              mt: 4,
+              pt: { xs: 4, md: 6 },
+              position: 'relative',
             }}
           >
-            <Stack direction="row" spacing={2.5} alignItems="flex-start">
-              <InfoOutlinedIcon sx={{ fontSize: 28, color: 'primary.main', mt: 0.5, flexShrink: 0 }} />
-              <Box>
-                <Typography variant="h5" sx={{ fontWeight: 700, mb: 1.5 }}>
-                  Important Engagement Information
-                </Typography>
-                
-                <Grid container spacing={2}>
-                  <Grid size={{ xs: 12, md: 6 }}>
-                    <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.7 }}>
-                      • <strong>Platform Focus:</strong> All monthly plans are custom-engineered for Swiggy & Zomato marketplace algorithms.<br />
-                      • <strong>Multi-Outlet Scaling:</strong> Pricing may vary based on number of outlets, menu catalog size, and specific platform scopes.
-                    </Typography>
-                  </Grid>
-                  <Grid size={{ xs: 12, md: 6 }}>
-                    <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.7 }}>
-                      • <strong>Third-Party & Production Costs:</strong> Food photography, video shoots, and influencer budgets are charged separately unless explicitly bundled in your custom proposal.
-                    </Typography>
-                  </Grid>
-                </Grid>
+            {/* Header Badge & Title */}
+            <Stack spacing={2} alignItems="center" textAlign="center" sx={{ mb: 6 }}>
+              <Box
+                sx={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 1,
+                  px: 2.5,
+                  py: 0.75,
+                  borderRadius: '50px',
+                  background: (theme) =>
+                    theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.1)' : 'rgba(217, 119, 6, 0.08)',
+                  border: (theme) => `1px solid ${theme.palette.primary.main}40`,
+                  color: 'primary.main',
+                  fontSize: '0.82rem',
+                  fontWeight: 700,
+                  letterSpacing: 1.2,
+                  textTransform: 'uppercase',
+                }}
+              >
+                <InfoOutlinedIcon sx={{ fontSize: 17 }} />
+                <span>Transparent Partnership Terms</span>
               </Box>
+
+              <Typography variant="h3" sx={{ fontWeight: 800 }}>
+                Important{' '}
+                <Box component="span" sx={{ color: 'primary.main' }}>
+                  Engagement
+                </Box>{' '}
+                Information
+              </Typography>
+
+              <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 680, lineHeight: 1.7, fontSize: '1.05rem' }}>
+                Clear, upfront principles behind every Juno restaurant engagement — built for measurable growth with zero hidden surprises.
+              </Typography>
             </Stack>
+
+            {/* 3 Interactive Cards */}
+            <Grid container spacing={3.5} alignItems="stretch">
+              {/* Card 1: Platform Focus */}
+              <Grid size={{ xs: 12, md: 4 }}>
+                <Box
+                  sx={{
+                    height: '100%',
+                    p: { xs: 3.5, md: 4.5 },
+                    borderRadius: '26px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    background: (theme) =>
+                      theme.palette.mode === 'dark'
+                        ? 'linear-gradient(145deg, rgba(255, 184, 0, 0.07) 0%, rgba(17, 24, 39, 0.7) 100%)'
+                        : 'linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(254, 243, 199, 0.4) 100%)',
+                    border: (theme) =>
+                      `1.5px solid ${theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.25)' : 'rgba(217, 119, 6, 0.2)'}`,
+                    boxShadow: (theme) =>
+                      theme.palette.mode === 'dark'
+                        ? '0 12px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
+                        : '0 10px 30px rgba(217, 119, 6, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9)',
+                    transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+                    '&:hover': {
+                      transform: 'translateY(-6px)',
+                      borderColor: 'primary.main',
+                      boxShadow: (theme) => `0 20px 45px ${theme.palette.primary.main}30`,
+                    },
+                  }}
+                >
+                  <Box>
+                    <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 3 }}>
+                      <Box
+                        sx={{
+                          width: 58,
+                          height: 58,
+                          borderRadius: '16px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          background: (theme) =>
+                            `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.light})`,
+                          color: '#000',
+                          boxShadow: (theme) => `0 8px 20px ${theme.palette.primary.main}45`,
+                        }}
+                      >
+                        <StorefrontOutlinedIcon sx={{ fontSize: 30 }} />
+                      </Box>
+                      <Chip
+                        label="Swiggy & Zomato"
+                        size="small"
+                        sx={{
+                          fontWeight: 700,
+                          fontSize: '0.75rem',
+                          background: (theme) =>
+                            theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.15)' : 'rgba(217, 119, 6, 0.1)',
+                          color: 'primary.main',
+                          border: (theme) => `1px solid ${theme.palette.primary.main}40`,
+                        }}
+                      />
+                    </Stack>
+
+                    <Typography variant="h5" sx={{ fontWeight: 800, mb: 1.5, letterSpacing: -0.3 }}>
+                      Platform-Engineered Focus
+                    </Typography>
+
+                    <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.8, fontSize: '0.95rem' }}>
+                      All monthly plans are specifically custom-engineered around{' '}
+                      <Box component="span" sx={{ color: 'text.primary', fontWeight: 600 }}>
+                        Swiggy &amp; Zomato marketplace algorithms
+                      </Box>{' '}
+                      — optimizing rank signals, dish click-through rate, discounting efficiency, and repeat ordering patterns.
+                    </Typography>
+                  </Box>
+
+                  <Box
+                    sx={{
+                      mt: 3.5,
+                      pt: 2.5,
+                      borderTop: (theme) => `1px solid ${theme.custom.border.subtle}`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 1.2,
+                    }}
+                  >
+                    <CheckCircleIcon sx={{ fontSize: 18, color: 'primary.main' }} />
+                    <Typography variant="caption" sx={{ fontWeight: 600, color: 'text.secondary' }}>
+                      Deep food-tech algorithmic optimization
+                    </Typography>
+                  </Box>
+                </Box>
+              </Grid>
+
+              {/* Card 2: Multi-Outlet Scaling */}
+              <Grid size={{ xs: 12, md: 4 }}>
+                <Box
+                  sx={{
+                    height: '100%',
+                    p: { xs: 3.5, md: 4.5 },
+                    borderRadius: '26px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    background: (theme) =>
+                      theme.palette.mode === 'dark'
+                        ? 'linear-gradient(145deg, rgba(255, 184, 0, 0.07) 0%, rgba(17, 24, 39, 0.7) 100%)'
+                        : 'linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(254, 243, 199, 0.4) 100%)',
+                    border: (theme) =>
+                      `1.5px solid ${theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.25)' : 'rgba(217, 119, 6, 0.2)'}`,
+                    boxShadow: (theme) =>
+                      theme.palette.mode === 'dark'
+                        ? '0 12px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
+                        : '0 10px 30px rgba(217, 119, 6, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9)',
+                    transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+                    '&:hover': {
+                      transform: 'translateY(-6px)',
+                      borderColor: 'primary.main',
+                      boxShadow: (theme) => `0 20px 45px ${theme.palette.primary.main}30`,
+                    },
+                  }}
+                >
+                  <Box>
+                    <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 3 }}>
+                      <Box
+                        sx={{
+                          width: 58,
+                          height: 58,
+                          borderRadius: '16px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          background: (theme) =>
+                            `linear-gradient(135deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.light})`,
+                          color: '#000',
+                          boxShadow: (theme) => `0 8px 20px ${theme.palette.secondary.main}45`,
+                        }}
+                      >
+                        <TrendingUpIcon sx={{ fontSize: 30 }} />
+                      </Box>
+                      <Chip
+                        label="Flexible Tiering"
+                        size="small"
+                        sx={{
+                          fontWeight: 700,
+                          fontSize: '0.75rem',
+                          background: (theme) =>
+                            theme.palette.mode === 'dark' ? 'rgba(245, 158, 11, 0.15)' : 'rgba(217, 119, 6, 0.1)',
+                          color: 'secondary.main',
+                          border: (theme) => `1px solid ${theme.palette.secondary.main}40`,
+                        }}
+                      />
+                    </Stack>
+
+                    <Typography variant="h5" sx={{ fontWeight: 800, mb: 1.5, letterSpacing: -0.3 }}>
+                      Multi-Outlet Scaling
+                    </Typography>
+
+                    <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.8, fontSize: '0.95rem' }}>
+                      Pricing flexes modularly depending on{' '}
+                      <Box component="span" sx={{ color: 'text.primary', fontWeight: 600 }}>
+                        number of physical/cloud outlets
+                      </Box>
+                      , menu catalog size, and customized platform scopes — making it cost-effective for single kitchens up to regional chains.
+                    </Typography>
+                  </Box>
+
+                  <Box
+                    sx={{
+                      mt: 3.5,
+                      pt: 2.5,
+                      borderTop: (theme) => `1px solid ${theme.custom.border.subtle}`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 1.2,
+                    }}
+                  >
+                    <CheckCircleIcon sx={{ fontSize: 18, color: 'secondary.main' }} />
+                    <Typography variant="caption" sx={{ fontWeight: 600, color: 'text.secondary' }}>
+                      Scales seamlessly with outlet additions
+                    </Typography>
+                  </Box>
+                </Box>
+              </Grid>
+
+              {/* Card 3: Production & Third-Party Costs */}
+              <Grid size={{ xs: 12, md: 4 }}>
+                <Box
+                  sx={{
+                    height: '100%',
+                    p: { xs: 3.5, md: 4.5 },
+                    borderRadius: '26px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    background: (theme) =>
+                      theme.palette.mode === 'dark'
+                        ? 'linear-gradient(145deg, rgba(255, 184, 0, 0.07) 0%, rgba(17, 24, 39, 0.7) 100%)'
+                        : 'linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(254, 243, 199, 0.4) 100%)',
+                    border: (theme) =>
+                      `1.5px solid ${theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.25)' : 'rgba(217, 119, 6, 0.2)'}`,
+                    boxShadow: (theme) =>
+                      theme.palette.mode === 'dark'
+                        ? '0 12px 36px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
+                        : '0 10px 30px rgba(217, 119, 6, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9)',
+                    transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+                    '&:hover': {
+                      transform: 'translateY(-6px)',
+                      borderColor: 'primary.main',
+                      boxShadow: (theme) => `0 20px 45px ${theme.palette.primary.main}30`,
+                    },
+                  }}
+                >
+                  <Box>
+                    <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 3 }}>
+                      <Box
+                        sx={{
+                          width: 58,
+                          height: 58,
+                          borderRadius: '16px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          background: (theme) =>
+                            `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                          color: '#000',
+                          boxShadow: (theme) => `0 8px 20px ${theme.palette.primary.main}45`,
+                        }}
+                      >
+                        <CameraAltOutlinedIcon sx={{ fontSize: 30 }} />
+                      </Box>
+                      <Chip
+                        label="100% Transparent"
+                        size="small"
+                        sx={{
+                          fontWeight: 700,
+                          fontSize: '0.75rem',
+                          background: (theme) =>
+                            theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.15)' : 'rgba(217, 119, 6, 0.1)',
+                          color: 'primary.main',
+                          border: (theme) => `1px solid ${theme.palette.primary.main}40`,
+                        }}
+                      />
+                    </Stack>
+
+                    <Typography variant="h5" sx={{ fontWeight: 800, mb: 1.5, letterSpacing: -0.3 }}>
+                      Third-Party &amp; Production
+                    </Typography>
+
+                    <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.8, fontSize: '0.95rem' }}>
+                      Food photography, video reels, and influencer budgets are{' '}
+                      <Box component="span" sx={{ color: 'text.primary', fontWeight: 600 }}>
+                        quoted transparently and charged separately
+                      </Box>{' '}
+                      at actuals, unless explicitly bundled into your custom contract scope.
+                    </Typography>
+                  </Box>
+
+                  <Box
+                    sx={{
+                      mt: 3.5,
+                      pt: 2.5,
+                      borderTop: (theme) => `1px solid ${theme.custom.border.subtle}`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 1.2,
+                    }}
+                  >
+                    <CheckCircleIcon sx={{ fontSize: 18, color: 'primary.main' }} />
+                    <Typography variant="caption" sx={{ fontWeight: 600, color: 'text.secondary' }}>
+                      Zero hidden markups or surprise fees
+                    </Typography>
+                  </Box>
+                </Box>
+              </Grid>
+            </Grid>
+
+            {/* Bottom Support Banner */}
+            <Box
+              sx={{
+                mt: 4.5,
+                p: { xs: 3, md: 3.5 },
+                borderRadius: '20px',
+                background: (theme) =>
+                  theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.05)' : 'rgba(217, 119, 6, 0.04)',
+                border: (theme) =>
+                  `1px dashed ${theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.35)' : 'rgba(217, 119, 6, 0.3)'}`,
+                display: 'flex',
+                flexDirection: { xs: 'column', sm: 'row' },
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: 2.5,
+                textAlign: { xs: 'center', sm: 'left' },
+              }}
+            >
+              <Box>
+                <Typography variant="subtitle1" sx={{ fontWeight: 700, color: 'text.primary' }}>
+                  Have multiple outlets or a specific custom requirement?
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ mt: 0.25 }}>
+                  Talk with our restaurant growth team to tailor an exact scope for your brand.
+                </Typography>
+              </Box>
+
+              <Button
+                variant="contained"
+                color="primary"
+                href="#contact"
+                sx={{
+                  borderRadius: '50px',
+                  px: 3.5,
+                  py: 1.2,
+                  fontWeight: 700,
+                  fontSize: '0.92rem',
+                  textTransform: 'none',
+                  whiteSpace: 'nowrap',
+                  boxShadow: (theme) => `0 6px 20px ${theme.palette.primary.main}40`,
+                  '&:hover': {
+                    transform: 'translateY(-2px)',
+                    boxShadow: (theme) => `0 10px 25px ${theme.palette.primary.main}50`,
+                  },
+                }}
+              >
+                Discuss Custom Scope &rarr;
+              </Button>
+            </Box>
           </Box>
 
         </Stack>
