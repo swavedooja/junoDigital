@@ -5,6 +5,7 @@ import {
   Button, 
   Container, 
   Stack,
+  Box,
   IconButton,
   Drawer,
   List,
@@ -40,9 +41,11 @@ const GlassAppBar = styled(AppBar)(({ theme }) => ({
 const NavButton = styled(Button)<{ component?: React.ElementType }>(({ theme }) => ({
   color: theme.palette.text.primary,
   fontWeight: 500,
-  fontSize: '1rem',
-  padding: '8px 16px',
+  fontSize: '0.9rem',
+  padding: '6px 14px',
   borderRadius: '12px',
+  whiteSpace: 'nowrap',
+  textTransform: 'none',
   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   '&:hover': {
     background: theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.1)' : 'rgba(217, 119, 6, 0.08)',
@@ -55,8 +58,11 @@ const CTAButton = styled(Button)<{ component?: React.ElementType }>(({ theme }) 
   background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.light})`,
   color: theme.palette.primary.contrastText,
   fontWeight: 700,
-  padding: '10px 24px',
+  fontSize: '0.92rem',
+  padding: '8px 22px',
   borderRadius: '50px',
+  whiteSpace: 'nowrap',
+  textTransform: 'none',
   boxShadow: `0 4px 15px ${theme.palette.primary.main}30`,
   '&:hover': {
     background: `linear-gradient(135deg, ${theme.palette.primary.light}, ${theme.palette.primary.main})`,
@@ -92,15 +98,15 @@ const Navigation: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery('(max-width: 1040px)');
   const { mode, toggleColorMode } = useColorMode();
 
   const navItems = [
-    { label: 'Customer Testimonials', href: '#customer-testimonials' },
     { label: 'Services', href: '#services' },
     { label: 'How We Work', href: '#operating-model' },
     { label: 'Why Juno', href: '#why-juno' },
     { label: 'Packages', href: '#packages' },
+    { label: 'Customer Testimonials', href: '#customer-testimonials' },
     { label: 'About Us', href: '#about' },
     { label: 'Contact', href: '#contact' },
   ];
@@ -189,29 +195,63 @@ const Navigation: React.FC = () => {
             : undefined,
         }}
       >
-        <Container maxWidth="lg">
-          <Toolbar sx={{ justifyContent: 'space-between', py: 1 }}>
-            <img
-              src={Logo}
-              alt="Juno Logo"
-              style={{ height: '52px', width: '52px', borderRadius: '12px' }}
-            />
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
+          <Toolbar 
+            disableGutters 
+            sx={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'space-between',
+              minHeight: { xs: '64px', md: '72px' },
+              py: 0.5
+            }}
+          >
+            <Box
+              component="a"
+              href="#"
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                textDecoration: 'none',
+                mr: { md: 2, lg: 3 },
+                flexShrink: 0,
+                transition: 'transform 0.2s ease',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                }
+              }}
+            >
+              <img
+                src={Logo}
+                alt="Juno Logo"
+                style={{ height: '48px', width: '48px', borderRadius: '12px', display: 'block' }}
+              />
+            </Box>
 
             {!isMobile ? (
               <>
-                <Stack direction="row" spacing={1}>
+                <Stack 
+                  direction="row" 
+                  spacing={{ md: 0.5, lg: 1 }} 
+                  alignItems="center"
+                  sx={{ flexShrink: 0 }}
+                >
                   {navItems.map((item) => (
                     <NavButton
                       key={item.label}
                       component="a"
                       href={item.href}
+                      sx={{
+                        fontSize: { md: '0.86rem', lg: '0.92rem' },
+                        px: { md: 1.1, lg: 1.5 },
+                      }}
                     >
                       {item.label}
                     </NavButton>
                   ))}
                 </Stack>
 
-                <Stack direction="row" spacing={1.5} alignItems="center">
+                <Stack direction="row" spacing={1.5} alignItems="center" sx={{ flexShrink: 0, ml: 2 }}>
                   <Tooltip title={mode === 'dark' ? 'Switch to Light mode' : 'Switch to Dark mode'}>
                     <ThemeToggleButton onClick={toggleColorMode}>
                       {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
