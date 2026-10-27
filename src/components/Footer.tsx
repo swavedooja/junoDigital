@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
                 Restaurant Growth | Food-Tech | Digital Services
               </Typography>
               <Typography variant="body2" color="primary.main" sx={{ fontWeight: 500 }}>
-                Nagpur | Pune | Maharashtra
+                Nagpur | Raipur | Yavatmal | Amravati | Wardha
               </Typography>
             </Stack>
 

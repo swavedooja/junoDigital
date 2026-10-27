@@ -163,7 +163,7 @@ Styled with a gradient thumb (`#10B981` to `#F59E0B`) and a translucent dark tra
 *   **Feedback System**: Employs React states to control form submissions, outputs state JSON in console, and fires a feedback **Snackbar (success Alert)** that dismisses after 6 seconds.
 
 ### 12. Footer ([`Footer.tsx`](file:///c:/Swapnil/2026%20Projects/junoDigital-main/src/components/Footer.tsx))
-*   **Structure**: Brand details, tagline, locations (Nagpur | Pune | Maharashtra), and full navigation links.
+*   **Structure**: Brand details, tagline, locations (Nagpur | Raipur | Yavatmal | Amravati | Wardha), and full navigation links.
 
 ---
 

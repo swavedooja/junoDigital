@@ -311,7 +311,7 @@ const ContactSection: React.FC = () => {
                 Our Locations
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Nagpur | Pune | Maharashtra
+                Nagpur | Raipur | Yavatmal | Amravati | Wardha
               </Typography>
             </Stack>
             <Stack alignItems="center" spacing={1}>
