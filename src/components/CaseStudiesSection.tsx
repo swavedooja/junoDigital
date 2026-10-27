@@ -61,10 +61,10 @@ const LogoPill = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  width: 110,
-  height: 90,
-  margin: '0 12px',
-  borderRadius: '18px',
+  width: 200,
+  height: 160,
+  margin: '0 16px',
+  borderRadius: '20px',
   background: theme.palette.mode === 'dark'
     ? 'rgba(255, 255, 255, 0.05)'
     : 'rgba(255, 255, 255, 0.85)',
@@ -77,8 +77,8 @@ const LogoPill = styled(Box)(({ theme }) => ({
   cursor: 'pointer',
   flexShrink: 0,
   '& img': {
-    width: 68,
-    height: 68,
+    width: 140,
+    height: 140,
     objectFit: 'contain',
     display: 'block',
     transition: 'transform 0.3s ease',
