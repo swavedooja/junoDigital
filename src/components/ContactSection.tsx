@@ -13,9 +13,14 @@ import {
   MenuItem,
   Select,
   FormControl,
-  InputLabel
+  InputLabel,
+  Grid
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
+import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded';
+import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
+import AccessTimeRoundedIcon from '@mui/icons-material/AccessTimeRounded';
 
 const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
@@ -294,55 +299,208 @@ const ContactSection: React.FC = () => {
             </CardContent>
           </ContactCard>
 
-          <Stack
-            direction={{ xs: 'column', md: 'row' }}
-            spacing={6}
-            textAlign="center"
+          <Grid 
+            container 
+            spacing={3} 
             sx={{
+              mt: 2,
               animation: 'fadeInUp 1s ease-out 0.6s both',
               '@keyframes fadeInUp': {
                 from: { opacity: 0, transform: 'translateY(30px)' },
                 to: { opacity: 1, transform: 'translateY(0)' },
               },
             }}
+            justifyContent="center"
           >
-            <Stack alignItems="center" spacing={1}>
-              <Typography variant="h6" color="primary.main" fontWeight={600}>
-                Our Locations
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Nagpur | Raipur | Yavatmal | Amravati | Wardha
-              </Typography>
-            </Stack>
-            <Stack alignItems="center" spacing={1}>
-              <Typography variant="h6" color="primary.main" fontWeight={600}>
-                Email Us
-              </Typography>
-              <Typography 
-                component="a" 
-                href="mailto:ashitreyan@junodigital.in" 
-                variant="body2" 
-                color="text.secondary"
+            {/* Address */}
+            <Grid size={{ xs: 12, sm: 6, md: 3.5 }}>
+              <Box
                 sx={{
-                  textDecoration: 'none',
-                  transition: 'color 0.2s ease',
-                  '&:hover': {
-                    color: 'primary.main',
-                  }
+                  p: 3,
+                  height: '100%',
+                  borderRadius: 3,
+                  background: (theme) => theme.custom.surface.glass,
+                  border: (theme) => `1px solid ${theme.custom.border.default}`,
+                  textAlign: 'center',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
                 }}
               >
-                ashitreyan@junodigital.in
-              </Typography>
-            </Stack>
-            <Stack alignItems="center" spacing={1}>
-              <Typography variant="h6" color="primary.main" fontWeight={600}>
-                Response Time
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Within 24 hours
-              </Typography>
-            </Stack>
-          </Stack>
+                <Box
+                  sx={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.12)' : 'rgba(255, 184, 0, 0.15)',
+                    color: 'primary.main',
+                    mb: 1.5,
+                  }}
+                >
+                  <LocationOnRoundedIcon sx={{ fontSize: 24 }} />
+                </Box>
+                <Typography variant="subtitle1" color="primary.main" fontWeight={700} sx={{ mb: 0.5 }}>
+                  Office Address
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
+                  4th Floor, C-Square, Mata Mandir Rd, Dharampeth, Nagpur, Maharashtra 440010
+                </Typography>
+              </Box>
+            </Grid>
+
+            {/* Phone */}
+            <Grid size={{ xs: 12, sm: 6, md: 2.75 }}>
+              <Box
+                sx={{
+                  p: 3,
+                  height: '100%',
+                  borderRadius: 3,
+                  background: (theme) => theme.custom.surface.glass,
+                  border: (theme) => `1px solid ${theme.custom.border.default}`,
+                  textAlign: 'center',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <Box
+                  sx={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.12)' : 'rgba(255, 184, 0, 0.15)',
+                    color: 'primary.main',
+                    mb: 1.5,
+                  }}
+                >
+                  <PhoneRoundedIcon sx={{ fontSize: 24 }} />
+                </Box>
+                <Typography variant="subtitle1" color="primary.main" fontWeight={700} sx={{ mb: 0.5 }}>
+                  Contact
+                </Typography>
+                <Typography 
+                  component="a" 
+                  href="tel:9967621552" 
+                  variant="body2" 
+                  color="text.secondary"
+                  sx={{
+                    textDecoration: 'none',
+                    fontWeight: 600,
+                    transition: 'color 0.2s ease',
+                    '&:hover': {
+                      color: 'primary.main',
+                    }
+                  }}
+                >
+                  +91 9967621552
+                </Typography>
+                <Typography variant="caption" color="text.secondary" sx={{ mt: 0.5, display: 'block' }}>
+                  Response within 24 hours
+                </Typography>
+              </Box>
+            </Grid>
+
+            {/* Email */}
+            <Grid size={{ xs: 12, sm: 6, md: 2.75 }}>
+              <Box
+                sx={{
+                  p: 3,
+                  height: '100%',
+                  borderRadius: 3,
+                  background: (theme) => theme.custom.surface.glass,
+                  border: (theme) => `1px solid ${theme.custom.border.default}`,
+                  textAlign: 'center',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <Box
+                  sx={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.12)' : 'rgba(255, 184, 0, 0.15)',
+                    color: 'primary.main',
+                    mb: 1.5,
+                  }}
+                >
+                  <EmailRoundedIcon sx={{ fontSize: 24 }} />
+                </Box>
+                <Typography variant="subtitle1" color="primary.main" fontWeight={700} sx={{ mb: 0.5 }}>
+                  Email Us
+                </Typography>
+                <Typography 
+                  component="a" 
+                  href="mailto:ashitreyan@junodigital.in" 
+                  variant="body2" 
+                  color="text.secondary"
+                  sx={{
+                    textDecoration: 'none',
+                    fontWeight: 600,
+                    wordBreak: 'break-all',
+                    transition: 'color 0.2s ease',
+                    '&:hover': {
+                      color: 'primary.main',
+                    }
+                  }}
+                >
+                  ashitreyan@junodigital.in
+                </Typography>
+                <Typography variant="caption" color="text.secondary" sx={{ mt: 0.5, display: 'block' }}>
+                  Direct Partner Inquiries
+                </Typography>
+              </Box>
+            </Grid>
+
+            {/* Operating Cities */}
+            <Grid size={{ xs: 12, sm: 6, md: 3 }}>
+              <Box
+                sx={{
+                  p: 3,
+                  height: '100%',
+                  borderRadius: 3,
+                  background: (theme) => theme.custom.surface.glass,
+                  border: (theme) => `1px solid ${theme.custom.border.default}`,
+                  textAlign: 'center',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <Box
+                  sx={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.12)' : 'rgba(255, 184, 0, 0.15)',
+                    color: 'primary.main',
+                    mb: 1.5,
+                  }}
+                >
+                  <AccessTimeRoundedIcon sx={{ fontSize: 24 }} />
+                </Box>
+                <Typography variant="subtitle1" color="primary.main" fontWeight={700} sx={{ mb: 0.5 }}>
+                  Locations Served
+                </Typography>
+                <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
+                  Nagpur | Raipur | Yavatmal | Amravati | Wardha
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
         </Stack>
       </Container>
 

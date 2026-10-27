@@ -53,13 +53,37 @@ const Footer: React.FC = () => {
             alignItems={{ xs: 'center', md: 'flex-start' }}
             spacing={4}
           >
-            <Stack spacing={1.5} alignItems={{ xs: 'center', md: 'flex-start' }} sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+            <Stack spacing={1.5} alignItems={{ xs: 'center', md: 'flex-start' }} sx={{ textAlign: { xs: 'center', md: 'left' }, maxWidth: { md: 460 } }}>
               <LogoText>Juno Digital Services</LogoText>
               <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 500 }}>
                 Restaurant Growth | Food-Tech | Digital Services
               </Typography>
-              <Typography variant="body2" color="primary.main" sx={{ fontWeight: 500 }}>
-                Nagpur | Raipur | Yavatmal | Amravati | Wardha
+              <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.85rem', lineHeight: 1.5 }}>
+                4th Floor, C-Square, Mata Mandir Rd, Dharampeth, Nagpur, Maharashtra 440010
+              </Typography>
+              <Stack direction="row" spacing={1.5} alignItems="center" flexWrap="wrap" sx={{ pt: 0.5 }}>
+                <Typography 
+                  component="a" 
+                  href="tel:9967621552" 
+                  variant="body2" 
+                  color="primary.main" 
+                  sx={{ textDecoration: 'none', fontWeight: 600, '&:hover': { textDecoration: 'underline' } }}
+                >
+                  +91 9967621552
+                </Typography>
+                <Typography variant="body2" color="text.secondary">•</Typography>
+                <Typography 
+                  component="a" 
+                  href="mailto:ashitreyan@junodigital.in" 
+                  variant="body2" 
+                  color="primary.main" 
+                  sx={{ textDecoration: 'none', fontWeight: 600, '&:hover': { textDecoration: 'underline' } }}
+                >
+                  ashitreyan@junodigital.in
+                </Typography>
+              </Stack>
+              <Typography variant="caption" color="text.secondary" sx={{ pt: 0.5 }}>
+                Serving: Nagpur | Raipur | Yavatmal | Amravati | Wardha
               </Typography>
             </Stack>
 
