@@ -21,7 +21,7 @@ const HeroContainer = styled(Box)(({ theme }) => ({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundImage: `url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5?crop=entropy&cs=srgb&fm=jpg&q=85")`,
+    backgroundImage: `url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5?crop=entropy&cs=srgb&fm=jpg&q=60&w=1400")`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     opacity: theme.custom.overlay.imageOpacity,

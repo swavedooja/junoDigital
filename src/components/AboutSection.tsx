@@ -87,8 +87,9 @@ const AboutSection: React.FC = () => {
           >
             <ImageContainer sx={{ height: { xs: 300, md: 500 } }}>
               <img
-                src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?crop=entropy&cs=srgb&fm=jpg&q=85"
+                src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?crop=entropy&cs=srgb&fm=jpg&q=60&w=800"
                 alt="Professional chef team collaborating in a commercial kitchen"
+                loading="lazy"
                 style={{ width: '100%', height: '100%' }}
               />
               

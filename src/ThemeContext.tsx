@@ -51,7 +51,12 @@ export const ColorModeProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   const colorMode = useMemo<ColorModeContextType>(
     () => ({
       mode,
-      toggleColorMode: () => setMode((prev) => (prev === 'dark' ? 'light' : 'dark')),
+      toggleColorMode: () => {
+        // Briefly add class so the scoped CSS transition fires only during theme switch
+        document.body.classList.add('theme-switching');
+        setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
+        setTimeout(() => document.body.classList.remove('theme-switching'), 400);
+      },
     }),
     [mode]
   );
