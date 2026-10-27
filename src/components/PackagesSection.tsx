@@ -166,7 +166,7 @@ const oneTimeServices = [
 
 const comparisonData = [
   { feature: 'Model', getOnline: 'One-time', getGrowing: 'Monthly', getAhead: 'Monthly', isText: true },
-  { feature: 'Price', getOnline: 'From ₹2,000', getGrowing: '₹11,999', getAhead: '₹24,999', isPrice: true },
+  { feature: 'Price', getOnline: 'From ₹4,999', getGrowing: '₹14,999', getAhead: '₹24,999', isPrice: true },
   { feature: 'Platform onboarding', getOnline: true, getGrowing: false, getAhead: false },
   { feature: 'Food photography', getOnline: true, getGrowing: 'Optional', getAhead: 'Optional' },
   { feature: 'Menu setup', getOnline: true, getGrowing: true, getAhead: true },
@@ -381,7 +381,7 @@ const PackagesSection: React.FC = () => {
                     </Typography>
                     <Stack direction="row" alignItems="baseline" spacing={1} sx={{ mt: 0.5 }}>
                       <Typography variant="h3" sx={{ fontWeight: 800 }}>
-                        From ₹2,000
+                        From ₹4,999
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
                         / service
@@ -493,7 +493,7 @@ const PackagesSection: React.FC = () => {
                     </Typography>
                     <Stack direction="row" alignItems="baseline" spacing={1} sx={{ mt: 0.5 }}>
                       <Typography variant="h2" sx={{ fontWeight: 800, color: 'text.primary' }}>
-                        ₹11,999
+                        ₹14,999
                       </Typography>
                       <Typography variant="body1" color="text.secondary">
                         / month
