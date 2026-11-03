@@ -59,6 +59,15 @@ const GradientText = styled(Typography)<{ component?: React.ElementType }>(({ th
   backgroundClip: 'text',
 }));
 
+/** Hides an explicit package amount while keeping its place in the layout. */
+const MaskedPrice = styled('span')({
+  filter: 'blur(8px)',
+  userSelect: 'none',
+  WebkitUserSelect: 'none',
+  display: 'inline-block',
+  pointerEvents: 'none',
+});
+
 const PackageCard = styled(Card, {
   shouldForwardProp: (prop) => prop !== 'featured' && prop !== 'badgeColor',
 })<{ featured?: boolean; badgeColor?: 'green' | 'amber' }>(({ theme, featured }) => ({
@@ -230,7 +239,11 @@ const PackagesSection: React.FC = () => {
     }
     return (
       <Typography variant="body2" sx={{ fontWeight: 600, color: 'text.primary' }}>
-        {val}
+        {typeof val === 'string' && val.includes('₹') ? (
+          <MaskedPrice aria-hidden="true">{val}</MaskedPrice>
+        ) : (
+          val
+        )}
       </Typography>
     );
   };
@@ -381,7 +394,7 @@ const PackagesSection: React.FC = () => {
                     </Typography>
                     <Stack direction="row" alignItems="baseline" spacing={1} sx={{ mt: 0.5 }}>
                       <Typography variant="h3" sx={{ fontWeight: 800 }}>
-                        From ₹4,999
+                        <MaskedPrice aria-hidden="true">From ₹4,999</MaskedPrice>
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
                         / service
@@ -412,7 +425,7 @@ const PackagesSection: React.FC = () => {
                               </Box>
                             </Box>
                             <Chip
-                              label={service.price}
+                              label={<MaskedPrice aria-hidden="true">{service.price}</MaskedPrice>}
                               size="small"
                               sx={{
                                 fontWeight: 700,
@@ -493,7 +506,7 @@ const PackagesSection: React.FC = () => {
                     </Typography>
                     <Stack direction="row" alignItems="baseline" spacing={1} sx={{ mt: 0.5 }}>
                       <Typography variant="h2" sx={{ fontWeight: 800, color: 'text.primary' }}>
-                        ₹14,999
+                        <MaskedPrice aria-hidden="true">₹14,999</MaskedPrice>
                       </Typography>
                       <Typography variant="body1" color="text.secondary">
                         / month
@@ -603,7 +616,7 @@ const PackagesSection: React.FC = () => {
                     </Typography>
                     <Stack direction="row" alignItems="baseline" spacing={1} sx={{ mt: 0.5 }}>
                       <Typography variant="h2" sx={{ fontWeight: 800, color: 'text.primary' }}>
-                        ₹24,999
+                        <MaskedPrice aria-hidden="true">₹24,999</MaskedPrice>
                       </Typography>
                       <Typography variant="body1" color="text.secondary">
                         / month

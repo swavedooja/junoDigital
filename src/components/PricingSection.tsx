@@ -212,7 +212,7 @@ const PricingSection: React.FC = () => {
                     </Stack>
 
                     <Stack direction="row" alignItems="baseline" justifyContent="center" spacing={1}>
-                      <PriceText>₹{plan.price}</PriceText>
+                      <PriceText sx={{ filter: 'blur(8px)', userSelect: 'none' }} aria-hidden="true">₹{plan.price}</PriceText>
                       <Typography variant="h6" color="text.secondary">
                         /month
                       </Typography>

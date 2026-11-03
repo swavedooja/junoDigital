@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
     { label: 'How We Work', href: '#operating-model' },
     { label: 'Why Juno', href: '#why-juno' },
     { label: 'Packages', href: '#packages' },
-    { label: 'Customer Testimonials', href: '#customer-testimonials' },
+    { label: 'Client Testimonials', href: '#customer-testimonials' },
     { label: 'About Us', href: '#about' },
     { label: 'Contact', href: '#contact' },
   ];
