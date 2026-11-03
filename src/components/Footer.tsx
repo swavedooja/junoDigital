@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
                 Restaurant Growth | Food-Tech | Digital Services
               </Typography>
               <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.85rem', lineHeight: 1.5 }}>
-                4th Floor, C-Square, Mata Mandir Rd, Dharampeth, Nagpur, Maharashtra 440010
+                Nagpur
               </Typography>
               <Stack direction="row" spacing={1.5} alignItems="center" flexWrap="wrap" sx={{ pt: 0.5 }}>
                 <Typography 

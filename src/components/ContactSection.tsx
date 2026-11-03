@@ -346,7 +346,7 @@ const ContactSection: React.FC = () => {
                   Office Address
                 </Typography>
                 <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.6 }}>
-                  4th Floor, C-Square, Mata Mandir Rd, Dharampeth, Nagpur, Maharashtra 440010
+                  Nagpur
                 </Typography>
               </Box>
             </Grid>
