@@ -208,7 +208,7 @@ const AboutSection: React.FC = () => {
             <Stack direction="row" spacing={4} sx={{ pt: 2 }}>
               <Stack alignItems="center">
                 <Typography variant="h4" color="primary.main" fontWeight={700}>
-                  5+
+                  10+
                 </Typography>
                 <Typography variant="body2" color="text.secondary" textAlign="center">
                   Years of Experience
