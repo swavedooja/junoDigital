@@ -108,6 +108,7 @@ const Navigation: React.FC = () => {
     { label: 'Packages', href: '#packages' },
     { label: 'Client Testimonials', href: '#customer-testimonials' },
     { label: 'About Us', href: '#about' },
+    { label: 'Careers', href: '#careers' },
     { label: 'Contact', href: '#contact' },
   ];
 

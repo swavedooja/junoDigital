@@ -18,6 +18,7 @@ const WhyJunoSection       = React.lazy(() => import('./components/WhyJunoSectio
 const PackagesSection      = React.lazy(() => import('./components/PackagesSection'));
 const WhoWeWorkWithSection = React.lazy(() => import('./components/WhoWeWorkWithSection'));
 const AboutSection         = React.lazy(() => import('./components/AboutSection'));
+const CareersSection       = React.lazy(() => import('./components/CareersSection'));
 const ContactSection       = React.lazy(() => import('./components/ContactSection'));
 const Footer               = React.lazy(() => import('./components/Footer'));
 
@@ -50,6 +51,7 @@ function App() {
           <PackagesSection />
           <WhoWeWorkWithSection />
           <AboutSection />
+          <CareersSection />
           <ContactSection />
           <Footer />
         </Suspense>
