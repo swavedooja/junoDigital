@@ -14,13 +14,15 @@ import {
   ListItemText,
   useMediaQuery,
   useTheme,
-  Tooltip
+  Tooltip,
+  Typography
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded';
 import Logo from '../junoLogo.jpg';
 import { useColorMode } from '../ThemeContext';
 
@@ -181,6 +183,26 @@ const Navigation: React.FC = () => {
             Talk to Us &rarr;
           </CTAButton>
         </ListItem>
+        <ListItem sx={{ mt: 1 }}>
+          <Button
+            fullWidth
+            component="a"
+            href="tel:9967621552"
+            variant="outlined"
+            color="primary"
+            startIcon={<PhoneRoundedIcon />}
+            sx={{
+              py: 1.2,
+              borderRadius: '50px',
+              fontWeight: 800,
+              fontSize: '0.92rem',
+              borderColor: 'primary.main',
+              borderWidth: '1.5px',
+            }}
+          >
+            Call: 9967621552
+          </Button>
+        </ListItem>
       </List>
     </Stack>
   );
@@ -196,6 +218,71 @@ const Navigation: React.FC = () => {
             : undefined,
         }}
       >
+        {/* Top Calling Details Bar - Bold Tab */}
+        <Box
+          sx={{
+            background: 'linear-gradient(90deg, #FFB800 0%, #F59E0B 100%)',
+            py: 0.65,
+            px: 2,
+            borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
+            boxShadow: '0 2px 10px rgba(245, 158, 11, 0.25)',
+          }}
+        >
+          <Container maxWidth="xl">
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+              spacing={{ xs: 1, sm: 1.5 }}
+            >
+              <Typography
+                variant="caption"
+                sx={{
+                  fontWeight: 800,
+                  fontSize: { xs: '0.78rem', sm: '0.86rem' },
+                  letterSpacing: '0.04em',
+                  color: '#000000',
+                  textTransform: 'uppercase',
+                }}
+              >
+                Get in touch today!
+              </Typography>
+              <Typography variant="caption" sx={{ color: 'rgba(0, 0, 0, 0.4)', fontWeight: 900 }}>
+                •
+              </Typography>
+              <Box
+                component="a"
+                href="tel:9967621552"
+                sx={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 0.6,
+                  bgcolor: '#000000',
+                  color: '#FFB800',
+                  textDecoration: 'none',
+                  fontWeight: 900,
+                  fontSize: { xs: '0.8rem', sm: '0.88rem' },
+                  letterSpacing: '0.03em',
+                  px: 1.5,
+                  py: 0.3,
+                  borderRadius: '50px',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
+                  transition: 'all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                  '&:hover': {
+                    bgcolor: '#1a1a1a',
+                    transform: 'scale(1.05)',
+                    color: '#FFC524',
+                    boxShadow: '0 4px 14px rgba(0, 0, 0, 0.35)',
+                  }
+                }}
+              >
+                <PhoneRoundedIcon sx={{ fontSize: 15, color: '#FFB800' }} />
+                <span>9967621552</span>
+              </Box>
+            </Stack>
+          </Container>
+        </Box>
+
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <Toolbar 
             disableGutters 
@@ -258,6 +345,35 @@ const Navigation: React.FC = () => {
                       {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
                     </ThemeToggleButton>
                   </Tooltip>
+
+                  <Box
+                    component="a"
+                    href="tel:9967621552"
+                    sx={{
+                      display: { xs: 'none', xl: 'inline-flex' },
+                      alignItems: 'center',
+                      gap: 0.8,
+                      px: 2,
+                      py: 0.8,
+                      borderRadius: '50px',
+                      background: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.12)' : 'rgba(245, 158, 11, 0.12)',
+                      border: (theme) => `1.5px solid ${theme.palette.primary.main}`,
+                      color: 'primary.main',
+                      fontWeight: 700,
+                      fontSize: '0.88rem',
+                      textDecoration: 'none',
+                      transition: 'all 0.25s ease',
+                      '&:hover': {
+                        background: (theme) => theme.palette.primary.main,
+                        color: '#000000',
+                        transform: 'translateY(-2px)',
+                        boxShadow: (theme) => `0 6px 20px ${theme.palette.primary.main}50`,
+                      }
+                    }}
+                  >
+                    <PhoneRoundedIcon sx={{ fontSize: 16 }} />
+                    <span>9967621552</span>
+                  </Box>
 
                   <CTAButton component="a" href="#contact">
                     Talk to Us &rarr;
