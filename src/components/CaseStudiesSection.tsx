@@ -16,8 +16,11 @@ import VerifiedRoundedIcon from '@mui/icons-material/VerifiedRounded';
 import TrendingUpRoundedIcon from '@mui/icons-material/TrendingUpRounded';
 
 // ─── Client Logo Imports ──────────────────────────────────────────────
+import logo7Star from '../assets/client-logos/7star.jpeg';
 import logoAbdullah from '../assets/client-logos/Abdullah.png';
+import logoAlRahman from '../assets/client-logos/alrahman.jpeg';
 import logoBabbuHotel from '../assets/client-logos/Babbu_Hotel.png';
+import logoBurhanpur from '../assets/client-logos/burhanpur.jpeg';
 import logoDahiyaMomos from '../assets/client-logos/Dahiya_Momos.png';
 import logoDarshanTowers from '../assets/client-logos/Darshan_Towers.png';
 import logoFouShack from '../assets/client-logos/Fou_Shack.png';
@@ -25,8 +28,11 @@ import logoHyderabadBiryani from '../assets/client-logos/Hyderabad_Biryani.png';
 import logoMrSalad from '../assets/client-logos/Mr_salad.png';
 import logoMrSandwich from '../assets/client-logos/Mr_sandwich.png';
 import logoMullaji from '../assets/client-logos/Mullaji.png';
+import logoNanania from '../assets/client-logos/nanania.jpeg';
 import logoNirvana from '../assets/client-logos/Nirvana.png';
+import logoOishi from '../assets/client-logos/oishi.jpeg';
 import logoPintuSaoji from '../assets/client-logos/Pintu_Saoji.png';
+import logoRoyalDumBiryani from '../assets/client-logos/royaldumbiryani.jpeg';
 import logoShabanaBakery from '../assets/client-logos/Shabana_Bakery.png';
 import logoShrutiRestaurant from '../assets/client-logos/Shruti_Restaurant.png';
 import logoSuryakantSaoji from '../assets/client-logos/Suryakant_Saoji.png';
@@ -108,10 +114,13 @@ const LogoPill = styled(Box)(({ theme }) => ({
     transition: 'left 0.55s ease',
   },
   '& img': {
-    width: 130,
-    height: 130,
+    width: 140,
+    height: 120,
+    maxWidth: '85%',
+    maxHeight: '80%',
     objectFit: 'contain',
     display: 'block',
+    borderRadius: '8px',
     transition: 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
     filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.12))',
   },
@@ -189,8 +198,11 @@ const StatCard = styled(Box)(({ theme }) => ({
 // ─── Client Logo Data: Divided into Distinct Sets for Row 1 & Row 2 ───
 
 const clientLogosRow1 = [
+  { src: logo7Star,           alt: '7 Star' },
   { src: logoAbdullah,        alt: 'Abdullah' },
+  { src: logoAlRahman,        alt: 'Al Rahman' },
   { src: logoBabbuHotel,      alt: 'Babbu Hotel' },
+  { src: logoBurhanpur,       alt: 'Burhanpur' },
   { src: logoDahiyaMomos,     alt: 'Dahiya Momos' },
   { src: logoDarshanTowers,   alt: 'Darshan Towers' },
   { src: logoFouShack,        alt: 'Fou Shack' },
@@ -201,8 +213,11 @@ const clientLogosRow1 = [
 const clientLogosRow2 = [
   { src: logoMrSandwich,      alt: 'Mr Sandwich' },
   { src: logoMullaji,         alt: 'Mullaji' },
+  { src: logoNanania,         alt: 'Nanania' },
   { src: logoNirvana,         alt: 'Nirvana' },
+  { src: logoOishi,           alt: 'Oishi' },
   { src: logoPintuSaoji,      alt: 'Pintu Saoji' },
+  { src: logoRoyalDumBiryani, alt: 'Royal Dum Biryani' },
   { src: logoShabanaBakery,   alt: 'Shabana Bakery' },
   { src: logoShrutiRestaurant,alt: 'Shruti Restaurant' },
   { src: logoSuryakantSaoji,  alt: 'Suryakant Saoji' },
