@@ -105,24 +105,42 @@ const CareersSection: React.FC = () => {
                     <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.7, mb: 4 }}>
                       {role.summary}
                     </Typography>
-                    <Button
-                      component="a"
-                      href={`mailto:${APPLY_EMAIL}?subject=${encodeURIComponent(role.subject)}`}
-                      variant="contained"
-                      color="primary"
-                      endIcon={<ArrowForwardIcon />}
-                      sx={{
-                        mt: 'auto',
-                        alignSelf: 'flex-start',
-                        py: 1.4,
-                        px: 3,
-                        borderRadius: '50px',
-                        fontWeight: 700,
-                        color: (theme) => theme.palette.mode === 'dark' ? '#000000' : '#FFFFFF',
-                      }}
-                    >
-                      Apply
-                    </Button>
+                    <Box sx={{ mt: 'auto' }}>
+                      <Button
+                        component="a"
+                        href={`https://mail.google.com/mail/?view=cm&fs=1&to=${APPLY_EMAIL}&su=${encodeURIComponent(role.subject)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variant="contained"
+                        color="primary"
+                        endIcon={<ArrowForwardIcon />}
+                        sx={{
+                          alignSelf: 'flex-start',
+                          py: 1.4,
+                          px: 3.5,
+                          borderRadius: '50px',
+                          fontWeight: 700,
+                          color: (theme) => theme.palette.mode === 'dark' ? '#000000' : '#FFFFFF',
+                        }}
+                      >
+                        Apply
+                      </Button>
+                      <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1.5, fontSize: '0.8rem' }}>
+                        Or email your CV directly to{' '}
+                        <Box
+                          component="a"
+                          href={`mailto:${APPLY_EMAIL}?subject=${encodeURIComponent(role.subject)}`}
+                          sx={{
+                            color: 'primary.main',
+                            textDecoration: 'none',
+                            fontWeight: 600,
+                            '&:hover': { textDecoration: 'underline' }
+                          }}
+                        >
+                          {APPLY_EMAIL}
+                        </Box>
+                      </Typography>
+                    </Box>
                   </CardContent>
                 </RoleCard>
               </Grid>
