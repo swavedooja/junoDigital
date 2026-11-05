@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Box, 
   Typography, 
@@ -7,13 +7,18 @@ import {
   Grid,
   Card,
   CardContent,
-  Chip
+  Chip,
+  IconButton,
+  useMediaQuery,
+  useTheme
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import FormatQuoteRoundedIcon from '@mui/icons-material/FormatQuoteRounded';
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import VerifiedRoundedIcon from '@mui/icons-material/VerifiedRounded';
 import TrendingUpRoundedIcon from '@mui/icons-material/TrendingUpRounded';
+import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
+import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 
 // ─── Client Logo Imports ──────────────────────────────────────────────
 import logo7Star from '../assets/client-logos/7star.jpeg';
@@ -195,6 +200,31 @@ const StatCard = styled(Box)(({ theme }) => ({
   },
 }));
 
+const NavArrowButton = styled(IconButton)(({ theme }) => ({
+  width: 44,
+  height: 44,
+  borderRadius: '14px',
+  background: theme.palette.mode === 'dark'
+    ? 'rgba(255, 255, 255, 0.05)'
+    : 'rgba(0, 0, 0, 0.04)',
+  border: `1.5px solid ${
+    theme.palette.mode === 'dark'
+      ? 'rgba(255, 255, 255, 0.1)'
+      : 'rgba(0, 0, 0, 0.08)'
+  }`,
+  color: theme.palette.text.primary,
+  backdropFilter: 'blur(10px)',
+  transition: 'all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)',
+  '&:hover': {
+    background: theme.palette.mode === 'dark'
+      ? 'rgba(255, 184, 0, 0.15)'
+      : 'rgba(255, 184, 0, 0.2)',
+    borderColor: theme.palette.primary.main,
+    color: theme.palette.primary.main,
+    transform: 'scale(1.08)',
+  },
+}));
+
 // ─── Client Logo Data: Divided into Distinct Sets for Row 1 & Row 2 ───
 
 const clientLogosRow1 = [
@@ -247,6 +277,24 @@ const merchantTestimonials = [
     quote:
       'We were frustrated with the high deductions on our online orders and the returns we were getting for the money being spent. JUNO stepped in, renegotiated our platform terms, cleaned up our ad spends, and improved our margins. Their regular reviews helped us cut down on unnecessary discounts, improve our payout percentage, and keep our online operations sustainable.',
     metric: 'Higher Payout % & Margin Recovery',
+  },
+  {
+    name: 'Oishii',
+    role: 'Pan-Asian & Japanese Partner',
+    tagline: 'Turnaround Strategy & Order Growth',
+    logo: logoOishi,
+    quote:
+      'When we started working with JUNO, our online business wasn’t performing to its potential despite investments in visibility campaigns. Their team took a step back, reassessed our entire approach and helped us rebuild the strategy from the ground up. We reworked our menu categories, moved away from campaigns that weren’t delivering meaningful returns, introduced stronger offers for new users and strategically reactivated visibility campaigns. This brought a significant turnaround in our online performance, with weekly orders growing substantially. What we appreciate is JUNO’s ability to understand the brand, identify what isn’t working and create a growth strategy that delivers tangible results.',
+    metric: 'Turnaround & Order Growth',
+  },
+  {
+    name: 'Hyderabad Biryani.com',
+    role: 'Biryani & Mughlai Partner',
+    tagline: 'P&L Restructuring & Margin Recovery',
+    logo: logoHyderabadBiryani,
+    quote:
+      'Our focus was to build a healthier and more sustainable online business rather than chasing topline growth at the cost of profitability. JUNO worked closely with us on restructuring our P&L, identifying cost leakages and improving our overall platform margins. This involved making some important decisions around spends and business volumes, but the impact has been encouraging. We have significantly improved our margins while keeping our bottom line stable, despite a moderation in topline business. What we appreciate is JUNO’s focus on the financial health of the business and their ability to look beyond sales numbers to build a more profitable operating model.',
+    metric: 'P&L Health & Margin Stability',
   },
   {
     name: 'Abdullah Hotel',
@@ -316,6 +364,27 @@ const metricHighlights = [
 ];
 
 const CaseStudiesSection: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState(0);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  const itemsPerPage = isMobile ? 1 : 2;
+  const totalPages = Math.ceil(merchantTestimonials.length / itemsPerPage);
+  const safePage = Math.min(currentPage, Math.max(0, totalPages - 1));
+
+  const handlePrev = () => {
+    setCurrentPage((prev) => (prev <= 0 ? totalPages - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentPage((prev) => (prev >= totalPages - 1 ? 0 : prev + 1));
+  };
+
+  const currentItems = merchantTestimonials.slice(
+    safePage * itemsPerPage,
+    safePage * itemsPerPage + itemsPerPage
+  );
+
   return (
     <SectionContainer id="customer-testimonials">
 
@@ -469,135 +538,245 @@ const CaseStudiesSection: React.FC = () => {
           ))}
         </Grid>
 
-        {/* Arranged Testimonial Boxes */}
-        <Grid container spacing={3.5} alignItems="stretch">
-          {merchantTestimonials.map((t, idx) => (
-            <Grid size={{ xs: 12, md: 6 }} key={idx}>
-              <TestimonialCard>
-                <CardContent sx={{ p: 0, '&:last-child': { pb: 0 }, display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' }}>
-                  
-                  {/* Top Bar: Quote Icon, Stars, & Metric Tag */}
-                  <Box>
-                    <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 2.5 }}>
-                      <Stack direction="row" spacing={0.5} alignItems="center">
-                        <Box
-                          sx={{
-                            width: 36,
-                            height: 36,
-                            borderRadius: '10px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.12)' : 'rgba(255, 184, 0, 0.15)',
-                            color: 'primary.main',
-                            mr: 1,
-                          }}
-                        >
-                          <FormatQuoteRoundedIcon sx={{ fontSize: 24 }} />
-                        </Box>
-                        {[...Array(5)].map((_, sIdx) => (
-                          <StarRoundedIcon key={sIdx} sx={{ color: '#FFB800', fontSize: 20 }} />
-                        ))}
-                      </Stack>
-                      <Chip
-                        label={t.metric}
-                        size="small"
-                        sx={{
-                          fontWeight: 600,
-                          fontSize: '0.72rem',
-                          borderRadius: '8px',
-                          bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.05)',
-                          color: 'text.secondary',
-                        }}
-                      />
-                    </Stack>
+        {/* Brand Selector Quick Tabs + Navigation Controls */}
+        <Stack 
+          direction={{ xs: 'column', md: 'row' }} 
+          justifyContent="space-between" 
+          alignItems="center" 
+          spacing={2.5}
+          sx={{ mb: 4 }}
+        >
+          {/* Brand Quick-Pills */}
+          <Stack 
+            direction="row" 
+            spacing={1} 
+            flexWrap="wrap" 
+            sx={{ gap: 1, justifyContent: { xs: 'center', md: 'flex-start' } }}
+          >
+            {merchantTestimonials.map((t, idx) => {
+              const itemPage = Math.floor(idx / itemsPerPage);
+              const isActive = safePage === itemPage;
+              return (
+                <Chip
+                  key={t.name}
+                  label={t.name}
+                  onClick={() => setCurrentPage(itemPage)}
+                  sx={{
+                    fontWeight: isActive ? 700 : 500,
+                    fontSize: '0.82rem',
+                    cursor: 'pointer',
+                    borderRadius: '50px',
+                    px: 0.5,
+                    py: 1.8,
+                    transition: 'all 0.25s ease',
+                    bgcolor: isActive 
+                      ? (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.18)' : 'rgba(255, 184, 0, 0.2)'
+                      : (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.04)' : 'rgba(0, 0, 0, 0.04)',
+                    color: isActive ? 'primary.main' : 'text.secondary',
+                    border: (theme) => `1px solid ${isActive ? theme.palette.primary.main : theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)'}`,
+                    boxShadow: isActive ? (theme) => `0 4px 12px ${theme.palette.primary.main}30` : 'none',
+                    '&:hover': {
+                      borderColor: 'primary.main',
+                      color: 'primary.main',
+                      transform: 'translateY(-2px)',
+                    }
+                  }}
+                />
+              );
+            })}
+          </Stack>
 
-                    {/* Quotation Body */}
-                    <Typography
-                      variant="body1"
+          {/* Navigation Arrows & Counter */}
+          <Stack direction="row" spacing={1.5} alignItems="center" sx={{ flexShrink: 0 }}>
+            <NavArrowButton onClick={handlePrev} aria-label="Previous testimonials">
+              <ChevronLeftRoundedIcon sx={{ fontSize: 26 }} />
+            </NavArrowButton>
+
+            <Typography 
+              variant="caption" 
+              sx={{ 
+                fontWeight: 700, 
+                letterSpacing: '0.08em', 
+                color: 'text.secondary', 
+                minWidth: 55, 
+                textAlign: 'center' 
+              }}
+            >
+              {safePage + 1} / {totalPages}
+            </Typography>
+
+            <NavArrowButton onClick={handleNext} aria-label="Next testimonials">
+              <ChevronRightRoundedIcon sx={{ fontSize: 26 }} />
+            </NavArrowButton>
+          </Stack>
+        </Stack>
+
+        {/* Arranged Testimonial Boxes (Active Slide) */}
+        <Box 
+          key={safePage}
+          sx={{
+            animation: 'testimonialFadeIn 0.35s ease-out',
+            '@keyframes testimonialFadeIn': {
+              from: { opacity: 0, transform: 'translateY(10px)' },
+              to:   { opacity: 1, transform: 'translateY(0)' },
+            }
+          }}
+        >
+          <Grid container spacing={3.5} alignItems="stretch">
+            {currentItems.map((t, idx) => (
+              <Grid size={{ xs: 12, md: 6 }} key={idx}>
+                <TestimonialCard sx={{ minHeight: { xs: 350, md: 380 } }}>
+                  <CardContent sx={{ p: 0, '&:last-child': { pb: 0 }, display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' }}>
+                    
+                    {/* Top Bar: Quote Icon, Stars, & Metric Tag */}
+                    <Box>
+                      <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 2.5 }}>
+                        <Stack direction="row" spacing={0.5} alignItems="center">
+                          <Box
+                            sx={{
+                              width: 36,
+                              height: 36,
+                              borderRadius: '10px',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 184, 0, 0.12)' : 'rgba(255, 184, 0, 0.15)',
+                              color: 'primary.main',
+                              mr: 1,
+                            }}
+                          >
+                            <FormatQuoteRoundedIcon sx={{ fontSize: 24 }} />
+                          </Box>
+                          {[...Array(5)].map((_, sIdx) => (
+                            <StarRoundedIcon key={sIdx} sx={{ color: '#FFB800', fontSize: 20 }} />
+                          ))}
+                        </Stack>
+                        <Chip
+                          label={t.metric}
+                          size="small"
+                          sx={{
+                            fontWeight: 600,
+                            fontSize: '0.72rem',
+                            borderRadius: '8px',
+                            bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.05)',
+                            color: 'text.secondary',
+                          }}
+                        />
+                      </Stack>
+
+                      {/* Quotation Body */}
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          color: 'text.primary',
+                          fontSize: { xs: '0.94rem', sm: '0.98rem' },
+                          lineHeight: 1.75,
+                          fontStyle: 'italic',
+                          mb: 3,
+                        }}
+                      >
+                        “{t.quote.replace(/^“|”$/g, '')}”
+                      </Typography>
+                    </Box>
+
+                    {/* Bottom Bar: Logo, Restaurant Name & Verified Status */}
+                    <Box
                       sx={{
-                        color: 'text.primary',
-                        fontSize: { xs: '0.94rem', sm: '0.98rem' },
-                        lineHeight: 1.75,
-                        fontStyle: 'italic',
-                        mb: 3,
+                        pt: 2.5,
+                        borderTop: (theme) => `1px solid ${
+                          theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)'
+                        }`,
                       }}
                     >
-                      “{t.quote.replace(/^“|”$/g, '')}”
-                    </Typography>
-                  </Box>
-
-                  {/* Bottom Bar: Logo, Restaurant Name & Verified Status */}
-                  <Box
-                    sx={{
-                      pt: 2.5,
-                      borderTop: (theme) => `1px solid ${
-                        theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)'
-                      }`,
-                    }}
-                  >
-                    <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
-                      <Stack direction="row" alignItems="center" spacing={2}>
-                        {/* Restaurant Logo Avatar */}
-                        <Box
-                          sx={{
-                            width: 52,
-                            height: 52,
-                            borderRadius: '14px',
-                            background: '#ffffff',
-                            border: '1.5px solid rgba(0, 0, 0, 0.08)',
-                            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)',
-                            p: 0.6,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            flexShrink: 0,
-                          }}
-                        >
-                          <img
-                            src={t.logo}
-                            alt={t.name}
-                            style={{
-                              width: '100%',
-                              height: '100%',
-                              objectFit: 'contain',
+                      <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2}>
+                        <Stack direction="row" alignItems="center" spacing={2}>
+                          {/* Restaurant Logo Avatar */}
+                          <Box
+                            sx={{
+                              width: 52,
+                              height: 52,
+                              borderRadius: '14px',
+                              background: '#ffffff',
+                              border: '1.5px solid rgba(0, 0, 0, 0.08)',
+                              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)',
+                              p: 0.6,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              flexShrink: 0,
                             }}
-                          />
-                        </Box>
-                        
-                        {/* Name and Focus */}
-                        <Box>
-                          <Typography variant="subtitle1" sx={{ fontWeight: 700, lineHeight: 1.3 }}>
-                            {t.name}
-                          </Typography>
-                          <Typography variant="caption" color="text.secondary" sx={{ display: 'block', fontWeight: 500 }}>
-                            {t.tagline}
-                          </Typography>
-                        </Box>
+                          >
+                            <img
+                              src={t.logo}
+                              alt={t.name}
+                              style={{
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'contain',
+                              }}
+                            />
+                          </Box>
+                          
+                          {/* Name and Focus */}
+                          <Box>
+                            <Typography variant="subtitle1" sx={{ fontWeight: 700, lineHeight: 1.3 }}>
+                              {t.name}
+                            </Typography>
+                            <Typography variant="caption" color="text.secondary" sx={{ display: 'block', fontWeight: 500 }}>
+                              {t.tagline}
+                            </Typography>
+                          </Box>
+                        </Stack>
+
+                        {/* Verified Badge */}
+                        <Chip
+                          icon={<VerifiedRoundedIcon sx={{ fontSize: '15px !important', color: '#10B981' }} />}
+                          label="Verified"
+                          size="small"
+                          sx={{
+                            height: 24,
+                            fontSize: '0.7rem',
+                            fontWeight: 600,
+                            bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(16, 185, 129, 0.12)' : 'rgba(16, 185, 129, 0.1)',
+                            color: '#10B981',
+                            border: '1px solid rgba(16, 185, 129, 0.25)',
+                          }}
+                        />
                       </Stack>
+                    </Box>
 
-                      {/* Verified Badge */}
-                      <Chip
-                        icon={<VerifiedRoundedIcon sx={{ fontSize: '15px !important', color: '#10B981' }} />}
-                        label="Verified"
-                        size="small"
-                        sx={{
-                          height: 24,
-                          fontSize: '0.7rem',
-                          fontWeight: 600,
-                          bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(16, 185, 129, 0.12)' : 'rgba(16, 185, 129, 0.1)',
-                          color: '#10B981',
-                          border: '1px solid rgba(16, 185, 129, 0.25)',
-                        }}
-                      />
-                    </Stack>
-                  </Box>
+                  </CardContent>
+                </TestimonialCard>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
 
-                </CardContent>
-              </TestimonialCard>
-            </Grid>
-          ))}
-        </Grid>
+        {/* Pagination Dots */}
+        <Stack direction="row" spacing={1.2} justifyContent="center" alignItems="center" sx={{ mt: 4 }}>
+          {Array.from({ length: totalPages }).map((_, idx) => {
+            const isActive = safePage === idx;
+            return (
+              <Box
+                key={idx}
+                onClick={() => setCurrentPage(idx)}
+                sx={{
+                  width: isActive ? 28 : 9,
+                  height: 9,
+                  borderRadius: '5px',
+                  bgcolor: isActive ? 'primary.main' : (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                  boxShadow: isActive ? (theme) => `0 0 10px ${theme.palette.primary.main}60` : 'none',
+                  '&:hover': {
+                    bgcolor: 'primary.main',
+                    opacity: 0.8,
+                  }
+                }}
+              />
+            );
+          })}
+        </Stack>
 
       </Container>
 
