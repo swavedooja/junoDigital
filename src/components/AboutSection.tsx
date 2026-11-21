@@ -1,12 +1,21 @@
 import React from 'react';
-import { Box, Container, Typography, Stack, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Container, Typography, Stack, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import StoreRoundedIcon from '@mui/icons-material/StoreRounded';
+import StarRoundedIcon from '@mui/icons-material/StarRounded';
+import WorkspacePremiumRoundedIcon from '@mui/icons-material/WorkspacePremiumRounded';
+import RocketLaunchRoundedIcon from '@mui/icons-material/RocketLaunchRounded';
+import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
+import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
+import CalendarMonthRoundedIcon from '@mui/icons-material/CalendarMonthRounded';
+import SupportAgentRoundedIcon from '@mui/icons-material/SupportAgentRounded';
 
 const SectionContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
-  padding: '120px 0',
+  padding: '110px 0 90px 0',
   background: `
-    radial-gradient(circle at 20% 50%, rgba(255, 184, 0, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 20% 40%, rgba(255, 184, 0, 0.08) 0%, transparent 55%),
+    radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.06) 0%, transparent 50%),
     ${theme.custom.gradient.sectionB}
   `,
   overflow: 'hidden',
@@ -19,220 +28,419 @@ const GradientText = styled(Typography)<{ component?: React.ElementType }>(({ th
   backgroundClip: 'text',
 }));
 
-const ImageContainer = styled(Box)(({ theme }) => ({
-  position: 'relative',
-  borderRadius: '24px',
-  overflow: 'hidden',
-  border: `1px solid ${theme.custom.border.default}`,
-  '&::before': {
-    content: '""',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    background: `linear-gradient(135deg, ${theme.palette.primary.main}18, ${theme.palette.secondary.main}18)`,
-    zIndex: 1,
-  },
-  '& img': {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-  },
+const FeatureRow = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'flex-start',
+  gap: theme.spacing(2.2),
+  transition: 'transform 0.25s ease',
   '&:hover': {
-    '& img': {
-      transform: 'scale(1.05)',
-    }
-  }
+    transform: 'translateX(6px)',
+  },
 }));
 
-const FloatingCard = styled(Box)(({ theme }) => ({
+const FeatureIconCircle = styled(Box)(({ theme }) => ({
+  width: 48,
+  height: 48,
+  borderRadius: '14px',
+  background: theme.palette.mode === 'dark'
+    ? 'linear-gradient(135deg, rgba(255, 184, 0, 0.18) 0%, rgba(245, 158, 11, 0.08) 100%)'
+    : 'linear-gradient(135deg, rgba(254, 243, 199, 1) 0%, rgba(253, 230, 138, 0.7) 100%)',
+  border: '1px solid rgba(255, 184, 0, 0.3)',
+  color: '#FFB800',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexShrink: 0,
+  boxShadow: '0 4px 16px rgba(255, 184, 0, 0.15)',
+}));
+
+const CollageStatBadge = styled(Box)(({ theme }) => ({
   position: 'absolute',
-  background: theme.custom.surface.glass,
-  backdropFilter: 'blur(20px)',
-  border: `1px solid ${theme.custom.border.default}`,
+  display: 'flex',
+  alignItems: 'center',
+  gap: theme.spacing(1.2),
+  padding: theme.spacing(1.2, 2),
   borderRadius: '16px',
-  padding: theme.spacing(3),
-  zIndex: 2,
-  animation: 'float 6s ease-in-out infinite',
-  '@keyframes float': {
-    '0%, 100%': { transform: 'translateY(0px)' },
-    '50%': { transform: 'translateY(-10px)' },
+  background: theme.palette.mode === 'dark' ? 'rgba(17, 24, 39, 0.9)' : 'rgba(255, 255, 255, 0.95)',
+  backdropFilter: 'blur(16px)',
+  border: '1.5px solid rgba(255, 184, 0, 0.35)',
+  boxShadow: '0 12px 28px rgba(0, 0, 0, 0.45)',
+  zIndex: 4,
+  transition: 'transform 0.3s ease',
+  '&:hover': {
+    transform: 'scale(1.05)',
+    borderColor: '#FFB800',
   },
+}));
+
+const BottomStatsBar = styled(Box)(({ theme }) => ({
+  marginTop: theme.spacing(8),
+  padding: theme.spacing(3.5, 4),
+  borderRadius: '24px',
+  background: theme.palette.mode === 'dark'
+    ? 'linear-gradient(145deg, rgba(17, 24, 39, 0.8) 0%, rgba(10, 15, 26, 0.9) 100%)'
+    : 'linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(249, 250, 251, 0.9) 100%)',
+  border: theme.palette.mode === 'dark'
+    ? '1px solid rgba(255, 184, 0, 0.22)'
+    : '1px solid rgba(217, 119, 6, 0.18)',
+  boxShadow: theme.palette.mode === 'dark'
+    ? '0 16px 36px rgba(0, 0, 0, 0.45)'
+    : '0 10px 30px rgba(217, 119, 6, 0.08)',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-around',
+  flexWrap: 'wrap',
+  gap: theme.spacing(3),
+}));
+
+const BottomStatItem = styled(Stack)(({ theme }) => ({
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: theme.spacing(2),
 }));
 
 const AboutSection: React.FC = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
   return (
     <SectionContainer id="about">
       <Container maxWidth="lg">
-        <Stack
-          direction={{ xs: 'column', md: 'row' }}
-          spacing={8}
-          alignItems="center"
-        >
-          <Box
-            sx={{
-              flex: 1,
-              position: 'relative',
-              animation: 'fadeInLeft 1s ease-out',
-              '@keyframes fadeInLeft': {
-                from: { opacity: 0, transform: 'translateX(-50px)' },
-                to: { opacity: 1, transform: 'translateX(0)' },
-              },
-            }}
-          >
-            <ImageContainer sx={{ height: { xs: 300, md: 500 } }}>
-              <img
-                src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?crop=entropy&cs=srgb&fm=jpg&q=60&w=800"
-                alt="Professional chef team collaborating in a commercial kitchen"
-                loading="lazy"
-                style={{ width: '100%', height: '100%' }}
+        <Grid container spacing={{ xs: 6, md: 7 }} alignItems="center">
+          {/* Left Column: Photo Collage with Floating Stat Cards */}
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Box
+              sx={{
+                position: 'relative',
+                minHeight: { xs: 440, sm: 520 },
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              {/* Outer Golden Glow Aura */}
+              <Box
+                sx={{
+                  position: 'absolute',
+                  width: '90%',
+                  height: '85%',
+                  borderRadius: '32px',
+                  background: 'radial-gradient(circle, rgba(255, 184, 0, 0.18) 0%, transparent 70%)',
+                  filter: 'blur(35px)',
+                  pointerEvents: 'none',
+                  zIndex: 0,
+                }}
               />
-              
-              {!isMobile && (
-                <>
-                  <FloatingCard
-                    sx={{
-                      top: 20,
-                      right: 20,
-                      animationDelay: '0s'
-                    }}
-                  >
-                    <Typography variant="h6" color="primary.main" fontWeight={600}>
-                      100+
+
+              {/* Photo 1: Top-Left Ambient Dining Hall */}
+              <Box
+                sx={{
+                  position: 'absolute',
+                  top: 0,
+                  left: { xs: 0, sm: '4%' },
+                  width: { xs: 150, sm: 190 },
+                  height: { xs: 130, sm: 160 },
+                  borderRadius: '20px',
+                  overflow: 'hidden',
+                  border: '1.5px solid rgba(255, 184, 0, 0.35)',
+                  boxShadow: '0 12px 28px rgba(0, 0, 0, 0.4)',
+                  zIndex: 1,
+                  transform: 'rotate(-4deg)',
+                  transition: 'transform 0.3s ease',
+                  '&:hover': { transform: 'rotate(0deg) scale(1.05)', zIndex: 5 },
+                }}
+              >
+                <Box
+                  component="img"
+                  src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?crop=entropy&cs=srgb&fm=jpg&q=80&w=400"
+                  alt="Restaurant interior"
+                  sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </Box>
+
+              {/* Photo 2: Main Center Restaurateur / Chef */}
+              <Box
+                sx={{
+                  position: 'relative',
+                  width: { xs: 240, sm: 300 },
+                  height: { xs: 310, sm: 390 },
+                  borderRadius: '28px',
+                  overflow: 'hidden',
+                  border: '2px solid rgba(255, 184, 0, 0.45)',
+                  boxShadow: '0 20px 48px rgba(0, 0, 0, 0.55), 0 0 30px rgba(255, 184, 0, 0.25)',
+                  zIndex: 2,
+                }}
+              >
+                <Box
+                  component="img"
+                  src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?crop=entropy&cs=srgb&fm=jpg&q=80&w=600"
+                  alt="Restaurant team and chef"
+                  sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(180deg, transparent 65%, rgba(17, 24, 39, 0.75) 100%)',
+                  }}
+                />
+              </Box>
+
+              {/* Photo 3: Bottom-Right Gourmet Dish */}
+              <Box
+                sx={{
+                  position: 'absolute',
+                  bottom: { xs: 10, sm: 20 },
+                  right: { xs: 0, sm: '6%' },
+                  width: { xs: 140, sm: 180 },
+                  height: { xs: 120, sm: 150 },
+                  borderRadius: '20px',
+                  overflow: 'hidden',
+                  border: '1.5px solid rgba(255, 184, 0, 0.35)',
+                  boxShadow: '0 12px 28px rgba(0, 0, 0, 0.4)',
+                  zIndex: 3,
+                  transform: 'rotate(5deg)',
+                  transition: 'transform 0.3s ease',
+                  '&:hover': { transform: 'rotate(0deg) scale(1.05)', zIndex: 5 },
+                }}
+              >
+                <Box
+                  component="img"
+                  src="https://images.unsplash.com/photo-1544025162-d76694265947?crop=entropy&cs=srgb&fm=jpg&q=80&w=400"
+                  alt="Fine dining dish"
+                  sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </Box>
+
+              {/* Floating Badge 1: Top-Right "100+ Restaurants Supported" */}
+              <CollageStatBadge
+                sx={{
+                  top: { xs: 15, sm: 30 },
+                  right: { xs: -5, sm: '12%' },
+                }}
+              >
+                <StoreRoundedIcon sx={{ color: '#FFB800', fontSize: 24 }} />
+                <Box>
+                  <Typography sx={{ fontWeight: 800, fontSize: '1rem', color: 'text.primary', lineHeight: 1.1 }}>
+                    100+
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.72rem', fontWeight: 600 }}>
+                    Restaurants Supported
+                  </Typography>
+                </Box>
+              </CollageStatBadge>
+
+              {/* Floating Badge 2: Left-Center "98% Client Satisfaction" */}
+              <CollageStatBadge
+                sx={{
+                  top: { xs: 170, sm: 190 },
+                  left: { xs: -5, sm: '2%' },
+                }}
+              >
+                <StarRoundedIcon sx={{ color: '#FFB800', fontSize: 24 }} />
+                <Box>
+                  <Typography sx={{ fontWeight: 800, fontSize: '1rem', color: 'text.primary', lineHeight: 1.1 }}>
+                    98%
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.72rem', fontWeight: 600 }}>
+                    Client Satisfaction
+                  </Typography>
+                </Box>
+              </CollageStatBadge>
+
+              {/* Floating Badge 3: Bottom-Center "10+ Years of Experience" */}
+              <CollageStatBadge
+                sx={{
+                  bottom: { xs: 10, sm: 25 },
+                  left: { xs: '8%', sm: '18%' },
+                }}
+              >
+                <WorkspacePremiumRoundedIcon sx={{ color: '#FFB800', fontSize: 24 }} />
+                <Box>
+                  <Typography sx={{ fontWeight: 800, fontSize: '1rem', color: 'text.primary', lineHeight: 1.1 }}>
+                    10+
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.72rem', fontWeight: 600 }}>
+                    Years of Experience
+                  </Typography>
+                </Box>
+              </CollageStatBadge>
+            </Box>
+          </Grid>
+
+          {/* Right Column: Mission Heading, Copy & 3 Feature Points */}
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Stack spacing={3.5}>
+              <Box
+                sx={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 1.2,
+                  color: 'primary.main',
+                  fontSize: '0.85rem',
+                  fontWeight: 700,
+                  letterSpacing: 2,
+                  textTransform: 'uppercase',
+                }}
+              >
+                <span>OUR MISSION</span>
+                <Box sx={{ width: 36, height: 2, background: 'currentColor', opacity: 0.6 }} />
+              </Box>
+
+              <Typography
+                variant="h2"
+                sx={{
+                  fontWeight: 800,
+                  fontSize: { xs: '2.1rem', sm: '2.6rem', md: '3rem' },
+                  lineHeight: 1.2,
+                }}
+              >
+                Powering restaurant growth{' '}
+                <GradientText component="span" variant="h2" sx={{ fontWeight: 800 }}>
+                  across India.
+                </GradientText>
+              </Typography>
+
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                sx={{ fontSize: { xs: '1rem', md: '1.08rem' }, lineHeight: 1.7 }}
+              >
+                We help restaurant businesses grow with practical, end-to-end digital
+                solutions — from visibility to higher orders, and lasting brand value.
+              </Typography>
+
+              {/* 3 Core Value Features */}
+              <Stack spacing={2.8} sx={{ pt: 1 }}>
+                <FeatureRow>
+                  <FeatureIconCircle>
+                    <RocketLaunchRoundedIcon sx={{ fontSize: 24 }} />
+                  </FeatureIconCircle>
+                  <Box>
+                    <Typography variant="h6" sx={{ fontWeight: 800, color: 'text.primary', fontSize: '1.1rem', mb: 0.3 }}>
+                      Grow Online Orders
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Restaurants Supported
+                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.92rem' }}>
+                      Get more diners, more often.
                     </Typography>
-                  </FloatingCard>
+                  </Box>
+                </FeatureRow>
 
-                  <FloatingCard
-                    sx={{
-                      bottom: 20,
-                      left: 20,
-                      animationDelay: '2s'
-                    }}
-                  >
-                    <Typography variant="h6" color="secondary.main" fontWeight={600}>
-                      98%
+                <FeatureRow>
+                  <FeatureIconCircle>
+                    <LayersRoundedIcon sx={{ fontSize: 24 }} />
+                  </FeatureIconCircle>
+                  <Box>
+                    <Typography variant="h6" sx={{ fontWeight: 800, color: 'text.primary', fontSize: '1.1rem', mb: 0.3 }}>
+                      End-to-End Support
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Client Satisfaction
+                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.92rem' }}>
+                      From setup to scale, we handle it all.
                     </Typography>
-                  </FloatingCard>
-                </>
-              )}
-            </ImageContainer>
-          </Box>
+                  </Box>
+                </FeatureRow>
 
-          <Stack
-            spacing={4}
-            sx={{
-              flex: 1,
-              animation: 'fadeInRight 1s ease-out 0.3s both',
-              '@keyframes fadeInRight': {
-                from: { opacity: 0, transform: 'translateX(-50px)' },
-                to: { opacity: 1, transform: 'translateX(0)' },
-              },
-            }}
-          >
-            <Typography variant="h2">
-              Built for restaurants.{' '}
-              <GradientText component="span" variant="h2">
-                Built beyond the metros.
-              </GradientText>
-            </Typography>
-
-            <Typography
-              variant="h5"
-              color="text.secondary"
-              sx={{
-                fontWeight: 600,
-                lineHeight: 1.6,
-              }}
-            >
-              Juno Digital Services was built with a simple belief: Great restaurant businesses should have access to great digital expertise — no matter where they are.
-            </Typography>
-
-            <Typography
-              variant="body1"
-              color="text.secondary"
-              sx={{
-                fontSize: '1.1rem',
-                lineHeight: 1.7,
-              }}
-            >
-              We work with restaurants to manage and grow the digital side of their business, combining food-tech expertise, commercial thinking and hands-on execution.
-            </Typography>
-
-            <Typography
-              variant="body1"
-              color="text.secondary"
-              sx={{
-                fontSize: '1.1rem',
-                lineHeight: 1.7,
-              }}
-            >
-              From onboarding and food photography to menu optimisation, marketplace management, campaigns, analytics and growth consulting, we work as an extension of the restaurant's team.
-            </Typography>
-
-            <Typography
-              variant="body1"
-              color="text.secondary"
-              sx={{
-                fontSize: '1.1rem',
-                lineHeight: 1.7,
-              }}
-            >
-              We are starting with Nagpur and Pune, with a larger ambition to bring this model to the next generation of restaurant markets across India.
-            </Typography>
-
-            <Typography
-              variant="subtitle1"
-              color="primary.main"
-              sx={{
-                fontWeight: 600,
-                borderLeft: '4px solid',
-                borderColor: 'primary.main',
-                pl: 2,
-                py: 0.5,
-              }}
-            >
-              Local understanding. Digital expertise. Hands-on growth.
-            </Typography>
-
-            <Stack direction="row" spacing={4} sx={{ pt: 2 }}>
-              <Stack alignItems="center">
-                <Typography variant="h4" color="primary.main" fontWeight={700}>
-                  10+
-                </Typography>
-                <Typography variant="body2" color="text.secondary" textAlign="center">
-                  Years of Experience
-                </Typography>
-              </Stack>
-              <Stack alignItems="center">
-                <Typography variant="h4" color="secondary.main" fontWeight={700}>
-                  50+
-                </Typography>
-                <Typography variant="body2" color="text.secondary" textAlign="center">
-                  Expert Team Members
-                </Typography>
-              </Stack>
-              <Stack alignItems="center">
-                <Typography variant="h4" color="primary.main" fontWeight={700}>
-                  24/7
-                </Typography>
-                <Typography variant="body2" color="text.secondary" textAlign="center">
-                  Customer Support
-                </Typography>
+                <FeatureRow>
+                  <FeatureIconCircle>
+                    <LocationOnRoundedIcon sx={{ fontSize: 24 }} />
+                  </FeatureIconCircle>
+                  <Box>
+                    <Typography variant="h6" sx={{ fontWeight: 800, color: 'text.primary', fontSize: '1.1rem', mb: 0.3 }}>
+                      Built for Real India
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: '0.92rem' }}>
+                      Local understanding, national capability.
+                    </Typography>
+                  </Box>
+                </FeatureRow>
               </Stack>
             </Stack>
-          </Stack>
-        </Stack>
+          </Grid>
+        </Grid>
+
+        {/* Bottom Full-Width 4-Item Stats Bar */}
+        <BottomStatsBar>
+          <BottomStatItem>
+            <FeatureIconCircle sx={{ width: 44, height: 44 }}>
+              <StoreRoundedIcon sx={{ fontSize: 24 }} />
+            </FeatureIconCircle>
+            <Box>
+              <Typography variant="h5" sx={{ fontWeight: 800, color: 'text.primary', lineHeight: 1.15 }}>
+                100+
+              </Typography>
+              <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 500, fontSize: '0.8rem' }}>
+                Restaurants Supported
+              </Typography>
+            </Box>
+          </BottomStatItem>
+
+          <Box
+            sx={{
+              display: { xs: 'none', md: 'block' },
+              width: '1px',
+              height: 36,
+              background: 'rgba(255, 184, 0, 0.2)',
+            }}
+          />
+
+          <BottomStatItem>
+            <FeatureIconCircle sx={{ width: 44, height: 44 }}>
+              <StarRoundedIcon sx={{ fontSize: 24 }} />
+            </FeatureIconCircle>
+            <Box>
+              <Typography variant="h5" sx={{ fontWeight: 800, color: 'text.primary', lineHeight: 1.15 }}>
+                98%
+              </Typography>
+              <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 500, fontSize: '0.8rem' }}>
+                Client Satisfaction
+              </Typography>
+            </Box>
+          </BottomStatItem>
+
+          <Box
+            sx={{
+              display: { xs: 'none', md: 'block' },
+              width: '1px',
+              height: 36,
+              background: 'rgba(255, 184, 0, 0.2)',
+            }}
+          />
+
+          <BottomStatItem>
+            <FeatureIconCircle sx={{ width: 44, height: 44 }}>
+              <CalendarMonthRoundedIcon sx={{ fontSize: 24 }} />
+            </FeatureIconCircle>
+            <Box>
+              <Typography variant="h5" sx={{ fontWeight: 800, color: 'text.primary', lineHeight: 1.15 }}>
+                10+
+              </Typography>
+              <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 500, fontSize: '0.8rem' }}>
+                Years of Experience
+              </Typography>
+            </Box>
+          </BottomStatItem>
+
+          <Box
+            sx={{
+              display: { xs: 'none', md: 'block' },
+              width: '1px',
+              height: 36,
+              background: 'rgba(255, 184, 0, 0.2)',
+            }}
+          />
+
+          <BottomStatItem>
+            <FeatureIconCircle sx={{ width: 44, height: 44 }}>
+              <SupportAgentRoundedIcon sx={{ fontSize: 24 }} />
+            </FeatureIconCircle>
+            <Box>
+              <Typography variant="h5" sx={{ fontWeight: 800, color: 'text.primary', lineHeight: 1.15 }}>
+                24/7
+              </Typography>
+              <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 500, fontSize: '0.8rem' }}>
+                Dedicated Support
+              </Typography>
+            </Box>
+          </BottomStatItem>
+        </BottomStatsBar>
       </Container>
     </SectionContainer>
   );
