@@ -281,7 +281,7 @@ const WhyJunoSection: React.FC = () => {
             <polygon points="675,268 470,530 880,530" fill="#101623" stroke="#FFB800" strokeWidth="1.6" />
 
             <foreignObject x="355" y="150" width="190" height="90">
-              <div xmlns="http://www.w3.org/1999/xhtml" style={{ textAlign: 'center', color: '#ffffff', fontFamily: 'Poppins, sans-serif' }}>
+              <div style={{ textAlign: 'center', color: '#ffffff', fontFamily: 'Poppins, sans-serif' }}>
                 <div style={{ fontWeight: 800, fontSize: '15px', lineHeight: 1.25 }}>Food-Tech Expertise</div>
                 <div style={{ marginTop: '6px', fontSize: '12px', lineHeight: 1.35, color: '#F3F4F6' }}>
                   The right platforms, data, and tech to grow orders and revenue.
@@ -289,7 +289,7 @@ const WhyJunoSection: React.FC = () => {
               </div>
             </foreignObject>
             <foreignObject x="140" y="400" width="170" height="110">
-              <div xmlns="http://www.w3.org/1999/xhtml" style={{ textAlign: 'center', color: '#ffffff', fontFamily: 'Poppins, sans-serif' }}>
+              <div style={{ textAlign: 'center', color: '#ffffff', fontFamily: 'Poppins, sans-serif' }}>
                 <div style={{ fontWeight: 800, fontSize: '15px', lineHeight: 1.25 }}>Restaurant Understanding</div>
                 <div style={{ marginTop: '6px', fontSize: '12px', lineHeight: 1.35, color: '#F3F4F6' }}>
                   Real restaurant context — menu, customers, market, and operations.
@@ -297,7 +297,7 @@ const WhyJunoSection: React.FC = () => {
               </div>
             </foreignObject>
             <foreignObject x="590" y="410" width="170" height="100">
-              <div xmlns="http://www.w3.org/1999/xhtml" style={{ textAlign: 'center', color: '#ffffff', fontFamily: 'Poppins, sans-serif' }}>
+              <div style={{ textAlign: 'center', color: '#ffffff', fontFamily: 'Poppins, sans-serif' }}>
                 <div style={{ fontWeight: 800, fontSize: '15px', lineHeight: 1.25 }}>Hands-On Execution</div>
                 <div style={{ marginTop: '6px', fontSize: '12px', lineHeight: 1.35, color: '#F3F4F6' }}>
                   We build, run, and improve alongside your team.
