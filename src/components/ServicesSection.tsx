@@ -45,7 +45,7 @@ const StepCard = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'space-between',
   height: '100%',
-  minHeight: 380,
+  minHeight: 'auto',
   transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
   boxShadow: '0 12px 30px rgba(0, 0, 0, 0.35)',
   zIndex: 2,
@@ -90,8 +90,8 @@ const StepVisualContainer = styled(Box)(() => ({
 }));
 
 const OutcomesBar = styled(Box)(({ theme }) => ({
-  marginTop: theme.spacing(9),
-  padding: theme.spacing(3.5, 4),
+  marginTop: theme.spacing(6),
+  padding: theme.spacing(2.5, 2),
   borderRadius: '24px',
   background: theme.palette.mode === 'dark'
     ? 'linear-gradient(145deg, rgba(17, 24, 39, 0.8) 0%, rgba(10, 15, 26, 0.9) 100%)'
@@ -102,11 +102,19 @@ const OutcomesBar = styled(Box)(({ theme }) => ({
   boxShadow: theme.palette.mode === 'dark'
     ? '0 16px 36px rgba(0, 0, 0, 0.45)'
     : '0 10px 30px rgba(217, 119, 6, 0.08)',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-around',
-  flexWrap: 'wrap',
-  gap: theme.spacing(3),
+  display: 'grid',
+  gridTemplateColumns: '1fr',
+  gap: theme.spacing(2),
+  [theme.breakpoints.up('sm')]: {
+    gridTemplateColumns: '1fr',
+    padding: theme.spacing(3, 3),
+  },
+  [theme.breakpoints.up('md')]: {
+    gridTemplateColumns: '1fr auto 1fr auto 1fr',
+    alignItems: 'center',
+    padding: theme.spacing(3.5, 4),
+    marginTop: theme.spacing(8),
+  },
 }));
 
 const OutcomesItem = styled(Stack)(({ theme }) => ({
@@ -223,9 +231,33 @@ const ServicesSection: React.FC = () => {
           </Box>
 
           {/* 5 Cards Grid */}
-          <Grid container spacing={{ xs: 3, md: 2 }} alignItems="stretch">
+          <Grid
+            container
+            spacing={{ xs: 2.5, lg: 2 }}
+            alignItems="stretch"
+            sx={{
+              position: 'relative',
+              pl: { xs: 3, lg: 0 },
+              '&::before': {
+                content: '""',
+                display: { xs: 'block', lg: 'none' },
+                position: 'absolute',
+                left: 8,
+                top: 8,
+                bottom: 8,
+                width: 2,
+                borderRadius: 2,
+                background: 'linear-gradient(180deg, #FFB800 0%, rgba(255,184,0,0.15) 100%)',
+              },
+              '& > :nth-of-type(1)': { mt: { lg: 9 } },
+              '& > :nth-of-type(2)': { mt: { lg: 6 } },
+              '& > :nth-of-type(3)': { mt: { lg: 3 } },
+              '& > :nth-of-type(4)': { mt: { lg: 1 } },
+              '& > :nth-of-type(5)': { mt: { lg: 0 } },
+            }}
+          >
             {/* Step 01: Get Online */}
-            <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2.4 }}>
+            <Grid size={{ xs: 12, lg: 2.4 }}>
               <StepCard>
                 <StepNumberBadge>01</StepNumberBadge>
 
@@ -272,7 +304,7 @@ const ServicesSection: React.FC = () => {
             </Grid>
 
             {/* Step 02: Look Better */}
-            <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2.4 }}>
+            <Grid size={{ xs: 12, lg: 2.4 }}>
               <StepCard>
                 <StepNumberBadge>02</StepNumberBadge>
 
@@ -340,7 +372,7 @@ const ServicesSection: React.FC = () => {
             </Grid>
 
             {/* Step 03: Sell Better */}
-            <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2.4 }}>
+            <Grid size={{ xs: 12, lg: 2.4 }}>
               <StepCard>
                 <StepNumberBadge>03</StepNumberBadge>
 
@@ -407,7 +439,7 @@ const ServicesSection: React.FC = () => {
             </Grid>
 
             {/* Step 04: Get Discovered */}
-            <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2.4 }}>
+            <Grid size={{ xs: 12, lg: 2.4 }}>
               <StepCard>
                 <StepNumberBadge>04</StepNumberBadge>
 
@@ -446,7 +478,7 @@ const ServicesSection: React.FC = () => {
             </Grid>
 
             {/* Step 05: Grow Smarter */}
-            <Grid size={{ xs: 12, sm: 6, md: 4, lg: 2.4 }}>
+            <Grid size={{ xs: 12, lg: 2.4 }}>
               <StepCard>
                 <StepNumberBadge>05</StepNumberBadge>
 

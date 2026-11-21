@@ -384,14 +384,17 @@ const WhoWeWorkWithSection: React.FC = () => {
           <Box
             sx={{
               display: 'flex',
+              width: '100%',
+              alignSelf: 'stretch',
               gap: 1.5,
-              overflowX: 'auto',
-              maxWidth: '100%',
               py: 1,
               px: 0.5,
-              '&::-webkit-scrollbar': { display: 'none' },
-              msOverflowStyle: 'none',
+              flexWrap: { xs: 'nowrap', md: 'wrap' },
+              justifyContent: { xs: 'flex-start', md: 'center' },
+              overflowX: 'auto',
+              WebkitOverflowScrolling: 'touch',
               scrollbarWidth: 'none',
+              '&::-webkit-scrollbar': { display: 'none' },
             }}
           >
             {categoryData.map((cat, index) => {
@@ -415,79 +418,64 @@ const WhoWeWorkWithSection: React.FC = () => {
             <Grid container spacing={{ xs: 4, lg: 5 }} alignItems="center">
               {/* Left Column: Audience Title, Desc, and Photo */}
               <Grid size={{ xs: 12, md: 5 }}>
-                <Stack spacing={2.5}>
+                <Box
+                  sx={{
+                    position: 'relative',
+                    width: '100%',
+                    minHeight: { xs: 240, sm: 320, md: 420 },
+                    borderRadius: '20px',
+                    overflow: 'hidden',
+                    border: '1px solid rgba(255, 184, 0, 0.25)',
+                    boxShadow: '0 12px 28px rgba(0, 0, 0, 0.4)',
+                  }}
+                >
                   <Box
+                    component="img"
+                    src={current.image}
+                    alt={current.title}
                     sx={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      alignSelf: 'flex-start',
-                      px: 2,
-                      py: 0.6,
-                      borderRadius: '50px',
-                      background: 'rgba(255, 184, 0, 0.15)',
-                      border: '1px solid rgba(255, 184, 0, 0.35)',
-                      color: '#FFB800',
-                      fontSize: '0.75rem',
-                      fontWeight: 800,
-                      letterSpacing: 1,
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    SELECTED AUDIENCE
-                  </Box>
-
-                  <Typography
-                    variant="h3"
-                    sx={{
-                      fontWeight: 800,
-                      fontSize: { xs: '1.8rem', md: '2.4rem' },
-                      color: 'text.primary',
-                    }}
-                  >
-                    {current.audienceLabel}
-                  </Typography>
-
-                  <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    sx={{ fontSize: '1rem', lineHeight: 1.6 }}
-                  >
-                    {current.description}
-                  </Typography>
-
-                  {/* Atmospheric Photo */}
-                  <Box
-                    sx={{
+                      position: 'absolute',
+                      inset: 0,
                       width: '100%',
-                      height: { xs: 220, sm: 260 },
-                      borderRadius: '20px',
-                      overflow: 'hidden',
-                      position: 'relative',
-                      border: '1px solid rgba(255, 184, 0, 0.25)',
-                      boxShadow: '0 12px 28px rgba(0, 0, 0, 0.4)',
+                      height: '100%',
+                      objectFit: 'cover',
                     }}
-                  >
-                    <Box
-                      component="img"
-                      src={current.image}
-                      alt={current.title}
-                      sx={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        transition: 'transform 0.4s ease',
-                        '&:hover': { transform: 'scale(1.04)' },
-                      }}
-                    />
+                  />
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(180deg, rgba(17,24,39,0.15) 10%, rgba(17,24,39,0.88) 100%)',
+                    }}
+                  />
+                  <Stack spacing={1.5} sx={{ position: 'relative', zIndex: 1, p: { xs: 2.5, md: 3 }, height: '100%', justifyContent: 'flex-end' }}>
                     <Box
                       sx={{
-                        position: 'absolute',
-                        inset: 0,
-                        background: 'linear-gradient(180deg, transparent 40%, rgba(17, 24, 39, 0.8) 100%)',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        alignSelf: 'flex-start',
+                        px: 1.6,
+                        py: 0.4,
+                        borderRadius: '50px',
+                        background: 'rgba(255, 184, 0, 0.18)',
+                        border: '1px solid rgba(255, 184, 0, 0.4)',
+                        color: '#FFB800',
+                        fontSize: '0.72rem',
+                        fontWeight: 800,
+                        letterSpacing: 1,
+                        textTransform: 'uppercase',
                       }}
-                    />
-                  </Box>
-                </Stack>
+                    >
+                      Selected audience
+                    </Box>
+                    <Typography variant="h3" sx={{ fontWeight: 800, fontSize: { xs: '1.7rem', md: '2.2rem' }, color: '#fff' }}>
+                      {current.audienceLabel}
+                    </Typography>
+                    <Typography sx={{ color: 'rgba(255,255,255,0.82)', fontSize: '0.98rem', lineHeight: 1.55, maxWidth: 420 }}>
+                      {current.description}
+                    </Typography>
+                  </Stack>
+                </Box>
               </Grid>
 
               {/* Right Column: Common Needs & Juno Solutions */}
@@ -593,8 +581,9 @@ const WhoWeWorkWithSection: React.FC = () => {
 
           {/* Bottom CTAs */}
           <Stack
-            direction={{ xs: 'column', sm: 'row' }}
-            spacing={2.5}
+            direction={{ xs: 'column', sm: 'column', md: 'row' }}
+            spacing={2}
+            alignItems={{ xs: 'stretch', md: 'center' }}
             justifyContent="center"
             sx={{ pt: 1 }}
           >

@@ -74,8 +74,8 @@ const CollageStatBadge = styled(Box)(({ theme }) => ({
 }));
 
 const BottomStatsBar = styled(Box)(({ theme }) => ({
-  marginTop: theme.spacing(8),
-  padding: theme.spacing(3.5, 4),
+  marginTop: theme.spacing(6),
+  padding: theme.spacing(2.5, 2),
   borderRadius: '24px',
   background: theme.palette.mode === 'dark'
     ? 'linear-gradient(145deg, rgba(17, 24, 39, 0.8) 0%, rgba(10, 15, 26, 0.9) 100%)'
@@ -86,11 +86,15 @@ const BottomStatsBar = styled(Box)(({ theme }) => ({
   boxShadow: theme.palette.mode === 'dark'
     ? '0 16px 36px rgba(0, 0, 0, 0.45)'
     : '0 10px 30px rgba(217, 119, 6, 0.08)',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-around',
-  flexWrap: 'wrap',
-  gap: theme.spacing(3),
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gap: theme.spacing(2.5),
+  [theme.breakpoints.up('md')]: {
+    gridTemplateColumns: '1fr auto 1fr auto 1fr auto 1fr',
+    alignItems: 'center',
+    padding: theme.spacing(3.5, 4),
+    marginTop: theme.spacing(8),
+  },
 }));
 
 const BottomStatItem = styled(Stack)(({ theme }) => ({
@@ -109,11 +113,12 @@ const AboutSection: React.FC = () => {
             <Box
               sx={{
                 position: 'relative',
-                minHeight: { xs: 440, sm: 520 },
                 width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                maxWidth: 520,
+                mx: 'auto',
+                minHeight: { xs: 420, sm: 500 },
+                overflow: 'hidden',
+                borderRadius: '28px',
               }}
             >
               {/* Outer Golden Glow Aura */}
@@ -134,10 +139,10 @@ const AboutSection: React.FC = () => {
               <Box
                 sx={{
                   position: 'absolute',
-                  top: 0,
-                  left: { xs: 0, sm: '4%' },
-                  width: { xs: 150, sm: 190 },
-                  height: { xs: 130, sm: 160 },
+                  top: '4%',
+                  left: '4%',
+                  width: { xs: '42%', sm: 180 },
+                  height: { xs: 110, sm: 140 },
                   borderRadius: '20px',
                   overflow: 'hidden',
                   border: '1.5px solid rgba(255, 184, 0, 0.35)',
@@ -159,9 +164,12 @@ const AboutSection: React.FC = () => {
               {/* Photo 2: Main Center Restaurateur / Chef */}
               <Box
                 sx={{
-                  position: 'relative',
-                  width: { xs: 240, sm: 300 },
-                  height: { xs: 310, sm: 390 },
+                  position: 'absolute',
+                  top: '16%',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: { xs: '62%', sm: 280 },
+                  height: { xs: 280, sm: 340 },
                   borderRadius: '28px',
                   overflow: 'hidden',
                   border: '2px solid rgba(255, 184, 0, 0.45)',
@@ -188,10 +196,10 @@ const AboutSection: React.FC = () => {
               <Box
                 sx={{
                   position: 'absolute',
-                  bottom: { xs: 10, sm: 20 },
-                  right: { xs: 0, sm: '6%' },
-                  width: { xs: 140, sm: 180 },
-                  height: { xs: 120, sm: 150 },
+                  bottom: '6%',
+                  right: '5%',
+                  width: { xs: '40%', sm: 170 },
+                  height: { xs: 100, sm: 130 },
                   borderRadius: '20px',
                   overflow: 'hidden',
                   border: '1.5px solid rgba(255, 184, 0, 0.35)',
@@ -213,8 +221,8 @@ const AboutSection: React.FC = () => {
               {/* Floating Badge 1: Top-Right "100+ Restaurants Supported" */}
               <CollageStatBadge
                 sx={{
-                  top: { xs: 15, sm: 30 },
-                  right: { xs: -5, sm: '12%' },
+                  top: '8%',
+                  right: '6%',
                 }}
               >
                 <StoreRoundedIcon sx={{ color: '#FFB800', fontSize: 24 }} />
@@ -231,8 +239,8 @@ const AboutSection: React.FC = () => {
               {/* Floating Badge 2: Left-Center "98% Client Satisfaction" */}
               <CollageStatBadge
                 sx={{
-                  top: { xs: 170, sm: 190 },
-                  left: { xs: -5, sm: '2%' },
+                  top: '46%',
+                  left: '5%',
                 }}
               >
                 <StarRoundedIcon sx={{ color: '#FFB800', fontSize: 24 }} />
@@ -249,8 +257,8 @@ const AboutSection: React.FC = () => {
               {/* Floating Badge 3: Bottom-Center "10+ Years of Experience" */}
               <CollageStatBadge
                 sx={{
-                  bottom: { xs: 10, sm: 25 },
-                  left: { xs: '8%', sm: '18%' },
+                  bottom: '8%',
+                  left: '8%',
                 }}
               >
                 <WorkspacePremiumRoundedIcon sx={{ color: '#FFB800', fontSize: 24 }} />

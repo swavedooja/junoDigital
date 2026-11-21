@@ -63,8 +63,8 @@ const BadgeIconBox = styled(Box)(({ theme }) => ({
 }));
 
 const StatsBar = styled(Box)(({ theme }) => ({
-  marginTop: theme.spacing(8),
-  padding: theme.spacing(3, 4),
+  marginTop: theme.spacing(6),
+  padding: theme.spacing(2.5, 2),
   borderRadius: '24px',
   background: theme.palette.mode === 'dark'
     ? 'linear-gradient(145deg, rgba(17, 24, 39, 0.8) 0%, rgba(10, 15, 26, 0.9) 100%)'
@@ -75,11 +75,18 @@ const StatsBar = styled(Box)(({ theme }) => ({
   boxShadow: theme.palette.mode === 'dark'
     ? '0 12px 32px rgba(0, 0, 0, 0.45)'
     : '0 10px 30px rgba(217, 119, 6, 0.08)',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-around',
-  flexWrap: 'wrap',
-  gap: theme.spacing(3),
+  display: 'grid',
+  gridTemplateColumns: '1fr',
+  gap: theme.spacing(2),
+  [theme.breakpoints.up('sm')]: {
+    gridTemplateColumns: '1fr 1fr',
+    padding: theme.spacing(3, 3),
+  },
+  [theme.breakpoints.up('md')]: {
+    gridTemplateColumns: '1fr auto 1fr auto 1fr',
+    alignItems: 'center',
+    padding: theme.spacing(3, 4),
+  },
 }));
 
 const StatItem = styled(Stack)(({ theme }) => ({
@@ -96,7 +103,7 @@ const DifferenceSection: React.FC = () => {
       <Container maxWidth="lg">
         <Grid container spacing={{ xs: 4, md: 5 }} alignItems="center">
           {/* Left Column: Heading, Subtext, CTA */}
-          <Grid size={{ xs: 12, md: 5 }}>
+          <Grid size={{ xs: 12, lg: 5 }}>
             <Stack spacing={3.5}>
               <Typography
                 variant="h2"
@@ -151,7 +158,7 @@ const DifferenceSection: React.FC = () => {
           </Grid>
 
           {/* Center Column: Glowing Maharashtra Map */}
-          <Grid size={{ xs: 12, md: 4.5 }}>
+          <Grid size={{ xs: 12, lg: 4.5 }}>
             <Box
               sx={{
                 position: 'relative',
@@ -183,7 +190,7 @@ const DifferenceSection: React.FC = () => {
               {/* Maharashtra SVG Map */}
               <Box
                 component="svg"
-                viewBox="0 0 540 460"
+                viewBox="0 0 616 716"
                 sx={{
                   width: '100%',
                   maxWidth: 440,
@@ -213,69 +220,21 @@ const DifferenceSection: React.FC = () => {
 
                 {/* Stylized Maharashtra State Boundary */}
                 <path
-                  d="M 68 140 
-                     C 75 118, 92 105, 115 102
-                     C 135 98, 152 82, 172 74
-                     C 192 68, 218 72, 240 68
-                     C 265 62, 290 52, 315 48
-                     C 340 44, 370 54, 395 62
-                     C 420 72, 455 78, 475 92
-                     C 495 108, 505 130, 498 152
-                     C 492 172, 485 192, 490 215
-                     C 495 238, 482 258, 465 272
-                     C 445 288, 422 292, 400 305
-                     C 375 320, 350 338, 325 352
-                     C 298 368, 270 380, 240 385
-                     C 215 390, 195 405, 170 410
-                     C 152 414, 140 398, 135 382
-                     C 128 355, 125 325, 118 298
-                     C 110 270, 95 245, 88 218
-                     C 80 190, 62 165, 68 140 Z"
+                  d="M162,61 L176,96 L193,98 L211,118 L223,122 L266,122 L271,139 L268,145 L278,150 L299,136 L298,126 L308,113 L308,102 L338,87 L350,86 L358,107 L350,105 L347,113 L365,122 L382,119 L392,105 L404,100 L410,109 L435,111 L437,102 L447,101 L456,90 L472,94 L477,107 L487,101 L496,109 L515,98 L519,100 L528,116 L544,128 L529,148 L530,160 L536,162 L539,186 L532,191 L541,193 L541,218 L531,223 L526,233 L534,235 L537,242 L532,262 L557,297 L548,314 L536,306 L531,311 L519,341 L524,357 L515,370 L510,370 L498,357 L499,339 L494,331 L500,325 L501,303 L492,288 L488,284 L478,294 L471,294 L459,286 L454,298 L447,290 L438,290 L439,282 L433,280 L428,269 L406,264 L398,279 L400,298 L392,306 L392,319 L385,319 L378,309 L374,313 L367,338 L378,356 L371,360 L365,381 L356,386 L354,406 L343,404 L345,398 L339,392 L328,417 L316,419 L316,440 L307,446 L302,462 L293,459 L280,472 L283,496 L274,491 L271,497 L267,492 L256,495 L239,485 L234,491 L239,499 L240,528 L229,530 L222,526 L213,539 L199,529 L194,545 L180,553 L177,563 L173,566 L168,560 L156,571 L158,588 L169,595 L168,608 L162,609 L166,616 L161,636 L149,639 L140,653 L132,639 L117,640 L105,612 L96,567 L95,515 L86,457 L73,412 L76,404 L65,346 L64,295 L57,255 L69,228 L78,227 L76,234 L87,242 L96,229 L103,227 L101,212 L107,199 L101,189 L105,182 L118,196 L129,190 L127,185 L135,179 L132,160 L113,141 L121,143 L135,129 L135,119 L158,109 L144,105 L129,111 L125,99 L132,92 L126,81 L146,69 L154,71 L163,62 Z"
                   fill="url(#mhGlowGrad)"
                   stroke="#FFB800"
-                  strokeWidth="2.4"
+                  strokeWidth="2.2"
                   filter="url(#neonMapGlow)"
                 />
 
-                {/* Secondary inner contour lines for tech look */}
-                <path
-                  d="M 98 155
-                     C 130 135, 175 110, 230 102
-                     C 290 95, 345 88, 400 105
-                     C 445 120, 465 150, 460 190
-                     C 455 230, 430 260, 390 280
-                     C 340 305, 280 340, 225 355
-                     C 175 368, 148 335, 140 280
-                     C 132 235, 110 195, 98 155 Z"
-                  fill="none"
-                  stroke="rgba(255, 184, 0, 0.25)"
-                  strokeWidth="1.2"
-                  strokeDasharray="4 4"
-                />
-
-                {/* Dotted ambient markers for other regional cities */}
-                {/* Nashik */}
-                <circle cx="165" cy="180" r="3.5" fill="#FFB800" opacity="0.8" />
-                <circle cx="165" cy="180" r="7" fill="none" stroke="#FFB800" strokeWidth="0.8" opacity="0.4" />
-
-                {/* Aurangabad / Chhatrapati Sambhajinagar */}
-                <circle cx="250" cy="195" r="3.5" fill="#FFB800" opacity="0.8" />
-                <circle cx="250" cy="195" r="7" fill="none" stroke="#FFB800" strokeWidth="0.8" opacity="0.4" />
-
-                {/* Kolhapur */}
-                <circle cx="170" cy="345" r="3.5" fill="#FFB800" opacity="0.8" />
-                <circle cx="170" cy="345" r="7" fill="none" stroke="#FFB800" strokeWidth="0.8" opacity="0.4" />
-
-                {/* Solapur */}
-                <circle cx="275" cy="315" r="3.5" fill="#FFB800" opacity="0.8" />
-                <circle cx="275" cy="315" r="7" fill="none" stroke="#FFB800" strokeWidth="0.8" opacity="0.4" />
-
-                {/* Amravati */}
-                <circle cx="360" cy="140" r="3.5" fill="#FFB800" opacity="0.8" />
-                <circle cx="360" cy="140" r="7" fill="none" stroke="#FFB800" strokeWidth="0.8" opacity="0.4" />
+                <circle cx="126" cy="249" r="4" fill="#FFB800" opacity="0.85" />
+                <circle cx="220" cy="260" r="4" fill="#FFB800" opacity="0.85" />
+                <circle cx="154" cy="552" r="4" fill="#FFB800" opacity="0.85" />
+                <circle cx="255" cy="464" r="4" fill="#FFB800" opacity="0.85" />
+                <circle cx="367" cy="163" r="4" fill="#FFB800" opacity="0.85" />
 
                 {/* PUNE PIN & BADGE (West-Central) */}
-                <g transform="translate(160, 240)">
+                <g transform="translate(130, 385)">
                   {/* Glowing pulses */}
                   <circle cx="0" cy="0" r="14" fill="rgba(255, 184, 0, 0.2)" />
                   <circle cx="0" cy="0" r="6" fill="#FFB800" filter="url(#neonMapGlow)" />
@@ -318,7 +277,7 @@ const DifferenceSection: React.FC = () => {
                 </g>
 
                 {/* NAGPUR PIN & BADGE (East) */}
-                <g transform="translate(420, 140)">
+                <g transform="translate(448, 144)">
                   {/* Glowing pulses */}
                   <circle cx="0" cy="0" r="14" fill="rgba(255, 184, 0, 0.2)" />
                   <circle cx="0" cy="0" r="6" fill="#FFB800" filter="url(#neonMapGlow)" />
@@ -365,8 +324,10 @@ const DifferenceSection: React.FC = () => {
               <Box
                 sx={{
                   position: 'absolute',
-                  bottom: 12,
-                  right: { xs: 0, sm: -10 },
+                  bottom: 4,
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  maxWidth: 'calc(100% - 16px)',
                   display: 'flex',
                   alignItems: 'center',
                   gap: 1.2,
@@ -388,9 +349,9 @@ const DifferenceSection: React.FC = () => {
           </Grid>
 
           {/* Right Column: 3 Compact Badge Cards */}
-          <Grid size={{ xs: 12, md: 2.5 }}>
-            <Stack spacing={2}>
-              <BadgeCard>
+          <Grid size={{ xs: 12, lg: 2.5 }}>
+            <Stack direction={{ xs: 'column', sm: 'row', lg: 'column' }} spacing={2}>
+              <BadgeCard sx={{ flex: 1 }}>
                 <BadgeIconBox>
                   <MapOutlinedIcon sx={{ fontSize: 24 }} />
                 </BadgeIconBox>
@@ -401,7 +362,7 @@ const DifferenceSection: React.FC = () => {
                 </Box>
               </BadgeCard>
 
-              <BadgeCard>
+              <BadgeCard sx={{ flex: 1 }}>
                 <BadgeIconBox>
                   <RestaurantMenuOutlinedIcon sx={{ fontSize: 24 }} />
                 </BadgeIconBox>
@@ -412,7 +373,7 @@ const DifferenceSection: React.FC = () => {
                 </Box>
               </BadgeCard>
 
-              <BadgeCard>
+              <BadgeCard sx={{ flex: 1 }}>
                 <BadgeIconBox>
                   <TrendingUpOutlinedIcon sx={{ fontSize: 24 }} />
                 </BadgeIconBox>
