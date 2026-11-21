@@ -251,57 +251,69 @@ const WhyJunoSection: React.FC = () => {
           </Box>
         </Stack>
 
-        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'relative', height: 640, mt: 8, mb: 4 }}>
+        <Box
+          sx={{
+            display: { xs: 'none', md: 'block' },
+            position: 'relative',
+            width: '100%',
+            maxWidth: 920,
+            mx: 'auto',
+            mt: 8,
+            mb: 2,
+          }}
+        >
           <Box
             component="svg"
-            viewBox="0 0 800 560"
-            sx={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
+            viewBox="0 0 900 640"
+            sx={{ width: '100%', height: 'auto', display: 'block', overflow: 'visible' }}
           >
             <defs>
               <linearGradient id="beamLine" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#FFB800" stopOpacity="0.9" />
-                <stop offset="100%" stopColor="#D97706" stopOpacity="0.35" />
+                <stop offset="0%" stopColor="#FFB800" stopOpacity="0.95" />
+                <stop offset="100%" stopColor="#D97706" stopOpacity="0.4" />
               </linearGradient>
             </defs>
-            <polygon points="400,70 160,360 640,360" fill="none" stroke="url(#beamLine)" strokeWidth="2.5" />
-            <line x1="400" y1="70" x2="400" y2="430" stroke="rgba(255,184,0,0.45)" strokeDasharray="6 6" strokeWidth="1.5" />
-          </Box>
+            <polygon points="450,36 70,520 830,520" fill="none" stroke="url(#beamLine)" strokeWidth="2.5" />
+            <line x1="450" y1="36" x2="450" y2="520" stroke="rgba(255,184,0,0.4)" strokeDasharray="6 6" strokeWidth="1.5" />
 
-          <Box sx={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: 280 }}>
-            <Box sx={{ clipPath: 'polygon(50% 0, 100% 100%, 0 100%)', background: 'rgba(17,24,39,0.88)', border: '1px solid rgba(255,184,0,0.35)', minHeight: 210, pt: 8, px: 5, textAlign: 'center' }}>
-              <Typography sx={{ fontWeight: 800, mb: 0.6 }}>Food-Tech Expertise</Typography>
-              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', lineHeight: 1.45 }}>
-                The right platforms, data, and tech to grow orders and revenue.
-              </Typography>
-            </Box>
-          </Box>
+            <polygon points="450,18 260,250 640,250" fill="#101623" stroke="#FFB800" strokeWidth="1.6" />
+            <polygon points="225,268 20,530 430,530" fill="#101623" stroke="#FFB800" strokeWidth="1.6" />
+            <polygon points="675,268 470,530 880,530" fill="#101623" stroke="#FFB800" strokeWidth="1.6" />
 
-          <Box sx={{ position: 'absolute', top: 250, left: '2%', width: 270 }}>
-            <Box sx={{ clipPath: 'polygon(50% 0, 100% 100%, 0 100%)', background: 'rgba(17,24,39,0.88)', minHeight: 210, pt: 8, px: 5, textAlign: 'center' }}>
-              <Typography sx={{ fontWeight: 800, mb: 0.6 }}>Restaurant Understanding</Typography>
-              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', lineHeight: 1.45 }}>
-                Real restaurant context — menu, customers, market, and operations.
-              </Typography>
-            </Box>
-          </Box>
-
-          <Box sx={{ position: 'absolute', top: 250, right: '2%', width: 270 }}>
-            <Box sx={{ clipPath: 'polygon(50% 0, 100% 100%, 0 100%)', background: 'rgba(17,24,39,0.88)', minHeight: 210, pt: 8, px: 5, textAlign: 'center' }}>
-              <Typography sx={{ fontWeight: 800, mb: 0.6 }}>Hands-On Execution</Typography>
-              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', lineHeight: 1.45 }}>
-                We build, run, and improve alongside your team.
-              </Typography>
-            </Box>
+            <foreignObject x="355" y="150" width="190" height="90">
+              <div xmlns="http://www.w3.org/1999/xhtml" style={{ textAlign: 'center', color: '#ffffff', fontFamily: 'Poppins, sans-serif' }}>
+                <div style={{ fontWeight: 800, fontSize: '15px', lineHeight: 1.25 }}>Food-Tech Expertise</div>
+                <div style={{ marginTop: '6px', fontSize: '12px', lineHeight: 1.35, color: '#F3F4F6' }}>
+                  The right platforms, data, and tech to grow orders and revenue.
+                </div>
+              </div>
+            </foreignObject>
+            <foreignObject x="140" y="400" width="170" height="110">
+              <div xmlns="http://www.w3.org/1999/xhtml" style={{ textAlign: 'center', color: '#ffffff', fontFamily: 'Poppins, sans-serif' }}>
+                <div style={{ fontWeight: 800, fontSize: '15px', lineHeight: 1.25 }}>Restaurant Understanding</div>
+                <div style={{ marginTop: '6px', fontSize: '12px', lineHeight: 1.35, color: '#F3F4F6' }}>
+                  Real restaurant context — menu, customers, market, and operations.
+                </div>
+              </div>
+            </foreignObject>
+            <foreignObject x="590" y="410" width="170" height="100">
+              <div xmlns="http://www.w3.org/1999/xhtml" style={{ textAlign: 'center', color: '#ffffff', fontFamily: 'Poppins, sans-serif' }}>
+                <div style={{ fontWeight: 800, fontSize: '15px', lineHeight: 1.25 }}>Hands-On Execution</div>
+                <div style={{ marginTop: '6px', fontSize: '12px', lineHeight: 1.35, color: '#F3F4F6' }}>
+                  We build, run, and improve alongside your team.
+                </div>
+              </div>
+            </foreignObject>
           </Box>
 
           <Box
             sx={{
-              position: 'absolute',
-              bottom: 8,
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: 300,
-              py: 3,
+              position: 'relative',
+              zIndex: 2,
+              width: 'min(320px, 70%)',
+              mx: 'auto',
+              mt: -7,
+              py: 2.5,
               px: 3,
               borderRadius: '28px 28px 18px 18px',
               background: 'linear-gradient(180deg, #FFB800 0%, #D97706 72%, #92400E 100%)',
@@ -311,7 +323,7 @@ const WhyJunoSection: React.FC = () => {
             }}
           >
             <Typography sx={{ fontWeight: 900, letterSpacing: 1.4, color: '#111' }}>JUNO ▲</Typography>
-            <Typography sx={{ fontWeight: 900, fontSize: '1.35rem', color: '#000', lineHeight: 1.2 }}>
+            <Typography sx={{ fontWeight: 900, fontSize: { md: '1.25rem', lg: '1.4rem' }, color: '#000', lineHeight: 1.2 }}>
               Your Digital Restaurant Team
             </Typography>
           </Box>
